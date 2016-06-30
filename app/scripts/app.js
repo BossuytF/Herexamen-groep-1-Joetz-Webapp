@@ -76,6 +76,16 @@ angular
         controller: 'NieuwkampCtrl',
         controllerAs: 'nieuwKamp'
       })
+      .when('/registreer', {
+        templateUrl: 'views/registreer.html',
+        controller: 'RegistreerCtrl',
+        controllerAs: 'registreer'
+      })
+      .when('/vergeten', {
+        templateUrl: 'views/vergeten.html',
+        controller: 'VergetenCtrl',
+        controllerAs: 'vergeten'
+      })
       .otherwise({
         redirectTo: '/'
       });
