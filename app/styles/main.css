@@ -87,4 +87,18 @@ body {
 	padding-top: 10px;
 }
 
+.row-button{
+	padding-top:10px;
+}
+
+.buttons-right{
+	float:right;
+}
+
+.float-center{
+	margin:auto;
+}
+
+
+
 
