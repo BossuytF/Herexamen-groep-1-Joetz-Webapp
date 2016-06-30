@@ -1,23 +1,28 @@
 <div class="card">
+	<form class="form-horizontal">
+  <fieldset>
+    <legend class="col-xs-offset-1 row-top-white">Inloggen</legend>
+    <div class="form-group">
+      <label for="inputEmail" class="col-md-2 col-xs-2 control-label">Email</label>
 
-    <div class="card-height-indicator"></div>
-
-    <div class="card-content">
-
-        <div class="card-image">
-            <img src="./image.jpg" alt="Loading image...">
-            <h3 class="card-image-headline">Lorem Ipsum Dolor</h3>
-        </div>
-
-        <div class="card-body">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-        </div>
-
-        <footer class="card-footer">
-            <button class="btn btn-flat">Share</button>
-            <button class="btn btn-flat btn-warning">Learn More</button>
-        </footer>
-
+      <div class="col-md-8 col-xs-8">
+        <input class="form-control" id="inputEmail" placeholder="Email" type="email">
+      </div>
     </div>
+    <div class="form-group">
+      <label for="inputPassword" class="col-xs-2 control-label">Password</label>
 
+      <div class="col-xs-8">
+        <input class="form-control" id="inputPassword" placeholder="Password" type="password">
+
+      </div>
+    </div>
+  </fieldset>
+  
+  <div class="col-md-10">
+	<a type="button" class="btn btn-default">Registreren</a>  
+	<button  type="submit" class="btn btn-raised btn-primary">Primary</button>
+  </div>
+
+</form>
 </div>
