@@ -8,6 +8,18 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-  .controller('LoginCtrl', function () {
-	
-  });
+.controller('LoginCtrl', ['$scope',
+		function ($scope) {
+
+			var login = this;
+
+			login.logIn = function () {
+				console.log('Login clicked');
+			};
+
+			$(function () {
+				$.material.init();
+			});
+
+		}
+	]);
