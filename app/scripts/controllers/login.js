@@ -8,13 +8,24 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('LoginCtrl', ['$scope',
-		function ($scope) {
+.controller('LoginCtrl', ['$scope', 'AuthenticationService',
+		function ($scope, AuthenticationService) {
 
 			var login = this;
+			login.user = {
+				email : '',
+				password : ''
+			};
 
 			login.logIn = function () {
-				console.log('Login clicked');
+				AuthenticationService.login(login.user.email, login.user.password).then(function (response) {
+					if (response.token) {
+						AuthenticationService.setCredentials(response.access, response.refresh)
+						$rootScope.$emit('user:loggedIn');
+					} else {
+						login.error = "Wachtwoord of gebruikersnaam fout";
+					}
+				}, function () {})
 			};
 
 			$(function () {
