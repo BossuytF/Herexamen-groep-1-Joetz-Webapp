@@ -9,9 +9,5 @@
  */
 angular.module('webappApp')
   .controller('RegistreerCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
   });
