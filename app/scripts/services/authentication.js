@@ -8,7 +8,8 @@
  * Service in the webappApp.
  */
 angular.module('webappApp')
-.service('AuthenticationService', ['localStorageService', '$http', function (localStorageService, $http) {
+.service('AuthenticationService', ['localStorageService', '$http', '$rootScope',
+		function (localStorageService, $http, $rootScope) {
 
 			var baseUrl = 'http://localhost:8085/';
 
@@ -22,13 +23,7 @@ angular.module('webappApp')
 				refreshToken : '',
 				eersteLogin : '',
 				username : ''
-			}
-
-			service.init = init;
-			service.login = login;
-			service.setCredentials = setCredentials;
-
-			return service;
+			};
 
 			function init() {
 				var authData = localStorageService.get('authData');
@@ -58,7 +53,7 @@ angular.module('webappApp')
 				var headers = {};
 
 				headers['Content-Type'] = 'application/x-www-form-urlencoded';
-				headers['Access-Control-Allow-Origin'] = 'http://localhost:9000/'
+				headers['Access-Control-Allow-Origin'] = 'http://localhost:9000/';
 
 				return $http({
 					method : 'POST',
@@ -69,7 +64,7 @@ angular.module('webappApp')
 						password : password,
 						permanent : 'true'
 					}
-				})
+				});
 			}
 
 			function getMe() {
@@ -103,6 +98,12 @@ angular.module('webappApp')
 				});
 
 			}
+
+			service.init = init;
+			service.login = login;
+			service.setCredentials = setCredentials;
+
+			return service;
 
 		}
 	]);
