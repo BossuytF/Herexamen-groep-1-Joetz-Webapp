@@ -51,10 +51,6 @@ angular.module('webappApp')
 
 			function login(email, password) {
 				var headers = {};
-
-				headers['Content-Type'] = 'application/x-www-form-urlencoded';
-				headers['Access-Control-Allow-Origin'] = 'http://localhost:9000/';
-
 				return $http({
 					method : 'POST',
 					url : baseUrl + 'authentication/login',
