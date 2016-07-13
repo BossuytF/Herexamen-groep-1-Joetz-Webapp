@@ -8,18 +8,25 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('RegistreerCtrl', function () {
+.controller('RegistreerCtrl', ['UserService', '$state' , function (UserService, $state) {
 
-	$.material.init();
-	var registreer = this;
+			$.material.init();
+			var registreer = this;
 
-	var user = {
-		naam : '',
-		voornaam : '',
-		email : '',
-		password : '',
-		username : '',
-		confirmPassword : ''
-	}
+			registreer.user = {
+				naam : '',
+				voornaam : '',
+				email : '',
+				password : '',
+				username : '',
+				confirmPassword : ''
+			}
 
-});
+			registreer.registreer = function () {
+				UserService.create(registreer.user).then(function () {
+					$.snackbar({content: "This is my awesome snackbar!"});
+					$state.go('login');
+				})
+			}
+
+		}]);

@@ -19,7 +19,19 @@ angular.module('webappApp')
 			}
 			
 			function create(user){
-				return $http.post(baseUrl + 'user')
+				return $http({
+					method : 'POST',
+					url : baseUrl + 'user',
+					data : {
+						email : email,
+						password : password,
+						permanent : 'true'
+					}
+				});
 			}
+			
+			service.create = create;
+			
+			return service;
 		}
 	]);

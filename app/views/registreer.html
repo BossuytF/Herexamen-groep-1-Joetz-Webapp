@@ -51,7 +51,7 @@
 					</div>	
 				</div>
 
-				<div class="form-group" ng-class="{'has-success': form.password.$valid">
+				<div class="form-group" ng-class="{'has-success': form.password.$valid}">
 					<label for="inputPassword" class="col-xs-2 control-label">Wachtwoord</label>
 					<div class="col-md-8 col-xs-8">
 						<input class="form-control" id="inputPassword" placeholder="Wachtwoord" type="password" name="password" ng-model="registreer.user.password" required/>
@@ -61,7 +61,7 @@
 					</div>
 				</div>
 
-				<div class="form-group" ng-class="{'has-success': form.confirmPassword.$valid, 'has-error': form.confirmPassword.$dirty && form.confirmPassword.$invalid}">
+				<div class="form-group" ng-class="{'has-error': form.confirmPassword.$dirty && form.confirmPassword.$invalid}">
 					<label for="inputConfirmPassword" class="col-xs-2 control-label">Bevestig wachtwoord</label>
 					<div class="col-md-8 col-xs-8">
 						<input compare-to="registreer.user.password" class="form-control" id="inputConfirmPassword" placeholder="Bevestig wachtwoord" type="password" name="confirmPassword" ng-model='registreer.user.confirmPassword' required/>
