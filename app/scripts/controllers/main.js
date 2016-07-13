@@ -8,10 +8,37 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+.controller('MainCtrl', ['$rootScope', '$state', 'AuthenticationService',
+		function ($rootScope, $state, AuthenticationService) {
+
+			var main = this;
+
+			var _onUserLoggedIn = function (event, user) {
+				$rootScope.user = user;
+				$state.go('home');
+			};
+
+			var _onUserLoggedOut = function () {
+				$rootScope.user = {};
+				$state.go('login');
+			};
+
+			var logout = function () {
+				AuthenticationService.logout();
+			};
+
+			$rootScope.$state = $state;
+			
+			function init(){
+				$.material.init();
+				AuthenticationService.init();
+			}
+			
+			init();
+
+			$rootScope.$on('user:loggedIn', _onUserLoggedIn);
+			$rootScope.$on('user:loggedOut', _onUserLoggedOut);
+			main.logout = logout;
+
+		}
+	]);
