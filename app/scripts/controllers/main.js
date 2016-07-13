@@ -8,7 +8,7 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('MainCtrl', ['$rootScope', '$state', 'AuthenticationService', 
+.controller('MainCtrl', ['$rootScope', '$state', 'AuthenticationService',
 		function ($rootScope, $state, AuthenticationService) {
 
 			var main = this;
@@ -23,13 +23,21 @@ angular.module('webappApp')
 				$state.go('login');
 			};
 
-			var _logout = function () {
+			var logout = function () {
 				AuthenticationService.logout();
 			};
 
+			$rootScope.$state = $state;
+			
+			function init(){
+				$.material.init();
+			}
+			
+			init();
+
 			$rootScope.$on('user:loggedIn', _onUserLoggedIn);
 			$rootScope.$on('user:loggedOut', _onUserLoggedOut);
-			main.logout = _logout;
+			main.logout = logout;
 
 		}
 	]);

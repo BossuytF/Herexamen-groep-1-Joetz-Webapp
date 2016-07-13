@@ -7,8 +7,7 @@
 					<legend class="col-xs-offset-1 row-top-white">Inloggen</legend>
 					
 					<div class="alert alert-danger" ng-show="login.error">
-						<strong>Oh snap!</strong>
-						Change a few things up and try submitting again.
+						{{login.error}}
 					</div>
 
 					<div class="form-group" ng-class="{'has-success': form.email.$valid}">

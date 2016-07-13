@@ -50,11 +50,15 @@ angular.module('webappApp')
 			}
 
 			function login(email, password) {
+				
 				var headers = {};
+				
+				headers['Access-Control-Allow-Origin'] = '*';  
+				
 				return $http({
 					method : 'POST',
 					url : baseUrl + 'authentication/login',
-					headers : headers,
+					headers: headers,
 					data : {
 						login : email,
 						password : password,
@@ -70,7 +74,7 @@ angular.module('webappApp')
 
 				return $http({
 					method : 'GET',
-					url : baseUrl + '/user/_user.username'
+					url : baseUrl + '/user/' + _user.username
 				});
 			}
 
@@ -79,25 +83,33 @@ angular.module('webappApp')
 					token : token,
 					refreshToken : refreshToken
 				});
+				var decodedToken = jwt_decode(token);
 
 				_user.token = token;
-				getMe().then(function (response) {
-					_user.isAuth = true;
-					_user.email = response.email;
-					_user.naam = response.naam;
-					_user.voornaam = response.voornaam;
-					_user.role = response.role;
-					_user.username = response.username;
+				_user.isAuth = true;
+				_user.role = decodedToken.role;
+				/* _user.email = response.email;
+				_user.naam = response.naam;
+				_user.voornaam = response.voornaam;
+				_user.username = response.username; */
 
-				}, function (err) {
-					console.log(err);
-				});
+				$rootScope.$broadcast('user:loggedIn', _user);
+			}
+
+			function logout() {
+				localStorageService.remove('authData');
+
+				_user.token = '';
+				_user.isAuth = false;
+
+				$rootScope.$emit('user:loggedOut');
 
 			}
 
 			service.init = init;
 			service.login = login;
 			service.setCredentials = setCredentials;
+			service.logout = logout;
 
 			return service;
 
