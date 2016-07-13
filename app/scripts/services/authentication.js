@@ -32,33 +32,26 @@ angular.module('webappApp')
 					_user.token = authData.token;
 					_user.refreshToken = authData.refreshToken;
 
-					getMe().then(function (response) {
-						_user.isAuth = true;
-						_user.email = response.email;
-						_user.role = response.role;
-						_user.username = response.username;
-						_user.naam = response.naam;
-						_user.voornaam = response.voornaam;
+					refreshAccessToken().then(function (response) {
+						setCredentials(response.data.token, response.data.refreshToken);
+					})
 
-						$rootScope.$emit('user:loggedIn', _user);
-					}, function () {
-						$rootScope.$emit('user:loggedOut');
-					});
+					$rootScope.$emit('user:loggedIn', _user);
 				} else {
 					$rootScope.$emit('user:loggedOut');
 				}
 			}
 
 			function login(email, password) {
-				
+
 				var headers = {};
-				
-				headers['Access-Control-Allow-Origin'] = '*';  
-				
+
+				headers['Access-Control-Allow-Origin'] = '*';
+
 				return $http({
 					method : 'POST',
 					url : baseUrl + 'authentication/login',
-					headers: headers,
+					headers : headers,
 					data : {
 						login : email,
 						password : password,
@@ -67,14 +60,13 @@ angular.module('webappApp')
 				});
 			}
 
-			function getMe() {
-				var header = {};
-				header.Authorization = _user.token;
-				header['Content-Type'] = 'application/x-www-form-urlencoded';
-
+			function refreshAccessToken() {
 				return $http({
-					method : 'GET',
-					url : baseUrl + '/user/' + _user.username
+					method : 'POST',
+					url : baseUrl + 'authentication/token',
+					data : {
+						refreshToken : _user.refreshToken,
+					}
 				});
 			}
 
@@ -86,6 +78,7 @@ angular.module('webappApp')
 				var decodedToken = jwt_decode(token);
 
 				_user.token = token;
+				_user.refreshToken = refreshToken;
 				_user.isAuth = true;
 				_user.role = decodedToken.role;
 				/* _user.email = response.email;

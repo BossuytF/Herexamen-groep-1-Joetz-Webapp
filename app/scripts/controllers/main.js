@@ -31,6 +31,7 @@ angular.module('webappApp')
 			
 			function init(){
 				$.material.init();
+				AuthenticationService.init();
 			}
 			
 			init();
