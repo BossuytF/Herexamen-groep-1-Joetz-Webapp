@@ -8,30 +8,33 @@
  * Service in the webappApp.
  */
 angular.module('webappApp')
-.service('UserService', ['$http', 'LocalStorageService',
-		function ($http, LocalStorageService) {
-			
-			var service = {} ,
+.service('UserService', ['$http', 
+		function ($http) {
+
+			var service = {},
 			baseUrl = 'http://localhost:8085/';
-			
-			function getAll(){
+
+			function getAll() {
 				return $http.get(baseUrl + 'user/');
 			}
-			
-			function create(user){
+
+			function create(user) {
 				return $http({
 					method : 'POST',
 					url : baseUrl + 'user',
 					data : {
-						email : email,
-						password : password,
-						permanent : 'true'
+						email : user.email,
+						password : user.password,
+						firstname : user.voornaam,
+						lastname : user.naam,
+						username : user.username
 					}
 				});
 			}
-			
+
 			service.create = create;
-			
+			service.getAll = getAll;
+
 			return service;
 		}
 	]);

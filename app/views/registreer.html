@@ -6,8 +6,7 @@
 				<legend class="col-xs-offset-1 row-top-white">Registreren</legend>
 
 				<div class="alert alert-danger" ng-show="registreer.error">
-					<strong>Oh snap!</strong>
-					Change a few things up and try submitting again.
+				{{registreer.error}}
 				</div>
 
 				<div class="form-group" ng-class="{'has-success': form.username.$valid}">
@@ -33,7 +32,7 @@
 				<div class="form-group" ng-class="{'has-success': form.voornaam.$valid}">
 					<label for="voornaam" class="col-md-2 col-xs-2 control-label">Voornaam</label>
 					<div class="col-md-8 col-xs-8">
-						<input name="voornaam" class="form-control" id="inputVoornaam" placeholder="Voornaam" type="text" ng-model="registreer.user.voornaam" required/>
+						<input name="voornaam"  class="form-control" id="inputVoornaam" placeholder="Voornaam" type="text" ng-model="registreer.user.voornaam" required/>
 						<span class="glyphicon glyphicon-remove form-control-feedback" ng-show= "form.voornaam.$dirty && form.voornaam.$invalid"/>
 						<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="form.voornaam.$valid && form.voornaam.$dirty"></span>
 						<span class="help-block" ng-show= "form.voornaam.$dirty && form.voornaam.$error.required">Naam is verplicht</span>						
@@ -51,13 +50,14 @@
 					</div>	
 				</div>
 
-				<div class="form-group" ng-class="{'has-success': form.password.$valid}">
+				<div class="form-group" ng-class="{'has-success': form.password.$valid, 'has-error': form.password.$invalid && form.password.$dirty}">
 					<label for="inputPassword" class="col-xs-2 control-label">Wachtwoord</label>
 					<div class="col-md-8 col-xs-8">
-						<input class="form-control" id="inputPassword" placeholder="Wachtwoord" type="password" name="password" ng-model="registreer.user.password" required/>
+						<input class="form-control" id="inputPassword" ng-pattern= "/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{12,})/" placeholder="Wachtwoord" type="password" name="password" ng-model="registreer.user.password" required/>
 						<span class="glyphicon glyphicon-remove form-control-feedback" ng-show= "form.password.$dirty && form.password.$invalid"/>	
 						<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="form.password.$valid && form.password.$dirty"></span>
-						<span class="help-block" ng-show="form.password.$dirty && form.password.$invalid">Wachtwoord is verplicht</span>							
+						<span class="help-block" ng-show="form.password.$dirty && form.password.$error.required">Wachtwoord is verplicht</span>	
+						<span class="help-block" ng-show="form.password.$dirty && form.password.$error.pattern">Het wachtwoord moet 12 tekens lang zijn en bestaan uit cijfers, letters en speciale tekens</span>													
 					</div>
 				</div>
 

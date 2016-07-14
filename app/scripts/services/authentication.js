@@ -31,10 +31,12 @@ angular.module('webappApp')
 				if (authData) {
 					_user.token = authData.token;
 					_user.refreshToken = authData.refreshToken;
-
+					
+					 var decodedToken = jwt_decode(authData.token);
+					//if (){};
 					refreshAccessToken().then(function (response) {
 						setCredentials(response.data.token, response.data.refreshToken);
-					})
+					});
 
 					$rootScope.$emit('user:loggedIn', _user);
 				} else {
@@ -45,8 +47,6 @@ angular.module('webappApp')
 			function login(email, password) {
 
 				var headers = {};
-
-				headers['Access-Control-Allow-Origin'] = '*';
 
 				return $http({
 					method : 'POST',
