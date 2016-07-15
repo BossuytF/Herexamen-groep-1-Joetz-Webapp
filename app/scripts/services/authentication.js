@@ -31,21 +31,23 @@ angular.module('webappApp')
 				if (authData) {
 					_user.token = authData.token;
 					_user.refreshToken = authData.refreshToken;
-					
-					 var decodedToken = jwt_decode(authData.token);
-					//if (){};
-					refreshAccessToken().then(function (response) {
-						setCredentials(response.data.token, response.data.refreshToken);
-					});
 
-					$rootScope.$emit('user:loggedIn', _user);
+					var decodedToken = jwt_decode(authData.token);
+
+					if ((decodedToken.exp * 1000) < new Date().getTime()) {
+						refreshAccessToken().then(function (response) {
+							setCredentials(response.data.token.access);
+						})
+					} else {
+						setCredentials(_user.token, _user.refreshToken);
+					};
+				
 				} else {
 					$rootScope.$emit('user:loggedOut');
 				}
 			}
 
 			function login(email, password) {
-
 				var headers = {};
 
 				return $http({
@@ -85,6 +87,7 @@ angular.module('webappApp')
 				_user.naam = response.naam;
 				_user.voornaam = response.voornaam;
 				_user.username = response.username; */
+				$rootScope.user = _user;
 
 				$rootScope.$broadcast('user:loggedIn', _user);
 			}
