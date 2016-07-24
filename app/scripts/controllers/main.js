@@ -30,7 +30,6 @@ angular.module('webappApp')
 			$rootScope.$state = $state;
 			
 			function init(){
-				$.material.init();
 				AuthenticationService.init();
 			}
 			

@@ -19,9 +19,10 @@ angular
 		'ngSanitize',
 		'ngTouch',
 		'LocalStorageModule',
-		'ui.router'
+		'ui.router', 
+		'ngMaterial'
 	])
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
 
 	$urlRouterProvider.otherwise('/home');
 

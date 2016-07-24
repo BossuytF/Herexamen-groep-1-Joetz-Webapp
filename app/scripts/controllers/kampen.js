@@ -8,10 +8,24 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-  .controller('KampenCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+.controller('KampenCtrl', function () {
+	var kampen = this;
+
+	var kampenlijst = [{
+			naam : 'test',
+			omschrijving : 'lorifdsf sidufl iudsfsdfiu oihfsfh oifddsf hkjsdf sdf',
+			aantalDagen : 5
+		}, {
+			naam : 'test',
+			omschrijving : 'lorifdsf sidufl iudsfsdfiu oihfsfh oifddsf hkjsdf sdf',
+			aantalDagen : 5
+		}, {
+			naam : 'test',
+			omschrijving : 'lorifdsf sidufl iudsfsdfiu oihfsfh oifddsf hkjsdf sdf',
+			aantalDagen : 5
+		}
+	];
+
+	kampen.kampenlijst = kampenlijst;
+
+});

@@ -1,86 +1,73 @@
 <div class="row float-center">
-	<div class="card">
+	<div class="col-md-12">
+		<md-card>
+			<div class="col-md-12">
+				<md-card-header class="col-xs-offset-1 row-top-white">Registreer</md-card-header>
+				<form class="form-horizontal" name="form" ng-submit="registreer.registreer()" role="form">
+					<fieldset>
 
-		<form class="form-horizontal" name="form" ng-submit="registreer.registreer()" role="form">
-			<fieldset>
-				<legend class="col-xs-offset-1 row-top-white">Registreren</legend>
+						<div class="alert alert-danger" ng-show="registreer.error">
+							{{registreer.error}}
+						</div>
 
-				<div class="alert alert-danger" ng-show="registreer.error">
-				{{registreer.error}}
-				</div>
+						<md-input-container class="md-block">
+							<label>Gebruikersnaam</label>
+							<input required type="text" name="username" ng-model="registreer.user.username" id="inputUsername" />
+							<div ng-messages="form.username.$error" ng-show="form.username.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-				<div class="form-group" ng-class="{'has-success': form.username.$valid}">
-					<label for="username" class="col-md-2 col-xs-2 control-label">Gebruikersnaam</label>
-					<div class="col-md-8 col-xs-8">
-						<input name="username" class="form-control" id="inputUsername" placeholder="Gebruikersnaam" type="text" ng-model="registreer.user.username" required/>
-						<span class="glyphicon glyphicon-remove form-control-feedback" ng-show= "form.username.$dirty && form.username.$invalid"/>
-						<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="form.username.$valid && form.username.$dirty"></span>
-						<span class="help-block" ng-show= "form.username.$dirty && form.username.$error.required">Gebruikersnaam is verplicht</span>						
-					</div>	
-				</div>
+						<md-input-container class="md-block">
+							<label>Naam</label>
+							<input required type="text" name="naam" ng-model="registreer.user.naam" id="inputNaam" />
+							<div ng-messages="form.naam.$error" ng-show="form.naam.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-				<div class="form-group" ng-class="{'has-success': form.naam.$valid}">
-					<label for="naam" class="col-md-2 col-xs-2 control-label">Naam</label>
-					<div class="col-md-8 col-xs-8">
-						<input name="naam" class="form-control" id="inputNaam" placeholder="Naam" type="text" ng-model="registreer.user.naam" required/>
-						<span class="glyphicon glyphicon-remove form-control-feedback" ng-show= "form.naam.$dirty && form.naam.$invalid"/>
-						<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="form.naam.$valid && form.naam.$dirty"></span>
-						<span class="help-block" ng-show= "form.naam.$dirty && form.naam.$error.required">Naam is verplicht</span>						
-					</div>	
-				</div>
+						<md-input-container class="md-block">
+							<label>Voornaam</label>
+							<input required type="text" name="voornaam" ng-model="registreer.user.voornaam" id="inputVoornaam" />
+							<div ng-messages="form.voornaam.$error" ng-show="form.voornaam.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-				<div class="form-group" ng-class="{'has-success': form.voornaam.$valid}">
-					<label for="voornaam" class="col-md-2 col-xs-2 control-label">Voornaam</label>
-					<div class="col-md-8 col-xs-8">
-						<input name="voornaam"  class="form-control" id="inputVoornaam" placeholder="Voornaam" type="text" ng-model="registreer.user.voornaam" required/>
-						<span class="glyphicon glyphicon-remove form-control-feedback" ng-show= "form.voornaam.$dirty && form.voornaam.$invalid"/>
-						<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="form.voornaam.$valid && form.voornaam.$dirty"></span>
-						<span class="help-block" ng-show= "form.voornaam.$dirty && form.voornaam.$error.required">Naam is verplicht</span>						
-					</div>	
-				</div>
+						<md-input-container class="md-block">
+							<label>Email</label>
+							<input required type="email" name="email" ng-model="registreer.user.email" id="inputEmail" />
+							<div ng-messages="form.email.$error" ng-show="form.email.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-				<div class="form-group" ng-class="{'has-success': form.email.$valid}">
-					<label for="inputEmail" class="col-md-2 col-xs-2 control-label">Email</label>
-					<div class="col-md-8 col-xs-8">
-						<input name="email" class="form-control" id="inputEmail" placeholder="Email" type="email" ng-model="registreer.user.email" required/>
-						<span class="glyphicon glyphicon-remove form-control-feedback" ng-show= "form.email.$dirty && form.email.$invalid"/>
-						<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="form.email.$valid && form.email.$dirty"></span>
-						<span class="help-block" ng-show= "form.email.$dirty && form.email.$error.required">Email is verplicht</span>
-						<span class="help-block" ng-show= "form.email.$dirty && form.email.$error.email">Geen geldig emailadres</span>							
-					</div>	
-				</div>
+						<md-input-container class="md-block">
+							<label>Wachtwoord</label>
+							<input ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{12,})/" required type="password" name="password" ng-model="registreer.user.password" id="inputPassword" />
+							<div ng-messages="form.password.$error" ng-show="form.password.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-				<div class="form-group" ng-class="{'has-success': form.password.$valid, 'has-error': form.password.$invalid && form.password.$dirty}">
-					<label for="inputPassword" class="col-xs-2 control-label">Wachtwoord</label>
-					<div class="col-md-8 col-xs-8">
-						<input class="form-control" id="inputPassword" ng-pattern= "/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{12,})/" placeholder="Wachtwoord" type="password" name="password" ng-model="registreer.user.password" required/>
-						<span class="glyphicon glyphicon-remove form-control-feedback" ng-show= "form.password.$dirty && form.password.$invalid"/>	
-						<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="form.password.$valid && form.password.$dirty"></span>
-						<span class="help-block" ng-show="form.password.$dirty && form.password.$error.required">Wachtwoord is verplicht</span>	
-						<span class="help-block" ng-show="form.password.$dirty && form.password.$error.pattern">Het wachtwoord moet 12 tekens lang zijn en bestaan uit cijfers, letters en speciale tekens en minstens 1 hoofdletter en kleine letter bevatten</span>													
+						<md-input-container class="md-block">
+							<label>Bevestig wachtwoord</label>
+							<input compare-to="registreer.user.password" required type="password" name="confirmPassword" ng-model="registreer.user.confirmPassword" id="inputConfirmPassword" />
+							<div ng-messages="form.confirmPassword.$error" ng-show="form.confirmPassword.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
+					</fieldset>
+
+					<div class="col-md-10 row-button">
+						<div class="buttons-right">
+							<a ng-href="#/registreer">Annuleren</a>  
+							<md-button class="md-raised md-primary" type="submit" ng-diabled="form.$invalid">Registreer </md-button>
+						</div>
 					</div>
-				</div>
-
-				<div class="form-group" ng-class="{'has-error': form.confirmPassword.$dirty && form.confirmPassword.$invalid}">
-					<label for="inputConfirmPassword" class="col-xs-2 control-label">Bevestig wachtwoord</label>
-					<div class="col-md-8 col-xs-8">
-						<input compare-to="registreer.user.password" class="form-control" id="inputConfirmPassword" placeholder="Bevestig wachtwoord" type="password" name="confirmPassword" ng-model='registreer.user.confirmPassword' required/>
-						<span class="glyphicon glyphicon-remove form-control-feedback" ng-show= "form.confirmPassword.$dirty && form.confirmPassword.$invalid"/>	
-						<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="form.confirmPassword.$valid && form.confirmPassword.$dirty"></span>
-						<span class="help-block" ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">Wachtwoorden komen niet overeen</span>
-					</div>
-				</div>
-
-			</fieldset>
-
-			<div class="col-md-10 row-button">
-				<div class="buttons-right">
-					<a type="button" ng-href="#/registreer"class="btn btn-default">Annuleren</a>  
-					<button  type="submit" class="btn btn-raised btn-primary" ng-disabled="form.$invalid">Registreer</button>
-				</div>
+				</form>
 			</div>
-		</form>
-
+		</md-card>
 	</div>
 </div>
 

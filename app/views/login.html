@@ -1,47 +1,45 @@
 <div class="row float-center">
 	<div class="col-md-10">
-		<div class="card">
+		<md-card>
+			<div class="col-md-12">
+				<form class="form-horizontal" name="form" ng-submit="login.logIn()" role="form">
 
-			<form class="form-horizontal" name="form" ng-submit="login.logIn()" role="form">
-				<fieldset>
-					<legend class="col-xs-offset-1 row-top-white">Inloggen</legend>
-					
-					<div class="alert alert-danger" ng-show="login.error">
+					<fieldset>
+						<md-card-header class="col-xs-offset-1 row-top-white">Inloggen</md-card-header>
+
+						<div class="alert alert-danger" ng-show="login.error">
 						{{login.error}}
-					</div>
+						</div>
 
-					<div class="form-group" ng-class="{'has-success': form.email.$valid}">
-						<label for="inputEmail" class="col-md-2 col-xs-2 control-label">Email</label>
-						<div class="col-md-8 col-xs-8">
-							<input name="email" class="form-control" id="inputEmail" placeholder="Email" type="email" ng-model="login.user.email" required/>
-							<span class="glyphicon glyphicon-remove form-control-feedback" ng-show= "form.email.$dirty && form.email.$invalid"/>
-							<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="form.email.$valid && form.email.$dirty"></span>
-							<span class="help-block" ng-show= "form.email.$dirty && form.email.$error.required">Email is verplicht</span>
-							<span class="help-block" ng-show= "form.email.$dirty && form.email.$error.email">Geen geldig emailadres</span>							
-						</div>	
-					</div>
+						<md-input-container class="md-block">
+							<md-icon  class="material-icons step" aria-label="email">email</md-icon>
+							<label>Email</label>
+							<input required type="email" name="email" ng-model="login.user.email" id="inputEmail" />
+							<div ng-messages="form.email.$error" ng-show="form.email.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-					<div class="form-group" ng-class="{'has-success': form.email.$valid}">
-						<label for="inputPassword" class="col-xs-2 control-label">Password</label>
-						<div class="col-md-8 col-xs-8">
-							<input class="form-control" id="inputPassword" placeholder="Password" type="password" name="password" ng-model="login.user.password" required/>
-							<span class="glyphicon glyphicon-remove form-control-feedback" ng-show= "form.password.$dirty && form.password.$invalid"/>	
-							<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="form.password.$valid && form.password.$dirty"></span>
-							<span class="help-block" ng-show="form.password.$dirty && form.password.$invalid">Wachtwoord is verplicht</span>							
+						<md-input-container class="md-block">
+							<md-icon  class="material-icons step" aria-label="vpn key">vpn_key</md-icon>
+							<label>Wachtwoord</label>
+							<input required name="password" ng-model="login.user.password" id="inputPassword" type="password" />
+							<div class="help-block" ng-messages="form.password.$error" ng-show="form.password.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>				
+
+					</fieldset>
+
+					<div class="col-md-10 row-button">
+						<div class="buttons-right">
+							<a ng-href="#/registreer">Registreren</a>  
+							<md-button class="md-raised md-primary" type="submit" ng-diabled="form.$invalid">Log In </md-button>					
 						</div>
 					</div>
-
-				</fieldset>
-
-				<div class="col-md-10 row-button">
-					<div class="buttons-right">
-						<a type="button" ng-href="#/registreer"class="btn btn-default">Registreren</a>  
-						<button  type="submit" class="btn btn-raised btn-primary" ng-disabled="form.$invalid">Log In</button>
-					</div>
-				</div>
-			</form>
-
-		</div>
+				</form>
+			</div>
+		</md-card>
 	</div>
 </div>
 

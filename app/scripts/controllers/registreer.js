@@ -8,9 +8,8 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('RegistreerCtrl', ['UserService', '$state', function (UserService, $state) {
+.controller('RegistreerCtrl', ['UserService', '$state', '$mdToast', function (UserService, $state, $mdToast) {
 
-			$.material.init();
 			var registreer = this;
 
 			registreer.user = {
@@ -24,9 +23,7 @@ angular.module('webappApp')
 
 			registreer.registreer = function () {
 				UserService.create(registreer.user).then(function () {
-					$.snackbar({
-						content : "Account is met success aangemaakt"
-					});
+					$mdToast.showSimple("Account is met success aangemaakt"); 		
 					$state.go('login');
 				}, function () {
 					registreer.error = 'Er bestaat al een gebruiker met deze gegevens';
