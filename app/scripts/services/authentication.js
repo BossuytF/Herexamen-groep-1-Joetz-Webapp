@@ -41,7 +41,7 @@ angular.module('webappApp')
 					} else {
 						setCredentials(_user.token, _user.refreshToken);
 					};
-				
+
 				} else {
 					$rootScope.$emit('user:loggedOut');
 				}
@@ -73,20 +73,25 @@ angular.module('webappApp')
 			}
 
 			function setCredentials(token, refreshToken) {
-				localStorageService.set('authData', {
-					token : token,
-					refreshToken : refreshToken
-				});
+
+				if (refreshToken) {
+					localStorageService.set('authData', {
+						token : token,
+						refreshToken : refreshToken
+					});
+					_user.refreshToken = refreshToken;
+				} else {
+					localStorageService.set('authData', {
+						token : token
+					});
+				}
+				console.log(localStorageService.get('authData'));
+
 				var decodedToken = jwt_decode(token);
 
 				_user.token = token;
-				_user.refreshToken = refreshToken;
 				_user.isAuth = true;
 				_user.role = decodedToken.role;
-				/* _user.email = response.email;
-				_user.naam = response.naam;
-				_user.voornaam = response.voornaam;
-				_user.username = response.username; */
 				$rootScope.user = _user;
 
 				$rootScope.$broadcast('user:loggedIn', _user);
