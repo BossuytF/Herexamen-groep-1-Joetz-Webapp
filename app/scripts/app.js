@@ -63,6 +63,36 @@ angular
 		controller : 'ProfielCtrl',
 		controllerAs : 'profiel'
 	})
+	.state('profiel.deelnemer', {
+		url : '/deelnemer',
+		templateUrl : 'views/profiel.deelnemer.html',
+		controller : 'ProfielCtrl',
+		controllerAs : 'profiel'
+	})
+	.state('profiel.ouders', {
+		url : '/ouders',
+		templateUrl : 'views/profiel.ouders.html',
+		controller : 'ProfielCtrl',
+		controllerAs : 'profiel'
+	})
+	.state('profiel.contactpersoon', {
+		url : '/contactpersoon',
+		templateUrl : 'views/profiel.contactpersoon.html',
+		controller : 'ProfielCtrl',
+		controllerAs : 'profiel'
+	})
+	.state('profiel.extrainfo', {
+		url : '/extrainfo',
+		templateUrl : 'views/profiel.extrainfo.html',
+		controller : 'ProfielCtrl',
+		controllerAs : 'profiel'
+	})
+	.state('profiel.wachtwoord', {
+		url : '/wachtwoord',
+		templateUrl : 'views/profiel.wachtwoord.html',
+		controller : 'ProfielCtrl',
+		controllerAs : 'profiel'
+	})
 	.state('inschrijven', {
 		url : '/inschrijven',
 		templateUrl : 'views/inschrijven.html',

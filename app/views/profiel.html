@@ -1,8 +1,23 @@
-<div class="row">
-<div class="col-md-6">
-<div "profielfoto"></div>
-<div "lijst menutje"></div>
-</div>
-<div class="col-md-6">
-</div>
-</div>
+<md-content class="md-padding" layout-xs="column" layout="row" layout-align="center">
+	<div flex-xs flex-gt-xs="30" layout="column" layout-align="center"> 
+		<md-card  layout-align="center" layout="column">
+			<img ng-src="{{imagePath}}" class="md-card-image" alt="Profile Picture"/>
+			<md-card-title>
+				<md-card-title-text layout="row" layout-align="center">
+					<span  class="md-headline">{{user.naam}}{{user.voornaam}}</span>
+				</md-card-title-text>
+			</md-card-title>
+			<md-card-content class="buttonList" layout="column" layout-align="center">
+				<md-button  class="borderBtn" ui-sref="profiel.deelnemer" flex layout='row' layout-align="center">Deelnemer</md-button>
+				<md-button  class="borderBtn" ui-sref="profiel.ouders" flex layout='row' layout-align="center">Ouders</md-button>
+				<md-button  class="borderBtn" ui-sref="profiel.contactpersoon" flex layout='row' layout-align="center">Contactpersoon</md-button>
+				<md-button  class="borderBtn" ui-sref="profiel.extrainfo" flex layout='row' layout-align="center">Extra Informatie</md-button>
+				<md-button  class="borderBtn" ui-sref="profiel.wachtwoord" flex layout='row' layout-align="center">Wachtwoord</md-button>
+			</md-card-content>
+			<md-card-actions layout="row" layout-align="center">
+			</md-card-actions>
+		</md-card>
+	</div>
+	<div flex-xs flex-gt-xs="70" layout="column" ui-view>
+	</div>
+</md-content>

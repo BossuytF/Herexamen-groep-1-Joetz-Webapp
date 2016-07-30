@@ -44,7 +44,7 @@
 
 						<ul class="nav navbar-nav">
 							<li ng-class="{ active: $state.includes('home') }"><a href="#/">Home</a></li>
-							<li ng-class="{ active: $state.includes('kampen') }"><a ng-href="#/kampen">Kampen</a></li>
+							<li ng-class="{ active: $state.includes('kampen') }"><a ui-sref="kampen">Kampen</a></li>
 							<li ng-class="{ active: $state.includes('contact') }"><a ng-href="#/">Contact</a></li>
 						</ul>
 
@@ -60,7 +60,7 @@
 		</div>
 
 
-		<div class="container index">
+		<div class=" index">
 			<div ui-view=""></div>
 		</div>
 

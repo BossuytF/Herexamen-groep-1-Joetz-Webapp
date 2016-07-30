@@ -101,8 +101,18 @@ body {
 
 ul{
 		padding-bottom:0;
+		padding-left: 0;
 		margin-bottom:0;
-		
+		list-style: none;
+}
+
+.borderBtn{
+		margin:0;
+		margin-bottom:1px;
+}
+
+.buttonList{
+		padding:0;
 }
 
 
