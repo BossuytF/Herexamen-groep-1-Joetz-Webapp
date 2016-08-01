@@ -1,1 +1,38 @@
-<div> Under construction </div>
+<div class="col-md-12">
+	<form class="form-horizontal" name="form" ng-submit="login.logIn()" role="form">
+
+		<fieldset>
+			<md-card-header class="col-xs-offset-1 row-top-white">Inloggen</md-card-header>
+
+			<div class="alert alert-danger" ng-show="login.error">
+						{{login.error}}
+			</div>
+
+			<md-input-container class="md-block">
+				<md-icon  class="material-icons step" aria-label="email">email</md-icon>
+				<label>Email</label>
+				<input required type="email" name="email" ng-model="login.user.email" id="inputEmail" />
+				<div ng-messages="form.email.$error" ng-show="form.email.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+
+			<md-input-container class="md-block">
+				<md-icon  class="material-icons step" aria-label="vpn key">vpn_key</md-icon>
+				<label>Wachtwoord</label>
+				<input required name="password" ng-model="login.user.password" id="inputPassword" type="password" />
+				<div class="help-block" ng-messages="form.password.$error" ng-show="form.password.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>				
+
+		</fieldset>
+
+		<div class="col-md-10 row-button">
+			<div class="buttons-right">
+				<a ng-href="#/registreer">Registreren</a>  
+				<md-button class="md-raised md-primary" type="submit" ng-diabled="form.$invalid">Log In </md-button>					
+			</div>
+		</div>
+	</form>
+</div>

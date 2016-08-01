@@ -1,37 +1,105 @@
-<div class="col-md-12">
-	<form class="form-horizontal" name="form" ng-submit="login.logIn()" role="form">
+<div class="well">
+	<form class="form-horizontal" name="profiel.form" ng-submit="login.logIn()" role="form">
 
 		<fieldset>
-			<md-card-header class="col-xs-offset-1 row-top-white">Inloggen</md-card-header>
+			<legend>Gegevens van de deelnemer</legend>
 
-			<div class="alert alert-danger" ng-show="login.error">
-						{{login.error}}
+			<img flex layout='row' layout-align="center" ng-src="/images/logoJoetz.png" class="md-card-image" alt="Profile Picture"/>
+
+			<div flow-init="{target: '/upload'}"
+			flow-files-submitted="$flow.upload()"
+			flow-file-success="$file.msg = $message">
+
+				<input type="file" flow-btn/>
+				<span class="btn" flow-btn>Upload File</span>
 			</div>
 
 			<md-input-container class="md-block">
-				<md-icon  class="material-icons step" aria-label="email">email</md-icon>
-				<label>Email</label>
-				<input required type="email" name="email" ng-model="login.user.email" id="inputEmail" />
-				<div ng-messages="form.email.$error" ng-show="form.email.$touched">
+				<label>Naam</label>
+				<input required type="text" name="naam" ng-model="profiel.deelnemer.naam" id="inputNaam" />
+				<div ng-messages="profiel.form.naam.$error" ng-show="profiel.form.naam.$touched">
 					<div ng-messages-include="messages.html"></div>
 				</div>
 			</md-input-container>
 
 			<md-input-container class="md-block">
-				<md-icon  class="material-icons step" aria-label="vpn key">vpn_key</md-icon>
-				<label>Wachtwoord</label>
-				<input required name="password" ng-model="login.user.password" id="inputPassword" type="password" />
-				<div class="help-block" ng-messages="form.password.$error" ng-show="form.password.$touched">
+				<label>Voornaam</label>
+				<input required type="text" name="voornaam" ng-model="profiel.user.voornaam" id="inputVoornaam" />
+				<div ng-messages="profiel.form.voornaam.$error" ng-show="profiel.form.voornaam.$touched">
 					<div ng-messages-include="messages.html"></div>
 				</div>
-			</md-input-container>				
+			</md-input-container>
 
+			<md-input-container class="md-block">
+				<label>Email</label>
+				<input required type="email" name="email" ng-model="profiel.user.email" id="inputEmail" />
+				<div ng-messages="profiel.form.email.$error" ng-show="profiel.form.email.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+
+			<md-datepicker name="dob" 
+			ng-model="profiel.user.dob" 
+			md-placeholder="Geboortedatum" 
+			md-max-date="profiel.dateToday"
+			md-open-on-focus>
+			</md-datepicker>
+			<div ng-messages="profiel.form.dob.$error" ng-show="profiel.form.dob.$touched">
+				<div ng-messages-include="messages.html"></div>
+			</div>
+
+			<md-input-container class="md-block">
+				<label>Straat + huisnummer</label>
+				<input type="text" name="straat" ng-model="profiel.user.straat" id="inputStraat" />
+				<div ng-messages="profiel.form.straat.$error" ng-show="profiel.form.straat.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+
+			<md-input-container class="md-block">
+				<label>Stad/Gemeente + postcode</label>
+				<input type="text" name="stad" ng-model="profiel.user.stad" id="inputStad" />
+				<div ng-messages="profiel.form.stad.$error" ng-show="profiel.form.stad.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+			
+			<legend>Mutualiteit</legend>
+
+			<md-input-container class="md-block">
+				<md-switch class="md-primary" md-no-ink aria-label="lid" ng-model="profiel.user.lid">
+				Lid Bond Moyson
+				</md-switch>
+			</md-input-container>
+			
+			<md-input-container class="md-block">
+				<label>Aansluitingsnummer eerste ouder</label>
+				<input type="text" name="nummer" ng-model="profiel.user.code" id="inputCode" />
+				<div ng-messages="profiel.form.code.$error" ng-show="profiel.form.code.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+			
+			<md-input-container class="md-block">
+				<label>Aansluitingsnummer tweede ouder</label>
+				<input type="text" name="code" ng-model="profiel.user.code" id="inputCode" />
+				<div ng-messages="profiel.form.code.$error" ng-show="profiel.form.code.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+
+			<md-input-container class="md-block">
+				<label>Code gerechtigde</label>
+				<input type="text" name="code" ng-model="profiel.user.code" id="inputCode" />
+				<div ng-messages="profiel.form.code.$error" ng-show="profiel.form.code.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
 		</fieldset>
 
 		<div class="col-md-10 row-button">
 			<div class="buttons-right">
-				<a ng-href="#/registreer">Registreren</a>  
-				<md-button class="md-raised md-primary" type="submit" ng-diabled="form.$invalid">Log In </md-button>					
+				<md-button class="md-raised md-primary" type="submit" ng-hide="profiel.form.$pristine" ng-disabled="profiel.form.$invalid || profiel.form.$pristine">Opslaan </md-button>					
 			</div>
 		</div>
 	</form>
