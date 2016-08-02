@@ -1,22 +1,18 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+<div flex ng-cloak>
+	<md-grid-list
+       md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6" md-cols="12"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter="8px" md-gutter-gt-sm="4px" >
+		<md-grid-tile ng-repeat="blog in home.blogs"
+                  md-rowspan="{{blog.rowspan}}"
+                  md-colspan="{{blog.colspan}}"
+                  md-colspan-sm="1"
+                  md-colspan-xs="1"
+			ng-style="{
+            'background': blog.color
+			}" >
+			<!-- <img flex layout='row' layout-align="center" ng-src="/images/logoJoetz.png" class="md-card-image" alt="Profile Picture"/> -->
+			<md-grid-tile-footer><h3>{{blog.title}}</h3></md-grid-tile-footer>
+		</md-grid-tile>
+	</md-grid-list>
 </div>
