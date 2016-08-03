@@ -20,7 +20,8 @@ angular
 		'ngTouch',
 		'LocalStorageModule',
 		'ui.router', 
-		'ngMaterial'
+		'ngMaterial', 
+		'ngtweet'
 	])
 .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
 

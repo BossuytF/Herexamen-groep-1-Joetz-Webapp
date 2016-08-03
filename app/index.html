@@ -25,11 +25,15 @@
     <![endif]-->
 
 		<!-- Add your site or application content here -->
-		<div class="header">
-			<div class="navbar navbar-default" role="navigation">
-				<div class="container">
+		<div class="">
+			<div class="navbar navbar-default" role="navigation" style="margin-bottom: 0">
+				<div class="container-fluid">
 					<div class="navbar-header">
-
+					
+						<a class="navbar-brand" href="#">
+							<img alt="Brand" ng-src="/images/logoJoetz.png">
+						</a>
+						
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
 							<span class="sr-only">Toggle navigation</span>
 							<span class="icon-bar"></span>
@@ -37,7 +41,6 @@
 							<span class="icon-bar"></span>
 						</button>
 
-						<a class="navbar-brand" href="#/"><img scr="/images/logoJoetz.png"/>Image here</a>
 					</div>
 
 					<div class="collapse navbar-collapse navbar-responsive-collapse" id="js-navbar-collapse">
@@ -60,7 +63,7 @@
 		</div>
 
 
-		<div class=" index">
+		<div class="index container-fluid">
 			<div ui-view=""></div>
 		</div>
 
@@ -102,6 +105,7 @@
 		<script src="bower_components/angular-material/angular-material.js"></script>
 		<script src="bower_components/flow.js/dist/flow.js"></script>
 		<script src="bower_components/ng-flow/dist/ng-flow.js"></script>
+		<script src="bower_components/ngtweet/dist/ngtweet.js"></script>
 		<!-- endbower -->
 		<!-- endbuild -->
 

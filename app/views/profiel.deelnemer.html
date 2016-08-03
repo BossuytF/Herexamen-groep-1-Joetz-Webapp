@@ -49,17 +49,33 @@
 			</div>
 
 			<md-input-container class="md-block">
-				<label>Straat + huisnummer</label>
+				<label>Straat</label>
 				<input type="text" name="straat" ng-model="profiel.user.straat" id="inputStraat" />
 				<div ng-messages="profiel.form.straat.$error" ng-show="profiel.form.straat.$touched">
 					<div ng-messages-include="messages.html"></div>
 				</div>
 			</md-input-container>
+			
+			<md-input-container class="md-block">
+				<label>Huisnummer</label>
+				<input type="text" name="huisnr" ng-model="profiel.user.huisnr" id="inputHuisnr" />
+				<div ng-messages="profiel.form.huisnr.$error" ng-show="profiel.form.huisnr.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
 
 			<md-input-container class="md-block">
-				<label>Stad/Gemeente + postcode</label>
+				<label>Stad/Gemeente</label>
 				<input type="text" name="stad" ng-model="profiel.user.stad" id="inputStad" />
 				<div ng-messages="profiel.form.stad.$error" ng-show="profiel.form.stad.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+			
+			<md-input-container class="md-block">
+				<label>Postcode</label>
+				<input type="text" name="postcode" ng-model="profiel.user.postcode" id="inputPostcode" />
+				<div ng-messages="profiel.form.postcode.$error" ng-show="profiel.form.postcode.$touched">
 					<div ng-messages-include="messages.html"></div>
 				</div>
 			</md-input-container>

@@ -41,7 +41,7 @@ angular.module('webappApp')
 			giveSpans();
 			function giveSpans() {
 				for (var i = 0; i < home.blogs.length; i++) {
-					home.blogs[i].colspan = Math.floor((Math.random() * 3) + 2);
+					home.blogs[i].colspan = 2;
 					home.blogs[i].rowspan = 2;
 					home.blogs[i].color = randomColor();
 					console.log(home.blogs[i]);

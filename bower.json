@@ -17,7 +17,8 @@
     "jwt-decode": "^2.0.1",
     "snackbarjs": "^1.1.0",
     "angular-material": "^1.0.9",
-    "ng-flow": "~2"
+    "ng-flow": "~2",
+    "ngtweet": "^0.6.1"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
