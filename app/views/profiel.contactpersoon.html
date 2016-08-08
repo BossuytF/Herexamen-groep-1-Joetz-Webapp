@@ -2,7 +2,7 @@
 	<form class="form-horizontal" name="profiel.form" ng-submit="login.logIn()" role="form">
 
 		<fieldset>
-			<legend>Gegevens van de Contactpersoon</legend>
+			<legend>Gegevens van de Contactpersoon in geval van nood</legend>
 
 			<md-input-container class="md-block">
 				<label>Naam</label>
@@ -16,30 +16,6 @@
 				<label>Voornaam</label>
 				<input required type="text" name="voornaam" ng-model="profiel.user.voornaam" id="inputVoornaam" />
 				<div ng-messages="profiel.form.voornaam.$error" ng-show="profiel.form.voornaam.$touched">
-					<div ng-messages-include="messages.html"></div>
-				</div>
-			</md-input-container>
-
-			<md-input-container class="md-block">
-				<label>Email</label>
-				<input required type="email" name="email" ng-model="profiel.user.email" id="inputEmail" />
-				<div ng-messages="profiel.form.email.$error" ng-show="profiel.form.email.$touched">
-					<div ng-messages-include="messages.html"></div>
-				</div>
-			</md-input-container>
-
-			<md-input-container class="md-block">
-				<label>Straat + huisnummer</label>
-				<input type="text" name="straat" ng-model="profiel.user.straat" id="inputStraat" />
-				<div ng-messages="profiel.form.straat.$error" ng-show="profiel.form.straat.$touched">
-					<div ng-messages-include="messages.html"></div>
-				</div>
-			</md-input-container>
-
-			<md-input-container class="md-block">
-				<label>Stad/Gemeente + postcode</label>
-				<input type="text" name="stad" ng-model="profiel.user.stad" id="inputStad" />
-				<div ng-messages="profiel.form.stad.$error" ng-show="profiel.form.stad.$touched">
 					<div ng-messages-include="messages.html"></div>
 				</div>
 			</md-input-container>

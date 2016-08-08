@@ -23,7 +23,7 @@ angular
 		'ngMaterial', 
 		'ngtweet'
 	])
-.config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $mdDateLocaleProvider) {
 
 	$urlRouterProvider.otherwise('/home');
 

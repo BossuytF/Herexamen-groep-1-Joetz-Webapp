@@ -44,7 +44,6 @@ angular.module('webappApp')
 					home.blogs[i].colspan = 2;
 					home.blogs[i].rowspan = 2;
 					home.blogs[i].color = randomColor();
-					console.log(home.blogs[i]);
 				}
 			}
 

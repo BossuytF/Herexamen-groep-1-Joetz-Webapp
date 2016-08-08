@@ -8,8 +8,8 @@
  * Service in the webappApp.
  */
 angular.module('webappApp')
-.service('AuthenticationService', ['localStorageService', '$http', '$rootScope',
-		function (localStorageService, $http, $rootScope) {
+.service('AuthenticationService', ['localStorageService', '$http', '$rootScope', 'UserService', 
+		function (localStorageService, $http, $rootScope, UserService) {
 
 			var baseUrl = 'http://localhost:8085/';
 
@@ -78,15 +78,19 @@ angular.module('webappApp')
 					refreshToken : refreshToken
 				});
 				var decodedToken = jwt_decode(token);
-
+					
 				_user.token = token;
 				_user.refreshToken = refreshToken;
 				_user.isAuth = true;
 				_user.role = decodedToken.role;
-				/* _user.email = response.email;
-				_user.naam = response.naam;
-				_user.voornaam = response.voornaam;
-				_user.username = response.username; */
+				_user.email = decodedToken.email;
+				
+				getMe().then(function(response){
+					_user.naam = repsonse.data.lastname;
+					_user.voornaam = response.data.voornaam;
+					_user.username = response.data.username
+				});
+				
 				$rootScope.user = _user;
 
 				$rootScope.$broadcast('user:loggedIn', _user);
@@ -99,7 +103,11 @@ angular.module('webappApp')
 				_user.isAuth = false;
 
 				$rootScope.$emit('user:loggedOut');
-
+			}
+			
+			function getMe(){
+				return UserService.get(_user.email);
+				
 			}
 
 			service.init = init;
