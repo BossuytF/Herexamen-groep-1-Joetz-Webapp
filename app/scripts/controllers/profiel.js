@@ -61,28 +61,30 @@ angular.module('webappApp')
 
 			$scope.$watch('profiel.formGegevens', function (form) {
 				if (form) {
-					profiel.form = form;
+					profiel.formGegevens = form;
 				}
 			});
 
 			$scope.$watch('profiel.formAdres', function (form) {
 				if (form) {
-					profiel.form = form;
+					profiel.formAdres = form;
 				}
 			});
 
 			$scope.$watch('profiel.formMutualiteit', function (form) {
 				if (form) {
-					profiel.form = form;
+					profiel.formMutualiteit = form;
 				}
 			});
 
 			$rootScope.$on('$stateChangeStart',
 				function (event, toState, toParams, fromState, fromParams, options) {
-				if (profiel.form && !profiel.form.$pristine) {
+				if (profiel.formGegevens && !profiel.formGegevens.$pristine || profiel.formAdres && !profiel.formAdres.$pristine || profiel.formMutualiteit && !profiel.formMutualiteit.$pristine) {
 					event.preventDefault();
 					$mdDialog.show(confirm).then(function () {
-						profiel.form.$setPristine();
+						profiel.formGegevens.$setPristine();
+						profiel.formAdres.$setPristine();
+						profiel.formMutualiteit.$setPristine();
 						$state.go(toState.name)
 					});
 				}
@@ -98,7 +100,6 @@ angular.module('webappApp')
 
 			function getUser() {
 				UserService.get($rootScope.user.email).then(function (response) {
-					console.log(response)
 					profiel.user.naam = response.data.lastname;
 					profiel.user.voornaam = response.data.firstname;
 					profiel.user.email = response.data.email;
