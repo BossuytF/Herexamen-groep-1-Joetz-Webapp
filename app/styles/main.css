@@ -8,6 +8,12 @@
 
 body {
   padding: 0;
+  background-image: url("../images/body_water.jpg");
+  background-size: 100% 100%;
+}
+
+html {
+    height: 100%
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -101,10 +107,23 @@ body {
 
 ul{
 		padding-bottom:0;
+		padding-left: 0;
 		margin-bottom:0;
-		
+		list-style: none;
 }
 
+.borderBtn{
+		margin:0;
+		margin-bottom:1px;
+}
+
+.buttonList{
+		padding:0;
+}
+
+md-content header {
+		background-color: transparent;
+}
 
 
 

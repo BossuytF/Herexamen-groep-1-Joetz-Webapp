@@ -36,6 +36,9 @@ module.exports = function(config) {
       'bower_components/jwt-decode/build/jwt-decode.js',
       'bower_components/snackbarjs/dist/snackbar.min.js',
       'bower_components/angular-material/angular-material.js',
+      'bower_components/flow.js/dist/flow.js',
+      'bower_components/ng-flow/dist/ng-flow.js',
+      'bower_components/ngtweet/dist/ngtweet.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

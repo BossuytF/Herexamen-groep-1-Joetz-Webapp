@@ -25,11 +25,15 @@
     <![endif]-->
 
 		<!-- Add your site or application content here -->
-		<div class="header">
-			<div class="navbar navbar-default" role="navigation">
-				<div class="container">
+		<div class="">
+			<div class="navbar navbar-default" role="navigation" style="margin-bottom: 0">
+				<div class="container-fluid">
 					<div class="navbar-header">
-
+					
+						<a class="navbar-brand" href="#">
+							<img alt="Brand" ng-src="/images/logoJoetz.png">
+						</a>
+						
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
 							<span class="sr-only">Toggle navigation</span>
 							<span class="icon-bar"></span>
@@ -37,21 +41,20 @@
 							<span class="icon-bar"></span>
 						</button>
 
-						<a class="navbar-brand" href="#/"><img scr="/images/logoJoetz.png"/>Image here</a>
 					</div>
 
 					<div class="collapse navbar-collapse navbar-responsive-collapse" id="js-navbar-collapse">
 
 						<ul class="nav navbar-nav">
 							<li ng-class="{ active: $state.includes('home') }"><a href="#/">Home</a></li>
-							<li ng-class="{ active: $state.includes('kampen') }"><a ng-href="#/kampen">Kampen</a></li>
+							<li ng-class="{ active: $state.includes('kampen') }"><a ui-sref="kampen">Kampen</a></li>
 							<li ng-class="{ active: $state.includes('contact') }"><a ng-href="#/">Contact</a></li>
 						</ul>
 
 						<ul class="nav navbar-nav navbar-right">
 							<li ng-hide="user.isAuth"><a ui-sref="login"><img src="/images/login.png" /> Log in</a></li>
 							<li ng-hide="user.isAuth"><a ui-sref="registreer">Registreer</a></li>
-							<li ng-show="user.isAuth"><a ui-sref="profiel"><i class="material-icons">account_circle</i>Profiel {{user.username}}</a></li>
+							<li ng-show="user.isAuth"><a ui-sref="profiel"><i class="material-icons">account_circle</i>{{user.username}}</a></li>
 							<li ng-show="user.isAuth" ng-click="main.logout()"><a><i class="material-icons">power_settings_new</i>Log uit</a></li>
 						</ul>
 					</div>
@@ -60,7 +63,7 @@
 		</div>
 
 
-		<div class="container index">
+		<div class="index container-fluid">
 			<div ui-view=""></div>
 		</div>
 
@@ -100,6 +103,9 @@
 		<script src="bower_components/jwt-decode/build/jwt-decode.js"></script>
 		<script src="bower_components/snackbarjs/dist/snackbar.min.js"></script>
 		<script src="bower_components/angular-material/angular-material.js"></script>
+		<script src="bower_components/flow.js/dist/flow.js"></script>
+		<script src="bower_components/ng-flow/dist/ng-flow.js"></script>
+		<script src="bower_components/ngtweet/dist/ngtweet.js"></script>
 		<!-- endbower -->
 		<!-- endbuild -->
 
@@ -122,6 +128,9 @@
 		<script src="scripts/services/userservice.js"></script>
 		<script src="scripts/controllers/home.js"></script>
 		<script src="scripts/directives/password.js"></script>
+<script src="scripts/services/blogservice.js"></script>
+<script src="scripts/services/kampenservice.js"></script>
+<script src="scripts/directives/rrn.js"></script>
 		<!-- endbuild -->
 	</body>
 </html>

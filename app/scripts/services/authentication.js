@@ -8,8 +8,8 @@
  * Service in the webappApp.
  */
 angular.module('webappApp')
-.service('AuthenticationService', ['localStorageService', '$http', '$rootScope',
-		function (localStorageService, $http, $rootScope) {
+.service('AuthenticationService', ['localStorageService', '$http', '$rootScope', 'UserService',
+		function (localStorageService, $http, $rootScope, UserService) {
 
 			var baseUrl = 'http://localhost:8085/';
 
@@ -36,7 +36,7 @@ angular.module('webappApp')
 
 					if ((decodedToken.exp * 1000) < new Date().getTime()) {
 						refreshAccessToken().then(function (response) {
-							setCredentials(response.data.token.access);
+							setCredentials(response.data.token.access, _user.refreshToken);
 						})
 					} else {
 						setCredentials(_user.token, _user.refreshToken);
@@ -74,45 +74,49 @@ angular.module('webappApp')
 
 			function setCredentials(token, refreshToken) {
 
-				if (refreshToken) {
-					localStorageService.set('authData', {
-						token : token,
-						refreshToken : refreshToken
-					});
+				localStorageService.set('authData', {
+					token : token,
+					refreshToken : refreshToken
+				});
+
+					var decodedToken = jwt_decode(token);
+
+					_user.token = token;
 					_user.refreshToken = refreshToken;
-				} else {
-					localStorageService.set('authData', {
-						token : token
+					_user.isAuth = true;
+					_user.role = decodedToken.role;
+					_user.email = decodedToken.email;
+
+					getMe().then(function (response) {
+						console.log(_user)
+						_user.username = response.data.username
 					});
+
+					$rootScope.user = _user;
+
+					$rootScope.$broadcast('user:loggedIn', _user);
 				}
-				console.log(localStorageService.get('authData'));
 
-				var decodedToken = jwt_decode(token);
+				function logout() {
+					localStorageService.remove('authData');
 
-				_user.token = token;
-				_user.isAuth = true;
-				_user.role = decodedToken.role;
-				$rootScope.user = _user;
+					_user.token = '';
+					_user.isAuth = false;
 
-				$rootScope.$broadcast('user:loggedIn', _user);
+					$rootScope.$emit('user:loggedOut');
+				}
+
+				function getMe() {
+					return UserService.get(_user.email);
+
+				}
+
+				service.init = init;
+				service.login = login;
+				service.setCredentials = setCredentials;
+				service.logout = logout;
+
+				return service;
+
 			}
-
-			function logout() {
-				localStorageService.remove('authData');
-
-				_user.token = '';
-				_user.isAuth = false;
-
-				$rootScope.$emit('user:loggedOut');
-
-			}
-
-			service.init = init;
-			service.login = login;
-			service.setCredentials = setCredentials;
-			service.logout = logout;
-
-			return service;
-
-		}
-	]);
+		]);
