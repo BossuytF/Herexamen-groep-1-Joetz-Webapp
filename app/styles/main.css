@@ -65,6 +65,9 @@ html {
 .marketing p + h4 {
   margin-top: 28px;
 }
+#background{
+  background-color:rgb(255,255,255);
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
