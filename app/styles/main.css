@@ -23,7 +23,11 @@ html {
   padding-left: 15px;
   padding-right: 15px;
 }
+.fotokamp{
+  height: 200px;
+  width: 700px;
 
+}
 /* Custom page header */
 .header {
   /* border-bottom: 1px solid #e5e5e5; */
