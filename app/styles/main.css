@@ -121,10 +121,9 @@ ul{
 		padding:0;
 }
 
-md-content {
-		background-color: transparent;!important
+md-content header {
+		background-color: transparent;
 }
-
 
 
 

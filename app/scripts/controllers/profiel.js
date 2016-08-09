@@ -8,58 +8,70 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('ProfielCtrl', ['$rootScope', '$mdDialog', '$scope', '$state', 'UserService', 
-function ($rootScope, $mdDialog, $scope, $state, UserService) {
+.controller('ProfielCtrl', ['$rootScope', '$mdDialog', '$scope', '$state', 'UserService',
+		function ($rootScope, $mdDialog, $scope, $state, UserService) {
 			var profiel = this;
-			
+
 			profiel.user = {
-				naam:'', 
-				voornaam:'', 
-				rrn: '', 
-				email:'',
-				dob:'',
-				straat:'',
-				huisnr:'',
-				stad:'',
-				postcode:'',
-				lid:'',
-				nummer1:'',
-				nummer2:'',
-				ouder1:{
-					naam:'',
-					voornaam:'',
-					email:'',
-					rrn:'',
-					dob:'', 
-					straat:'',
-					hiusnr:'',
-					stad:'',
-					postcode:'',
-					telefoonNr:''
+				naam : '',
+				voornaam : '',
+				rrn : '',
+				email : '',
+				dob : '',
+				straat : '',
+				huisnr : '',
+				stad : '',
+				postcode : '',
+				lid : '',
+				nummer1 : '',
+				nummer2 : '',
+				ouder1 : {
+					naam : '',
+					voornaam : '',
+					email : '',
+					rrn : '',
+					dob : '',
+					straat : '',
+					hiusnr : '',
+					stad : '',
+					postcode : '',
+					telefoonNr : ''
 				},
-				ouder2:{
-					naam:'',
-					voornaam:'',
-					email:'',
-					rrn:'',
-					dob:'', 
-					straat:'',
-					hiusnr:'',
-					stad:'',
-					postcode:'',
-					telefoonNr:''
+				ouder2 : {
+					naam : '',
+					voornaam : '',
+					email : '',
+					rrn : '',
+					dob : '',
+					straat : '',
+					hiusnr : '',
+					stad : '',
+					postcode : '',
+					telefoonNr : ''
 				}
 			}
-			
+
 			getUser();
-			
+
 			profiel.myDate = new Date();
 			profiel.dateToday = new Date(
 					profiel.myDate.getFullYear(),
 					profiel.myDate.getMonth(),
-					profiel.myDate.getDate()-10);
+					profiel.myDate.getDate() - 10);
 
-			$scope.$watch('profiel.form', function (form) {
+			$scope.$watch('profiel.formGegevens', function (form) {
+				if (form) {
+					profiel.form = form;
+				}
+			});
+
+			$scope.$watch('profiel.formAdres', function (form) {
+				if (form) {
+					profiel.form = form;
+				}
+			});
+
+			$scope.$watch('profiel.formMutualiteit', function (form) {
 				if (form) {
 					profiel.form = form;
 				}
@@ -83,24 +95,25 @@ function ($rootScope, $mdDialog, $scope, $state, UserService) {
 				.targetEvent()
 				.ok('Ja')
 				.cancel('Nee');
-				
-			function getUser(){
-				UserService.get(_user.).then(function(response){
+
+			function getUser() {
+				UserService.get($rootScope.user.email).then(function (response) {
+					console.log(response)
 					profiel.user.naam = response.data.lastname;
 					profiel.user.voornaam = response.data.firstname;
 					profiel.user.email = response.data.email;
 				})
 			}
 
-			profiel.opslaanGegevens = function(){
+			profiel.opslaanGegevens = function () {
 				console.log(profiel.user)
-			}	
-			
-			profiel.opslaanAdres = function(){
+			}
+
+			profiel.opslaanAdres = function () {
 				console.log(profiel.user)
-			}	
-			
-			profiel.opslaanMutualiteit= function(){
+			}
+
+			profiel.opslaanMutualiteit = function () {
 				console.log(profiel.user)
 			}
 
