@@ -9,50 +9,52 @@
 
 						<md-input-container class="md-block">
 							<label>Naam</label>
-							<input required type="text" name="naam" ng-model="profiel.user.naam" id="inputNaam" />
-							<div ng-messages="profiel.formGegevens.naam.$error" ng-show="profiel.formGegevens.naam.$touched">
+							<input required ng-readonly=profiel.edit type="text" name="lastname" ng-model="profiel.user.lastname" id="inputlastname" />
+							<div ng-messages="profiel.formGegevens.lastname.$error" ng-show="profiel.formGegevens.lastname.$touched">
 								<div ng-messages-include="messages.html"></div>
 							</div>
 						</md-input-container>
 
 						<md-input-container class="md-block">
 							<label>Voornaam</label>
-							<input required type="text" name="voornaam" ng-model="profiel.user.voornaam" id="inputVoornaam" />
-							<div ng-messages="profiel.formGegevens.voornaam.$error" ng-show="profiel.formGegevens.voornaam.$touched">
+							<input required ng-readonly=profiel.edit type="text" name="firstname" ng-model="profiel.user.firstname" id="inputfirstname" />
+							<div ng-messages="profiel.formGegevens.firstname.$error" ng-show="profiel.formGegevens.firstname.$touched">
 								<div ng-messages-include="messages.html"></div>
 							</div>
 						</md-input-container>
 
 						<md-input-container class="md-block">
 							<label>Rijksregisternummer</label>
-							<input required  ng-minlength= "11" ng-maxlength="11" rrn name="rrn" ng-model="profiel.user.rrn" id="inpurRrn" />
-							<div ng-messages="profiel.formGegevens.rrn.$error" ng-show="profiel.formGegevens.rrn.$touched">
+							<input required ng-readonly=profiel.edit  ng-minlength= "11" ng-maxlength="11" rrn name="rijksregisternummer" ng-model="profiel.user.rijksregisternummer" id="inpurrijksregisternummer" />
+							<div ng-messages="profiel.formGegevens.rijksregisternummer.$error" ng-show="profiel.formGegevens.rijksregisternummer.$touched">
 								<div ng-messages-include="messages.html"></div>
 							</div>
 						</md-input-container>
 
 						<md-input-container class="md-block">
 							<label>Email</label>
-							<input required type="email" name="email" ng-model="profiel.user.email" id="inputEmail" />
+							<input ng-readonly=true type="email" name="email" ng-model="profiel.user.email" id="inputEmail" />
 							<div ng-messages="profiel.formGegevens.email.$error" ng-show="profiel.formGegevens.email.$touched">
 								<div ng-messages-include="messages.html"></div>
 							</div>
 						</md-input-container>
 
-						<md-datepicker name="dob" 
-					ng-model="profiel.user.dob" 
+						<md-datepicker required ng-readonly=profiel.edit name="geboortedatum" 
+					ng-model="profiel.user.geboortedatum" 
 					md-placeholder="Geboortedatum" 
 					md-max-date="profiel.dateToday"
 					md-open-on-focus>
 						</md-datepicker>
-						<div ng-messages="profiel.formGegevens.dob.$error" ng-show="profiel.formGegevens.dob.$touched">
+						<div ng-messages="profiel.formGegevens.geboortedatum.$error" ng-show="profiel.formGegevens.geboortedatum.$touched">
 							<div ng-messages-include="messages.html"></div>
 						</div>
 					</fieldset>
+					
+					<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
 
 					<div class="col-md-10 row-button">
 						<div class="buttons-right">
-							<md-button class="md-raised md-primary" type="submit" ng-hide="profiel.formGegevens.$pristine" ng-disabled="profiel.formGegevens.$invalid || profiel.formGegevens.$pristine">Opslaan </md-button>					
+							<md-button class="md-raised md-primary" type="submit" ng-hide="profiel.edit" ng-disabled="profiel.formGegevens.$invalid || profiel.formGegevens.$pristine">Opslaan </md-button>					
 						</div>
 					</div>
 				</form>
@@ -67,7 +69,7 @@
 
 						<md-input-container class="md-block">
 							<label>Straat</label>
-							<input type="text" name="straat" ng-model="profiel.user.straat" id="inputStraat" />
+							<input required ng-readonly=profiel.edit type="text" name="straat" ng-model="profiel.user.adres.straat" id="inputStraat" />
 							<div ng-messages="profiel.formAdres.straat.$error" ng-show="profiel.formAdres.straat.$touched">
 								<div ng-messages-include="messages.html"></div>
 							</div>
@@ -75,91 +77,80 @@
 
 						<md-input-container class="md-block">
 							<label>Huisnummer</label>
-							<input type="text" name="huisnr" ng-model="profiel.user.huisnr" id="inputHuisnr" />
-							<div ng-messages="profiel.formAdres.huisnr.$error" ng-show="profiel.formAdres.huisnr.$touched">
+							<input required ng-readonly=profiel.edit type="number" name="huisnummer" ng-model="profiel.user.adres.huisnummer" id="inputhuisnummer" />
+							<div ng-messages="profiel.formAdres.huisnummer.$error" ng-show="profiel.formAdres.huisnummer.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
+						
+						<md-input-container class="md-block">
+							<label>Bus</label>
+							<input ng-readonly=profiel.edit type="text" name="bus" ng-model="profiel.user.adres.bus" id="inputBus" />
+							<div ng-messages="profiel.formAdres.bus.$error" ng-show="profiel.formAdres.bus.$touched">
 								<div ng-messages-include="messages.html"></div>
 							</div>
 						</md-input-container>
 
 						<md-input-container class="md-block">
 							<label>Stad/Gemeente</label>
-							<input type="text" name="stad" ng-model="profiel.user.stad" id="inputStad" />
-							<div ng-messages="profiel.formAdres.stad.$error" ng-show="profiel.formAdres.stad.$touched">
+							<input required ng-readonly=profiel.edit type="text" name="gemeente" ng-model="profiel.user.adres.gemeente" id="inputgemeente" />
+							<div ng-messages="profiel.formAdres.gemeente.$error" ng-show="profiel.formAdres.gemeente.$touched">
 								<div ng-messages-include="messages.html"></div>
 							</div>
 						</md-input-container>
 
 						<md-input-container class="md-block">
 							<label>Postcode</label>
-							<input type="number" min="8000" max="8999" name="postcode" ng-model="profiel.user.postcode" id="inputPostcode" />
+							<input ng-readonly=profiel.edit required type="number" min="8000" max="8999" name="postcode" ng-model="profiel.user.adres.postcode" id="inputPostcode" />
 							<div ng-messages="profiel.formAdres.postcode.$error" ng-show="profiel.formAdres.postcode.$touched">
 								<div ng-messages-include="messages.html"></div>
 							</div>
 						</md-input-container>
 					</fieldset>
+					
+					<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
 
 					<div class="col-md-10 row-button">
 						<div class="buttons-right">
-							<md-button class="md-raised md-primary" type="submit" ng-hide="profiel.formAdres.$pristine" ng-disabled="profiel.formAdres.$invalid || profiel.formAdres.$pristine">Opslaan </md-button>					
+							<md-button class="md-raised md-primary" type="submit" ng-hide=profiel.edit ng-disabled="profiel.formAdres.$invalid || profiel.formAdres.$pristine">Opslaan </md-button>					
 						</div>
 					</div>
 				</form>
 			</md-content>
 		</md-tab>
+		
+		
 		<md-tab label="Mutualiteit">
 			<md-content class="md-padding">
 				<form class="form-horizontal" name="profiel.formMutualiteit" ng-submit="profiel.opslaanMutualiteit()" role="form">
 
 					<fieldset>
 
-
 						<md-input-container class="md-block">
-							<md-switch class="md-primary" md-no-ink aria-label="lid" ng-model="profiel.user.lid">
+							<md-switch ng-readonly=profiel.edit class="md-primary" md-no-ink aria-label="lid" ng-model="profiel.user.lid">
 						Lid Bond Moyson
 							</md-switch>
 						</md-input-container>
 
 						<md-input-container class="md-block">
-							<label>Aansluitingsnummer eerste ouder</label>
-							<input type="text" name="nummer1" ng-model="profiel.user.nummer1" id="inputNr1" />
-							<div ng-messages="profiel.formMutualiteit.nummer1.$error" ng-show="profiel.formMutualiteit.nummer1.$touched">
-								<div ng-messages-include="messages.html"></div>
-							</div>
-						</md-input-container>
-
-						<md-input-container class="md-block">
-							<label>Aansluitingsnummer tweede ouder</label>
-							<input type="text" name="nummer2" ng-model="profiel.user.nummer2" id="inputNr2" />
-							<div ng-messages="profiel.formMutualiteit.nummer2.$error" ng-show="profiel.formMutualiteit.nummer2.$touched">
-								<div ng-messages-include="messages.html"></div>
-							</div>
-						</md-input-container>
-
-						<md-input-container class="md-block">
 							<label>Code gerechtigde</label>
-							<input type="text" name="code" ng-model="profiel.user.code" id="inputCode" />
-							<div ng-messages="profiel.formMutualiteit.code.$error" ng-show="profiel.formMutualiteit.code.$touched">
+							<input required ng-readonly=profiel.edit type="text" name="codegerechtigde" ng-model="profiel.user.codegerechtigde" id="inputCode" />
+							<div ng-messages="profiel.formMutualiteit.codegerechtigde.$error" ng-show="profiel.formMutualiteit.codegerechtigde.$touched">
 								<div ng-messages-include="messages.html"></div>
 							</div>
 						</md-input-container>
 					</fieldset>
+					
+					<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
 
 					<div class="col-md-10 row-button">
 						<div class="buttons-right">
-							<md-button class="md-raised md-primary" type="submit" ng-hide="profiel.formMutualiteit.$pristine" ng-disabled="profiel.formMutualiteit.$invalid || profiel.formMutualiteit.$pristine">Opslaan </md-button>					
+							<md-button class="md-raised md-primary" type="submit" ng-hide="profiel.edit" ng-disabled="profiel.formMutualiteit.$invalid || profiel.formMutualiteit.$pristine">Opslaan </md-button>					
 						</div>
 					</div>
+					
 				</form>
 			</md-content>
 		</md-tab>
 	</md-tabs>
-
-
-
-
-
-
-
-
-
 </div>

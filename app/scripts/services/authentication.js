@@ -88,7 +88,6 @@ angular.module('webappApp')
 					_user.email = decodedToken.email;
 
 					getMe().then(function (response) {
-						console.log(_user)
 						_user.username = response.data.username
 					});
 
