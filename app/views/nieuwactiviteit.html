@@ -1,1 +1,19 @@
-<p>This is the nieuwActiviteit view.</p>
+<div class="col-md-2">
+</div>
+<div class="col-md-8" id="background">
+    <h2>Nieuwe activiteit</h2>
+    <h3>Titel</h3> 
+    <md-input-container class="md-block" style="width:250px;" flex-gt-sm>
+        <label>Titel</label>
+        <input ng-model="user.firstName">
+    </md-input-container>
+    <h3>Locatie</h3> 
+    <md-input-container class="md-block" style="width:250px;" flex-gt-sm>
+        <label>Locatie</label>
+        <input ng-model="user.firstName">
+    </md-input-container>
+    <h3>periode:</h3> <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker> tot <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+    <br>
+    <md-button class="md-raised">Activiteit aanmaken</md-button>
+
+</div>
