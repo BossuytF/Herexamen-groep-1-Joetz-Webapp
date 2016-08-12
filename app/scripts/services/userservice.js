@@ -43,22 +43,22 @@ angular.module('webappApp')
 					data : {
 						firstname : user.firstname,
 						lastname : user.lastname,
-						/* 						geboortedatum : user.dob,
-						 */
+						geboortedatum : user.geboortedatum,
 						rijksregisternummer : user.rijksregisternummer
 					}
 				});
 			}
 
-			function updateAdres(email, user) {
+			function updateAdres(email, adres) {
 				return $http({
 					method : 'PUT',
 					url : baseUrl + 'user/' + email + '/adress',
 					data : {
-						straat : user.straat,
-						huisnummer : user.huisnummer,
-						postcode : user.postcode,
-						gemeente : user.gemeente
+						straat : adres.straat,
+						huisnummer : adres.huisnummer,
+						postcode : adres.postcode,
+						gemeente : adres.gemeente,
+						bus: adres.bus
 					}
 				});
 			}
@@ -68,8 +68,7 @@ angular.module('webappApp')
 					method : 'PUT',
 					url : baseUrl + 'user/' + email + '/details',
 					data : {
-						lid : user.lid,
-						codegerechtigde : user.code
+						codegerechtigde : user.codegerechtigde
 					}
 				});
 			}

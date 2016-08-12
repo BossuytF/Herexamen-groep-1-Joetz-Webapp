@@ -19,7 +19,7 @@ angular.module('webappApp')
 				firstname : '',
 				rijksregisternummer : '',
 				email : '',
-				geboortedatum : '',
+				geboortedatum : undefined,
 				codegerechtigde : '',
 				lid : false,
 				adres : {
@@ -66,7 +66,6 @@ angular.module('webappApp')
 					ouder : false
 				}
 			}
-
 			getUser();
 
 			profiel.myDate = new Date();
@@ -135,55 +134,54 @@ angular.module('webappApp')
 
 			function getUser() {
 				UserService.get($rootScope.user.email).then(function (response) {
-					profiel.user.lastname = response.data.lastname;
-					profiel.user.firstname = response.data.firstname;
-					profiel.user.email = response.data.email;
-					profiel.user.rrn = response.data.rijksregisternummer;
-					profiel.user.adres = response.data.adres;
+					profiel.user = response.data;
 				})
+				
+				if(profiel.user.codegerechtigde){
+					console.log(profiel.user)
+					profiel.user.lid = true;
+				}else{
+					profiel.user.lid = false;
+				}
 			}
 
 			profiel.opslaanGegevens = function () {
 				profiel.edit = true;
 				UserService.updateGegevens($rootScope.user.email, profiel.user).then(function (response) {
-					console.log(response)
+					getUser();
 				})
 			}
 
 			profiel.opslaanAdres = function () {
 				profiel.edit = true;
 				UserService.updateAdres($rootScope.user.email, profiel.user.adres).then(function (response) {
-					console.log(response)
+					getUser();
 				})
 			}
 
 			profiel.opslaanMutualiteit = function () {
 				profiel.edit = true;
 				UserService.updateMutualiteit($rootScope.user.email, profiel.user).then(function (response) {
-					console.log(response)
+					getUser();
 				})
 			}
 
 			profiel.contactpersoon1Opslaan = function () {
-				console.log(1)
 				profiel.edit = true;
 				UserService.updateContactpersoon($rootScope.user.email, profiel.user.contactpersoon1, 1).then(function (response) {
-					console.log(response)
+					getUser();
 				})
 			}
 
 			profiel.contactpersoon2Opslaan = function () {
 				profiel.edit = true;
-				console.log(2)
 				UserService.updateContactpersoon($rootScope.user.email, profiel.user.contactpersoon2, 2).then(function (response) {
-					console.log(response)
+					getUser();
 				})
 			}
 
 			profiel.editData = function () {
-				console.log("clicked")
 				profiel.edit = false;
-				console.log(profiel.edit)
 			}
 
 		}
