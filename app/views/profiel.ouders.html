@@ -44,7 +44,7 @@
 			md-max-date="profiel.dateToday"
 			md-open-on-focus>
 						</md-datepicker>
-						<div ng-messages="profiel.contactpersoon1form.geboortedatum1.$error" ng-show="profiel.contactpersoon1form.geboortedatum1.$touched && !profiel.edit">
+						<div class='validation-messages' ng-messages="profiel.contactpersoon1form.geboortedatum1.$error" ng-show="profiel.contactpersoon1form.geboortedatum1.$touched && !profiel.edit">
 							<div ng-messages-include="messages.html"></div>
 						</div>
 
@@ -165,7 +165,7 @@
 			md-max-date="profiel.dateToday"
 			md-open-on-focus>
 						</md-datepicker>
-						<div ng-messages="profiel.contactpersoon2form.geboortedatum2.$error" ng-show="profiel.contactpersoon2form.geboortedatum2.$touched && !profiel.edit">
+						<div class='validation-messages' ng-messages="profiel.contactpersoon2form.geboortedatum2.$error" ng-show="profiel.contactpersoon2form.geboortedatum2.$touched && !profiel.edit">
 							<div ng-messages-include="messages.html"></div>
 						</div>
 
@@ -228,8 +228,6 @@
 								Betalend
 							</md-switch>
 						</md-input-container>
-
-
 					</fieldset>
 
 					<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>

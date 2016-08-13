@@ -8,7 +8,7 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('RegistreerCtrl', ['UserService', '$state', '$mdToast', function (UserService, $state, $mdToast) {
+.controller('RegistreerCtrl', ['UserService', '$state', '$mdToast', 'AuthenticationService', function (UserService, $state, $mdToast, AuthenticationService) {
 
 			var registreer = this;
 
@@ -23,8 +23,15 @@ angular.module('webappApp')
 
 			registreer.registreer = function () {
 				UserService.create(registreer.user).then(function () {
-					$mdToast.showSimple("Account is met success aangemaakt"); 		
-					$state.go('login');
+					AuthenticationService.login(registreer.user.email, registreer.user.password)
+					.then(function (response) {
+						AuthenticationService.setCredentials(response.data.token.access, response.data.token.refresh);
+						$mdToast.show(
+							$mdToast.simple()
+							.textContent('Proficiat ' + registreer.user.voornaam + ' uw account werd succesvol aangemaakt en u werd automatisch ingelogd')
+							.position('start')
+							.capsule(true))
+					});
 				}, function () {
 					registreer.error = 'Er bestaat al een gebruiker met deze gegevens';
 				});

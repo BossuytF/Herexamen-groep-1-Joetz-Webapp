@@ -39,7 +39,7 @@
 							</div>
 						</md-input-container>
 
-						<md-datepicker
+							<md-datepicker
 								required 
 								ng-disabled="profiel.edit" 
 								name="geboortedatum" 
@@ -47,10 +47,11 @@
 								md-placeholder="Geboortedatum" 
 								md-max-date="profiel.dateToday"
 								md-open-on-focus>
-						</md-datepicker>
-						<div ng-messages="profiel.formGegevens.geboortedatum.$error" ng-show="profiel.formGegevens.geboortedatum.$touched && !profiel.edit">
-							<div ng-messages-include="messages.html"></div>
-						</div>
+							</md-datepicker>
+							<div  class='validation-messages' ng-messages="profiel.formGegevens.geboortedatum.$error" ng-show="profiel.formGegevens.geboortedatum.$touched && !profiel.edit">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+
 					</fieldset>
 
 					<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
@@ -129,7 +130,7 @@
 
 					<fieldset>
 
-<!-- 						<md-input-container class="md-block">
+						<!-- 						<md-input-container class="md-block">
 							<md-switch ng-readonly=profiel.edit class="md-primary" md-no-ink aria-label="lid" ng-model="profiel.user.lid" checked="profiel.user.lid">
 						Lid Bond Moyson
 							</md-switch>
