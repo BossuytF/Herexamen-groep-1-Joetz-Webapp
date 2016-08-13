@@ -18,7 +18,8 @@
     "snackbarjs": "^1.1.0",
     "angular-material": "^1.0.9",
     "ng-flow": "~2",
-    "ngtweet": "^0.6.1"
+    "ngtweet": "^0.6.1",
+    "moment": "^2.14.1"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

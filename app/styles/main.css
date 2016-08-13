@@ -132,5 +132,10 @@ md-content header {
 		background-color: transparent;
 }
 
+.validation-messages{
+		color: rgb(221,44,0);
+		font-size: 12px;
+}
+
 
 

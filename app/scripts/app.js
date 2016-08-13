@@ -19,11 +19,24 @@ angular
 		'ngSanitize',
 		'ngTouch',
 		'LocalStorageModule',
-		'ui.router', 
-		'ngMaterial', 
+		'ui.router',
+		'ngMaterial',
 		'ngtweet'
 	])
 .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $mdDateLocaleProvider) {
+
+	$mdDateLocaleProvider.formatDate = function (date) {
+		return moment(date).format('DD/MM/YYYY');
+	};
+
+	$mdDateLocaleProvider.parseDate = function (dateString) {
+		if (dateString == null || dateString.length == 0) {
+			return null;
+		}
+
+		var m = moment(dateString, 'DD/MM/YYYY', true);
+		return m.isValid() ? m.toDate() : new Date(NaN);
+	}
 
 	$urlRouterProvider.otherwise('/home');
 

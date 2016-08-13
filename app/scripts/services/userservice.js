@@ -36,41 +36,61 @@ angular.module('webappApp')
 				return $http.get(baseUrl + 'user/' + email);
 			}
 
-			function updateGegevens(username, user) {
+			function updateGegevens(email, user) {
 				return $http({
 					method : 'PUT',
-					url : baseUrl + username + '/profile',
+					url : baseUrl + 'user/' + email + '/profile',
 					data : {
-						email : user.email,
-						firstname : user.voornaam,
-						lastname : user.naam,
-						geboortedatum: user.dob,
-						rijksregisternummer: user.rrn
+						firstname : user.firstname,
+						lastname : user.lastname,
+						geboortedatum : user.geboortedatum,
+						rijksregisternummer : user.rijksregisternummer
 					}
 				});
 			}
 
-			function updateAdres(username, user) {
+			function updateAdres(email, adres) {
 				return $http({
 					method : 'PUT',
-					url : baseUrl + username  + '/adress',
+					url : baseUrl + 'user/' + email + '/adress',
 					data : {
-						straat : user.straat,
-						huisnummer : user.huisnr,
-						postcode : user.postcode,
-						gemeente : user.gemeente
+						straat : adres.straat,
+						huisnummer : adres.huisnummer,
+						postcode : adres.postcode,
+						gemeente : adres.gemeente,
+						bus: adres.bus
 					}
 				});
 			}
 
-			function updateMutualiteit(username, user) {
+			function updateMutualiteit(email, user) {
 				return $http({
 					method : 'PUT',
-					url : baseUrl + username + '/details',
+					url : baseUrl + 'user/' + email + '/details',
 					data : {
-						codegerechtigde : user.code,
-						aansluitingsnr1: user.aansluitingsnr1, 
-						aansluitingsnr2: user.aansluitingsnr2
+						codegerechtigde : user.codegerechtigde
+					}
+				});
+			}
+
+			function updateContactpersoon(email, contactpersoon, nr) {
+				return $http({
+					method : 'PUT',
+					url : baseUrl + 'user/' + email + '/contactpersoon' + nr,
+					data : {
+						firstname : contactpersoon.firstname,
+						lastname : contactpersoon.lastname,
+						email : contactpersoon.email,
+						telefoonnummer : contactpersoon.telefoonnummer,
+						rijksregisternummer : contactpersoon.rijksregisternummer,
+						aansluitnummer : contactpersoon.aansluitnummer,
+						betalend : contactpersoon.betalend,
+						ouder : contactpersoon.ouder,
+						straat : contactpersoon.adres.straat,
+						huisnummer : contactpersoon.adres.huisnummer,
+						gemeente : contactpersoon.adres.gemeente,
+						postcode : contactpersoon.adres.postcode,
+						bus : contactpersoon.adres.bus
 					}
 				});
 			}
@@ -81,6 +101,7 @@ angular.module('webappApp')
 			service.updateGegevens = updateGegevens;
 			service.updateAdres = updateAdres;
 			service.updateMutualiteit = updateMutualiteit;
+			service.updateContactpersoon = updateContactpersoon;
 
 			return service;
 		}

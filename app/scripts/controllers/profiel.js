@@ -12,45 +12,60 @@ angular.module('webappApp')
 		function ($rootScope, $mdDialog, $scope, $state, UserService) {
 			var profiel = this;
 
+			profiel.edit = true;
+
 			profiel.user = {
-				naam : '',
-				voornaam : '',
-				rrn : '',
+				lastname : '',
+				firstname : '',
+				rijksregisternummer : '',
 				email : '',
-				dob : '',
-				straat : '',
-				huisnr : '',
-				stad : '',
-				postcode : '',
-				lid : '',
-				nummer1 : '',
-				nummer2 : '',
-				ouder1 : {
-					naam : '',
-					voornaam : '',
-					email : '',
-					rrn : '',
-					dob : '',
+				geboortedatum : undefined,
+				codegerechtigde : '',
+				lid : false,
+				adres : {
 					straat : '',
-					hiusnr : '',
-					stad : '',
+					huisnummer : '',
+					gemeente : '',
 					postcode : '',
-					telefoonNr : ''
+					bus : ''
 				},
-				ouder2 : {
-					naam : '',
-					voornaam : '',
+				contactpersoon1 : {
+					lastname : '',
+					firstname : '',
 					email : '',
-					rrn : '',
-					dob : '',
-					straat : '',
-					hiusnr : '',
-					stad : '',
-					postcode : '',
-					telefoonNr : ''
+					rijksregisternummer : '',
+					geboortedatum : '',
+					adres : {
+						straat : '',
+						huisnummer : '',
+						gemeente : '',
+						postcode : '',
+						bus : ''
+					},
+					telefoonnummer : '',
+					aansluitingsnr : '',
+					betalend : false,
+					ouder : false
+				},
+				contactpersoon2 : {
+					lastname : '',
+					firstname : '',
+					email : '',
+					rijksregisternummer : '',
+					geboortedatum : '',
+					adres : {
+						straat : '',
+						huisnummer : '',
+						gemeente : '',
+						postcode : '',
+						bus : ''
+					},
+					telefoonnummer : '',
+					aansluitingsnr : '',
+					betalend : false,
+					ouder : false
 				}
 			}
-
 			getUser();
 
 			profiel.myDate = new Date();
@@ -61,30 +76,51 @@ angular.module('webappApp')
 
 			$scope.$watch('profiel.formGegevens', function (form) {
 				if (form) {
-					profiel.form = form;
+					profiel.formGegevens = form;
 				}
 			});
 
 			$scope.$watch('profiel.formAdres', function (form) {
 				if (form) {
-					profiel.form = form;
+					profiel.formAdres = form;
 				}
 			});
 
 			$scope.$watch('profiel.formMutualiteit', function (form) {
 				if (form) {
-					profiel.form = form;
+					profiel.formMutualiteit = form;
+				}
+			});
+
+			$scope.$watch('profiel.contactpersoon1form', function (form) {
+				if (form) {
+					profiel.contactpersoon1form = form;
+				}
+			});
+
+			$scope.$watch('profiel.contactpersoon2form', function (form) {
+				if (form) {
+					profiel.contactpersoon2form = form;
 				}
 			});
 
 			$rootScope.$on('$stateChangeStart',
 				function (event, toState, toParams, fromState, fromParams, options) {
-				if (profiel.form && !profiel.form.$pristine) {
+				if (profiel.formGegevens && !profiel.formGegevens.$pristine || profiel.formAdres && !profiel.formAdres.$pristine || profiel.formMutualiteit && !profiel.formMutualiteit.$pristine) {
 					event.preventDefault();
 					$mdDialog.show(confirm).then(function () {
-						profiel.form.$setPristine();
+						profiel.formGegevens.$setPristine();
+						profiel.formAdres.$setPristine();
+						profiel.formMutualiteit.$setPristine();
 						$state.go(toState.name)
 					});
+				} else if (profiel.contactpersoon1form && !profiel.contactpersoon1form.$pristine || profiel.contactpersoon2form && !profiel.contactpersoon2form.$pristine) {
+					event.preventDefault();
+					$mdDialog.show(confirm).then(function () {
+						profiel.contactpersoon1form.$setPristine();
+						profiel.contactpersoon2form.$setPristine();
+						$state.go(toState.name)
+					})
 				}
 			});
 
@@ -98,23 +134,54 @@ angular.module('webappApp')
 
 			function getUser() {
 				UserService.get($rootScope.user.email).then(function (response) {
-					console.log(response)
-					profiel.user.naam = response.data.lastname;
-					profiel.user.voornaam = response.data.firstname;
-					profiel.user.email = response.data.email;
+					profiel.user = response.data;
 				})
+				
+				if(profiel.user.codegerechtigde){
+					console.log(profiel.user)
+					profiel.user.lid = true;
+				}else{
+					profiel.user.lid = false;
+				}
 			}
 
 			profiel.opslaanGegevens = function () {
-				console.log(profiel.user)
+				profiel.edit = true;
+				UserService.updateGegevens($rootScope.user.email, profiel.user).then(function (response) {
+					getUser();
+				})
 			}
 
 			profiel.opslaanAdres = function () {
-				console.log(profiel.user)
+				profiel.edit = true;
+				UserService.updateAdres($rootScope.user.email, profiel.user.adres).then(function (response) {
+					getUser();
+				})
 			}
 
 			profiel.opslaanMutualiteit = function () {
-				console.log(profiel.user)
+				profiel.edit = true;
+				UserService.updateMutualiteit($rootScope.user.email, profiel.user).then(function (response) {
+					getUser();
+				})
+			}
+
+			profiel.contactpersoon1Opslaan = function () {
+				profiel.edit = true;
+				UserService.updateContactpersoon($rootScope.user.email, profiel.user.contactpersoon1, 1).then(function (response) {
+					getUser();
+				})
+			}
+
+			profiel.contactpersoon2Opslaan = function () {
+				profiel.edit = true;
+				UserService.updateContactpersoon($rootScope.user.email, profiel.user.contactpersoon2, 2).then(function (response) {
+					getUser();
+				})
+			}
+
+			profiel.editData = function () {
+				profiel.edit = false;
 			}
 
 		}
