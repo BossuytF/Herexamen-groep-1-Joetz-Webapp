@@ -48,7 +48,7 @@
 						<ul class="nav navbar-nav">
 							<li ng-class="{ active: $state.includes('home') }"><a href="#/">Home</a></li>
 							<li ng-class="{ active: $state.includes('kampen') }"><a ui-sref="kampen">Kampen</a></li>
-							<li ng-class="{ active: $state.includes('activiteiten') }"><a ui-sref="activiteiten">Activiteiten</a></li>
+							<li ng-show="user.role != 'lid' && user.isAuth" ng-class="{ active: $state.includes('activiteiten') }"><a ui-sref="activiteiten">Activiteiten</a></li>
 							<li ng-class="{ active: $state.includes('historiek') }"><a ui-sref="historiek">Historiek</a></li>
 							<li ng-class="{ active: $state.includes('contact') }"><a ng-href="#/">Contact</a></li>
 						</ul>
@@ -66,7 +66,7 @@
 
 
 		<div class="index container-fluid">
-			<div ui-view=""></div>
+			<div ui-view></div>
 		</div>
 
 		<div class="footer">
@@ -134,6 +134,7 @@
 <script src="scripts/services/blogservice.js"></script>
 <script src="scripts/services/kampenservice.js"></script>
 <script src="scripts/directives/rrn.js"></script>
+<script src="scripts/services/activiteitenservice.js"></script>
 		<!-- endbuild -->
 	</body>
 </html>

@@ -39,14 +39,17 @@
 							</div>
 						</md-input-container>
 
+
+						<label class="datep-label" for="inputGebDatum">Geboortedatum</label><br/>
 							<md-datepicker
+							id="inputGebDatum"
 								required 
 								ng-disabled="profiel.edit" 
 								name="geboortedatum" 
 								ng-model="profiel.user.geboortedatum" 
 								md-placeholder="Geboortedatum" 
 								md-max-date="profiel.dateToday"
-								md-open-on-focus>
+								md-open-on-focus>							
 							</md-datepicker>
 							<div  class='validation-messages' ng-messages="profiel.formGegevens.geboortedatum.$error" ng-show="profiel.formGegevens.geboortedatum.$touched && !profiel.edit">
 								<div ng-messages-include="messages.html"></div>

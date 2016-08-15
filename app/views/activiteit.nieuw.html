@@ -1,0 +1,20 @@
+<div class="col-md-2">
+</div>
+<div class="col-md-8" id="background">
+    <h2>Nieuwe activiteit</h2>
+	
+    <md-input-container class="md-block" style="width:250px;" flex-gt-sm>
+        <label>Titel</label>
+        <input ng-model="nieuwActiviteit.activiteit.naam">
+    </md-input-container>
+	
+    <md-input-container class="md-block" style="width:250px;" flex-gt-sm>
+        <label>Locatie</label>
+        <input ng-model="nieuwActiviteit.activiteit.locatie">
+    </md-input-container>
+	
+    <label class="datep-label">Periode</label> <br/><md-datepicker required ng-model="nieuwActiviteit.activiteit.datum" md-placeholder="Enter date"></md-datepicker> tot <md-datepicker md-max-date="nieuwActiviteit.activiteit.datum" ng-model="nieuwActiviteit.activiteit.tot" md-placeholder="Enter date"></md-datepicker>
+    <br>
+    <md-button class="md-raised" ng-click="nieuwActiviteit.createActiviteit()">Activiteit aanmaken</md-button>
+
+</div>

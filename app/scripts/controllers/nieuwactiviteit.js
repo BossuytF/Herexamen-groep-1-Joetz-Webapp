@@ -8,10 +8,18 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-  .controller('NieuwactiviteitCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+.controller('NieuwactiviteitCtrl', ['ActiviteitenService', function (ActiviteitenService) {
+	var nieuwActiviteit = this;
+
+	nieuwActiviteit.activiteit = {
+		naam:'',
+		locatie:'', 
+		datum: undefined
+	}
+
+	nieuwActiviteit.createActiviteit = function(){
+		ActiviteitenService.create(nieuwActiviteit.activiteit).then(function(response){
+			console.log(response)
+		})
+	}
+}]);

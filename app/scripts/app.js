@@ -125,9 +125,18 @@ angular
 		controller : 'ActiviteitenCtrl',
 		controllerAs : 'activiteiten'
 	})
+	.state('activiteitendetail', {
+		url : '/:ActiviteitId/detail',
+		templateUrl : 'views/activiteit.detail.html',
+		controller : 'ActiviteitenCtrl',
+		controllerAs : 'activiteiten',
+		params : {
+			activiteit : {}
+		}
+	})
 	.state('nieuwActiviteit', {
 		url : '/nieuwActiviteit',
-		templateUrl : 'views/nieuwactiviteit.html',
+		templateUrl : 'views/activiteit.nieuw.html',
 		controller : 'NieuwactiviteitCtrl',
 		controllerAs : 'nieuwActiviteit'
 	})

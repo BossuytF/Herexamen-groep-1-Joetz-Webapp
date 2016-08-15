@@ -1,0 +1,14 @@
+<div class="col-md-2">
+</div>
+<div class="col-md-8" id="background">
+	<p><br><a ui-sref='activiteiten'>Terug naar overzicht</a></p>
+	<h2>{{activiteiten.activiteit.naam}}</h2>
+	  <img ng-src="/images/plezier.jpg" class="fotokamp" alt="foto" />	
+	  <p>Datum: {{activiteiten.activiteit.datum | date}} </p>
+      <p>locatie: {{activiteiten.activiteit.locatie}}</p>
+      <h3>Aanwezig</h3>
+	  <p>{{activiteiten.aanwezig}} aanwezig <br><a href="www.google.com">Bekijk alle deelnemers</a></p><!-- uit database halen & routing-->
+	  <!-- <h3>Misschien aanwezig</h3>
+	  <p>17 misschien aanwezig <br><a href="www.google.com">Bekijk alle deelnemers</a></p> --><!-- uit database halen & routing-->
+	  <md-button class="md-raised" ng-click='activiteiten.zetAanwezig()' ng-hide='activiteiten.alAanwezig'>Aanwezig</md-button> <!-- <md-button class="md-raised">Misschien aanwezig</md-button> -->
+</div>
