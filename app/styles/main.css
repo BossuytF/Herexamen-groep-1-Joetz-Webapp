@@ -24,11 +24,12 @@ html {
   padding-left: 15px;
   padding-right: 15px;
 }
-/* .fotokamp{
+
+.fotokamp{
   height: 200px;
   width: 700px;
 
-} */
+}
 /* Custom page header */
 .header {
   /* border-bottom: 1px solid #e5e5e5; */
@@ -143,6 +144,10 @@ md-content header {
     font-size: 14px;
     line-height: 1.42857143;
 	color:rgba(0,0,0,0.54);
+}
+
+html.md-default-theme, html, body.md-default-theme {
+		background-color:transparent;
 }
 
 

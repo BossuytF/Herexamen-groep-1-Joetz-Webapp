@@ -4,7 +4,7 @@
 
 	<md-content>
 		<md-list>
-			<md-list-item class="md-3-line" ui-sref="activiteitendetail({ActiviteitId: activiteit.naam, activiteit: activiteit})" ng-click="null" ng-repeat="activiteit  in activiteiten.activiteitenLijst">
+			<md-list-item class="md-3-line" ui-sref="activiteitendetail({activiteitId: activiteit.id})" ng-click="null" ng-repeat="activiteit  in activiteiten.activiteitenLijst">
 				<img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
 				<div class="md-list-item-text" layout="column">
 					<h3>{{activiteit.naam}}</h3>

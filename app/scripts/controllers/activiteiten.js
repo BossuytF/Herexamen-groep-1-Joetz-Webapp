@@ -11,13 +11,13 @@ angular.module('webappApp')
 .controller('ActiviteitenCtrl', ['ActiviteitenService', '$stateParams', '$rootScope',
 		function (ActiviteitenService, $stateParams, $rootScope, $scope) {
 			var activiteiten = this;
-			activiteiten.activiteit = $stateParams.activiteit;
 
-			aantalAanwezigen();
-			isAanwezig();
-			getActiviteiten();
-
+			activiteiten.activiteitId = $stateParams.activiteitId;
+			activiteiten.zetAanwezig = zetAanwezig;
 			activiteiten.activiteitenLijst = [];
+			
+			getActiviteiten();
+			getActiviteit();
 
 			function getActiviteiten() {
 				ActiviteitenService.getAll().then(function (response) {
@@ -38,14 +38,20 @@ angular.module('webappApp')
 
 			function zetAanwezig() {
 				ActiviteitenService.update(activiteiten.activiteit.id, $rootScope.user.email).then(function (response) {
-					console.log(response)
+					$mdToast.show(
+						$mdToast.simple()
+						.textContent('U bent nu aanwezig op deze activiteit')
+						.position('start')
+						.capsule(true))
 				})
 			}
 
 			function isAanwezig() {
 				if (typeof activiteiten.activiteit != 'undefined') {
 					for (var i = 0; i < activiteiten.activiteit.aanwezigen.length; i++) {
-						if (activiteiten.activiteit.aanwezigen[i])
+						console.log(activiteiten.activiteit.aanwezigen)
+						console.log($rootScope.user.id)
+						if (activiteiten.activiteit.aanwezigen[i] === $rootScope.user.id)
 							activiteiten.alAanwezig = true;
 					}
 				}
@@ -57,7 +63,14 @@ angular.module('webappApp')
 				}
 			}
 
-			activiteiten.zetAanwezig = zetAanwezig;
-
+			function getActiviteit() {
+				if (typeof activiteiten.activiteitId != 'undefined') {
+					ActiviteitenService.get(activiteiten.activiteitId).then(function (response) {
+						activiteiten.activiteit = response.data;
+						aantalAanwezigen();
+						isAanwezig();
+					})
+				}
+			}
 		}
 	]);

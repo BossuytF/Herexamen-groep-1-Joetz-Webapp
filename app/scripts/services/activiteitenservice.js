@@ -25,7 +25,7 @@ angular.module('webappApp')
 						naam : activiteit.naam,
 						datum : activiteit.datum,
 						locatie : activiteit.locatie
-/* 						heleDag : activiteit.heleDag,
+						/* 						heleDag : activiteit.heleDag,
 						beginUur : activiteit.beginUur,
 						eindUur : activiteit.eidnUur */
 					}
@@ -39,9 +39,14 @@ angular.module('webappApp')
 				});
 			}
 
+			function get(id) {
+				return $http.get(baseUrl + 'activiteit/' + id);
+			}
+
 			service.getAll = getAll;
 			service.create = create;
 			service.update = update;
+			service.get = get;
 
 			return service;
 		}
