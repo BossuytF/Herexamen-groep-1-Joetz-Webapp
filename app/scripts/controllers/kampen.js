@@ -8,24 +8,16 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('KampenCtrl', function () {
+.controller('KampenCtrl', ['KampenService', function (KampenService) {
 	var kampen = this;
+	
+	kampen.kampenLijst = [];
+	
+	function getKampen(){
+		KampenService.getAll().then(function(response){
+			kampen.kampenLijst = response.data;
+		})
+	}
 
-	var kampenlijst = [{
-			naam : 'test',
-			omschrijving : 'lorifdsf sidufl iudsfsdfiu oihfsfh oifddsf hkjsdf sdf',
-			aantalDagen : 5
-		}, {
-			naam : 'test',
-			omschrijving : 'lorifdsf sidufl iudsfsdfiu oihfsfh oifddsf hkjsdf sdf',
-			aantalDagen : 5
-		}, {
-			naam : 'test',
-			omschrijving : 'lorifdsf sidufl iudsfsdfiu oihfsfh oifddsf hkjsdf sdf',
-			aantalDagen : 5
-		}
-	];
 
-	kampen.kampenlijst = kampenlijst;
-
-});
+}]);

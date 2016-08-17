@@ -1,6 +1,31 @@
-<div class="col-md-2">
-</div>
-<div class="col-md-8" id="background">
+<div class="col-md-8 col-md-offset-2" flex ng-cloak>
+	<md-grid-list
+       md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6" md-cols="12"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter="8px" md-gutter-gt-sm="4px" >
+		<md-grid-tile ng-repeat="kamp in kampen.kampenlijst"
+                  md-rowspan="2"
+                  md-colspan="2"
+                  md-colspan-sm="1"
+                  md-colspan-xs="1">
+			<md-card>
+				<img ng-src="/images/plezier.jpg" class="md-card-image" alt="Washed Out">
+					<md-card-title>
+						<md-card-title-text>
+							<span class="md-headline">{{kamp.titel}}</span>
+						</md-card-title-text>
+					</md-card-title>	
+					<md-card-content>
+						<p>Periode: {{kamp.startDatum}} tot {{kamp.eindDatum}}</p>
+						<p>Locatie: {{kamp.adres.gemeente}}</p>
+						<p>Prijs: {{kamp.basisPrijs}} &#8364</p>
+						<p>Leeftijd:{{kamp.minLeeftijd}}-{{kamp.maxLeeftijd}} jaar</p>
+					</md-card-content>						  
+				</md-card>
+			</md-grid-tile>
+		</md-grid-list>
+	</div>
+	<!-- <div class="col-md-8" id="background">
     <h2>Kampen</h2>
     <p>geboortedatum: <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker></p>
     <p> maximumprijs: <input flex type="number"></p>
@@ -30,4 +55,5 @@
       <img ng-src="/images/plezier.jpg" class="fotokamp" alt="foto" />
 </div>
 </div>
-</div>
+</div> -->
+	

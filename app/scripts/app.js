@@ -47,6 +47,15 @@ angular
 		controller : 'HomeCtrl',
 		controllerAs : 'home'
 	})
+	.state('detailblog', {
+		url: '/blog/:detailId', 
+		templateUrl: 'views/blog.detail.html', 
+		controller: function(BlogService, $stateParams){
+			BlogService.get($stateParams.blogId).then(function(response){
+				$scope.blog = response.data
+			})
+		}
+	})
 	.state('about', {
 		url : '/about',
 		templateUrl : 'views/about.html',
@@ -70,6 +79,15 @@ angular
 		templateUrl : 'views/kampen.html',
 		controller : 'KampenCtrl',
 		controllerAs : 'kampen'
+	})
+	.state('kampdetail', {
+		url: '/:kampId/detail', 
+		templateUrl: 'views/kampdetail.html', 
+		controller: function(KampenService, $stateParams){
+			KampenService.get($stateParams.kampId).then(function(response){
+				$scope.kamp = response.data;
+			})
+		}
 	})
 	.state('profiel', {
 		url : '/profiel',

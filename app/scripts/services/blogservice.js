@@ -8,25 +8,31 @@
  * Service in the webappApp.
  */
 angular.module('webappApp')
-.service('blogService', function () {
+.service('BlogService', ['$http', function ($http) {
 
-	var service = {},
-	baseUrl = 'http://localhost:8085/';
+			var service = {},
+			baseUrl = 'http://localhost:8085/';
 
-	function getAll() {
-		return $http.get(baseUrl + 'blogs/');
-	}
-
-	function create(blog) {
-		return $http({
-			method : 'POST',
-			url : baseUrl + 'blog',
-			data : {
-				BLOG
+			function getAll() {
+				return $http.get(baseUrl + 'blogs/');
 			}
-		});
-	}
 
-	service.getAll = getAll;
+			function create(blog) {
+				return $http({
+					method : 'POST',
+					url : baseUrl + 'blog',
+					data : blog
+				});
+			}
 
-});
+			function get(id) {
+				return $http.get(baseUrl + 'blog/' + id)
+			}
+
+			service.getAll = getAll;
+			service.create = create;
+			service.get = get;
+
+			return service;
+		}
+	]);

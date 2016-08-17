@@ -58,7 +58,7 @@ angular.module('webappApp')
 						huisnummer : adres.huisnummer,
 						postcode : adres.postcode,
 						gemeente : adres.gemeente,
-						bus: adres.bus
+						bus : adres.bus
 					}
 				});
 			}
