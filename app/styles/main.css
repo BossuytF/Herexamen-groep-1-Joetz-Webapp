@@ -8,6 +8,7 @@
 
 body {
   padding: 0;
+  padding-top: 70px;
   background-image: url("../images/body_water.jpg");
   background-size: 100% 100%;
 }
@@ -128,7 +129,7 @@ ul{
 		padding:0;
 }
 
-md-content header {
+md-content header{
 		background-color: transparent;
 }
 
@@ -136,6 +137,18 @@ md-content header {
 		color: rgb(221,44,0);
 		font-size: 12px;
 }
+
+.sidenav-well {
+		background-color: transparent;
+		margin: 10px;
+		padding-top: 70px;
+}
+
+.bgTransparent{
+		background-color: transparent;
+}
+
+
 
 
 

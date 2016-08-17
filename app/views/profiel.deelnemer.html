@@ -1,4 +1,4 @@
-<div class="well">
+<div class="well ">
 	<md-tabs md-dynamic-height md-border-bottom>
 
 		<md-tab label="Gegevens">
@@ -110,12 +110,14 @@
 								<div ng-messages-include="messages.html"></div>
 							</div>
 						</md-input-container>
+						
 					</fieldset>
 
-					<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
-
+<!-- 					<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
+ -->
 					<div class="col-md-10 row-button">
 						<div class="buttons-right">
+						<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
 							<md-button class="md-raised md-primary" type="submit" ng-hide=profiel.edit ng-disabled="profiel.formAdres.$invalid || profiel.formAdres.$pristine">Opslaan </md-button>					
 						</div>
 					</div>

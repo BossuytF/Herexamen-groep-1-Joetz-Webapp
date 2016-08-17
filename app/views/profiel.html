@@ -1,6 +1,6 @@
-<md-content  class="md-padding" layout-xs="column" layout="row" layout-align="center" style="background-color:'none'">
-	<div flex-xs flex-gt-xs="30" layout="column"> 
-		<div class=" sidebar-nav">
+<md-content  class="md-padding bgTransparent" layout-xs="column" layout="row" layout-align="center" >
+	<div flex-xs flex-gt-xs="20" layout="column" class="sidenav-well"> 
+		<div class=" sidebar-nav well">
 			<ul class="list-unstyled">
 				<li><md-button  ng-show="user.role == 'lid'" class="borderBtn" ui-sref="profiel.deelnemer" flex layout='row' layout-align="center">Deelnemer</md-button></li>
 				<li><md-button  ng-show="user.role != 'lid'" class="borderBtn" ui-sref="profiel.deelnemer" flex layout='row' layout-align="center">Gegevens</md-button></li>				
@@ -9,7 +9,7 @@
  -->			</ul>
 		</div>
 	</div>
-	<div flex-xs flex-gt-xs="70" layout="column" ui-view>
+	<div flex-xs flex-gt-xs="40" layout="column" ui-view>
 	</div>
 </md-content>
 
