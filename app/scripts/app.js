@@ -48,10 +48,10 @@ angular
 		controllerAs : 'home'
 	})
 	.state('detailblog', {
-		url: '/blog/:detailId', 
-		templateUrl: 'views/blog.detail.html', 
-		controller: function(BlogService, $stateParams){
-			BlogService.get($stateParams.blogId).then(function(response){
+		url : '/blog/:detailId',
+		templateUrl : 'views/blog.detail.html',
+		controller : function (BlogService, $stateParams) {
+			BlogService.get($stateParams.blogId).then(function (response) {
 				$scope.blog = response.data
 			})
 		}
@@ -81,13 +81,19 @@ angular
 		controllerAs : 'kampen'
 	})
 	.state('kampdetail', {
-		url: '/:kampId/detail', 
-		templateUrl: 'views/kampdetail.html', 
-		controller: function(KampenService, $stateParams){
-			KampenService.get($stateParams.kampId).then(function(response){
+		url : '/:kampId/detail',
+		templateUrl : 'views/kampdetail.html',
+		controller : function (KampenService, $stateParams) {
+			KampenService.get($stateParams.kampId).then(function (response) {
 				$scope.kamp = response.data;
 			})
 		}
+	})
+	.state('nieuwKamp', {
+		url : '/kamp/nieuw',
+		templateUrl : 'views/kamp.nieuw.html',
+		controller : 'NieuwkampCtrl',
+		controllerAs : 'nieuwKamp'
 	})
 	.state('profiel', {
 		url : '/profiel',
@@ -148,12 +154,6 @@ angular
 		templateUrl : 'views/nieuwactiviteit.html',
 		controller : 'NieuwactiviteitCtrl',
 		controllerAs : 'nieuwActiviteit'
-	})
-	.state('nieuwKamp', {
-		url : '/nieuwKamp',
-		templateUrl : 'views/nieuwkamp.html',
-		controller : 'NieuwkampCtrl',
-		controllerAs : 'nieuwKamp'
 	})
 	.state('registreer', {
 		url : '/registreer',
