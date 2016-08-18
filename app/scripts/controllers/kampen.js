@@ -39,6 +39,27 @@ angular.module('webappApp')
 				.targetEvent()
 				.ok('Ja')
 				.cancel('Nee');
+				
+				
+			function medewerkerToewijzen(id){
+				$mdDialog.show(toewijzen).then(function(){
+					KampenService.updateMedewerkers(id).then(function(response){
+						console.log(response)
+					})
+				})
+			}
+			
+			var toewijzen = {
+				clickOutsideToClose: false,
+                  scope: $scope,        
+                  preserveScope: true,           
+                  template: 'vieuws/medewerkers.html',
+                  controller: function DialogController($scope, $mdDialog) {
+                     $scope.closeDialog = function() {
+                        $mdDialog.hide();
+                     }
+                  }
+               }
 
 			kampen.deleteKamp = deleteKamp;
 		}

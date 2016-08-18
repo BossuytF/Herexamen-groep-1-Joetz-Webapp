@@ -27,6 +27,7 @@
 						<md-card-actions layout="row" layout-align="end center">
 							<md-button ng-click="kampen.deleteKamp({{kamp.id}})" ng-show="user.role == 'beheerder'">Verwijderen</md-button>
 							<md-button ng-show="user.role == 'beheerder'" ui-sref="editKamp({kampId: kamp.id})">Aanpassen</md-button>
+							<md-button ng-show="user.role == 'beheerder'" ng-click="kampen.medewerkerToewijzen(kamp.id)">Medewerkers toewijzen</md-button>
 						</md-card-actions>						
 					</md-card>
 				</md-grid-tile>
