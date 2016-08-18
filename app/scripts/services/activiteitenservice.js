@@ -11,7 +11,7 @@ angular.module('webappApp')
 .service('ActiviteitenService', ['$http', function ($http) {
 
 			var service = {},
-			baseUrl = 'http://localhost:8085/';
+			baseUrl = 'http://37.139.13.237:8085/';
 
 			function getAll() {
 				return $http.get(baseUrl + 'activiteit');
@@ -21,14 +21,7 @@ angular.module('webappApp')
 				return $http({
 					method : 'POST',
 					url : baseUrl + 'activiteit',
-					data : {
-						naam : activiteit.naam,
-						datum : activiteit.datum,
-						locatie : activiteit.locatie
-						/* 						heleDag : activiteit.heleDag,
-						beginUur : activiteit.beginUur,
-						eindUur : activiteit.eidnUur */
-					}
+					data :activiteit
 				});
 			}
 

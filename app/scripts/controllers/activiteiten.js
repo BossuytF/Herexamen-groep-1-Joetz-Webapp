@@ -8,8 +8,8 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('ActiviteitenCtrl', ['ActiviteitenService', '$stateParams', '$rootScope',
-		function (ActiviteitenService, $stateParams, $rootScope, $scope) {
+.controller('ActiviteitenCtrl', ['ActiviteitenService', '$stateParams', '$rootScope', '$mdToast',
+		function (ActiviteitenService, $stateParams, $rootScope, $mdToast) {
 			var activiteiten = this;
 
 			activiteiten.activiteitId = $stateParams.activiteitId;
@@ -51,8 +51,9 @@ angular.module('webappApp')
 					for (var i = 0; i < activiteiten.activiteit.aanwezigen.length; i++) {
 						console.log(activiteiten.activiteit.aanwezigen)
 						console.log($rootScope.user.id)
-						if (activiteiten.activiteit.aanwezigen[i] === $rootScope.user.id)
+						if (activiteiten.activiteit.aanwezigen[i] === $rootScope.user.id){
 							activiteiten.alAanwezig = true;
+						}
 					}
 				}
 			}

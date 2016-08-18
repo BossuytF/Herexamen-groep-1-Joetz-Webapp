@@ -8,7 +8,7 @@
  * Service in the webappApp.
  */
 angular.module('webappApp')
-.service('blogService', function () {
+.service('blogService', ['$http', function ($http) {
 
 	var service = {},
 	baseUrl = 'http://localhost:8085/';
@@ -28,5 +28,7 @@ angular.module('webappApp')
 	}
 
 	service.getAll = getAll;
+	
+	return service;
 
-});
+}]);

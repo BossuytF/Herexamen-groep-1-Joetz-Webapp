@@ -1,20 +1,71 @@
 <div class="col-md-2">
 </div>
 <div class="col-md-8" id="background">
-    <h2>Nieuwe activiteit</h2>
-	
-    <md-input-container class="md-block" style="width:250px;" flex-gt-sm>
-        <label>Titel</label>
-        <input ng-model="nieuwActiviteit.activiteit.naam">
-    </md-input-container>
-	
-    <md-input-container class="md-block" style="width:250px;" flex-gt-sm>
-        <label>Locatie</label>
-        <input ng-model="nieuwActiviteit.activiteit.locatie">
-    </md-input-container>
-	
-    <label class="datep-label">Periode</label> <br/><md-datepicker required ng-model="nieuwActiviteit.activiteit.datum" md-placeholder="Enter date"></md-datepicker> tot <md-datepicker md-max-date="nieuwActiviteit.activiteit.datum" ng-model="nieuwActiviteit.activiteit.tot" md-placeholder="Enter date"></md-datepicker>
-    <br>
-    <md-button class="md-raised" ng-click="nieuwActiviteit.createActiviteit()">Activiteit aanmaken</md-button>
+	<form class="form-horizontal" name="form" ng-submit="nieuwActiviteit.nieuwactiviteit()" role="form">
+		<fieldset>
+			
+			<legend>Nieuwe Activiteit</legend>
+			
+			<div class="alert alert-danger" ng-show="nieuwActiviteit.error">
+                            {{nieuwActiviteit.error}}
+			</div>
 
+			<md-input-container class="md-block">
+				<label>Titel</label>
+				<input required type="text" name="titel" ng-model="nieuwActiviteit.activiteit.naam" id="inputTitel" />
+				<div ng-messages="form.titel.$error" ng-show="form.titel.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+
+			<md-input-container class="md-block">
+				<label>Locatie</label>
+				<input required type="text" name="locatie" ng-model="nieuwActiviteit.activiteit.locatie" id="inputLocatie" />
+				<div ng-messages="form.locatie.$error" ng-show="form.locatie.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+			
+			<label class="datep-label" for="inputGebDatum">Startdatum</label><br/>
+			<md-datepicker
+			id="inputStartdatum"
+			required 
+			name="startdatum" 
+			ng-model="nieuwActiviteit.activiteit.beginUur" 
+			md-placeholder="Startdatum" 
+			md-max-date="nieuwActiviteit.activiteit.eindUur"
+			md-open-on-focus>							
+			</md-datepicker>
+			<div  class='validation-messages' ng-messages="form.startdatum.$error" ng-show="form.startdatum.$touched">
+				<div ng-messages-include="messages.html"></div>
+			</div><br/>
+			
+			<label class="datep-label" for="einddatum">Einddatum</label><br/>
+			<md-datepicker
+			id="inputEinddatum"
+			required 
+			name="einddatum" 
+			ng-model="nieuwActiviteit.activiteit.eindUur" 
+			md-placeholder="Einddatum" 
+			md-min-date="nieuwActiviteit.activiteit.beginUur"
+			md-open-on-focus>							
+			</md-datepicker>
+			<div  class='validation-messages' ng-messages="form.einddatum.$error" ng-show="form.einddatum.$touched">
+				<div ng-messages-include="messages.html"></div>
+			</div>
+			
+			<md-input-container class="md-block">
+				<md-switch class="md-primary" md-no-ink aria-label="heleDag" ng-model="nieuwActiviteit.activiteit.heleDag">
+					Hele Dag 
+				</md-switch>
+			</md-input-container>
+		</fieldset>
+
+		<div class="col-md-10 row-button">
+			<div class="buttons-right">
+				<a ng-href="#">Annuleren</a>  
+				<md-button class="md-raised md-primary" type="submit" ng-disabled="form.$invalid">Opslaan </md-button>
+			</div>
+		</div>
+	</form>
 </div>
