@@ -1,1 +1,156 @@
-<p>This is the inschrijven view.</p>
+<div class="col-md-2">
+</div>
+<div class="col-md-8" id="background">
+    <h2>Nieuwe Inschrijving</h2>
+    <form class="form-horizontal" name="form" ng-submit="inschrijving.inschrijving()" role="form">
+        <fieldset>
+    <div class="alert alert-danger" ng-show="inschrijving.error">
+    {{reg.error}}
+    </div>
+    <md-input-container class="md-block">
+    <label>Aansluitingsnummer ouder 1</label>
+    <input required type="text" name="aansluitingsNrOuder1" ng-model="inschrijving.inschrijving.aansluitingsNrOuder1" id="inputAansluitingsNrOuder1" />
+    <div ng-messages="form.aansluitingsNrOuder1.$error" ng-show="form.aansluitingsNrOuder1.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>Code gerechtigde persoon</label>
+    <input required type="text" name="codeGerechtigde" ng-model="inschrijving.inschrijving.codeGerechtigde" id="inputCodeGerechtigde" />
+    <div ng-messages="form.codeGerechtigde.$error" ng-show="form.codeGerechtigde.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>Aansluitingsnummer ouder 2</label>
+    <input required type="text" name="aansluitingsNrOuder2" ng-model="inschrijving.inschrijving.aansluitingsNrOuder2" id="inputAansluitingsNrOuder2" />
+    <div ng-messages="form.aansluitingsNrOuder2.$error" ng-show="form.aansluitingsNrOuder2.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>RijksregisterNummer deelnemer</label>
+    <input required type="text" name="rijksregisterNrDln" ng-model="inschrijving.inschrijving.rijksregisterNrDln" id="inputRijksregisterNrDln" />
+    <div ng-messages="form.rijksregisterNrDln.$error" ng-show="form.rijksregisterNrDln.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>Voornaam deelnemer</label>
+    <input required type="text" name="voornaamDln" ng-model="inschrijving.inschrijving.voornaamDln" id="inputVoornaamDln" />
+    <div ng-messages="form.voornaamDln.$error" ng-show="form.voornaamDln.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>Naam deelnemer</label>
+    <input required type="text" name="naamDln" ng-model="inschrijving.inschrijving.naamDln" id="inputNaamDln" />
+    <div ng-messages="form.naamDln.$error" ng-show="form.naamDln.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>Straat deelnemer</label>
+    <input required type="text" name="straatDln" ng-model="inschrijving.inschrijving.straatDln" id="inputStraatDln" />
+    <div ng-messages="form.straatDln.$error" ng-show="form.straatDln.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>Huisnummer deelnemer</label>
+    <input required type="text" name="huisnummerDln" ng-model="inschrijving.inschrijving.huisnummerDln" id="inputHuisnummerDln" />
+    <div ng-messages="form.huisnummerDln.$error" ng-show="form.huisnummerDln.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>Bus deelnemer</label>
+    <input required type="text" name="busDln" ng-model="inschrijving.inschrijving.busDln" id="inputBusDln" />
+    <div ng-messages="form.busDln.$error" ng-show="form.busDln.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+
+    <md-input-container class="md-block">
+    <label>Gemeente deelnemer</label>
+    <input required type="text" name="gemeenteDln" ng-model="inschrijving.inschrijving.gemeenteDln" id="inputGemeenteDln" />
+    <div ng-messages="form.gemeenteDln.$error" ng-show="form.gemeenteDln.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>Postcode deelnemer</label>
+    <input required type="text" name="postcodeDln" ng-model="inschrijving.inschrijving.postcodeDln" id="inputPostcodeDln" />
+    <div ng-messages="form.postcodeDln.$error" ng-show="form.postcodeDln.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>E-mail deelnemer</label>
+    <input required type="text" name="emailDln" ng-model="inschrijving.inschrijving.emailDln" id="inputEmailDln" />
+    <div ng-messages="form.emailDln.$error" ng-show="form.emailDln.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>Telefoon deelnemer</label>
+    <input required type="text" name="telefoonDln" ng-model="inschrijving.inschrijving.telefoonDln" id="inputTelefoonDln" />
+    <div ng-messages="form.telefoonDln.$error" ng-show="form.telefoonDln.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>Voornaam contactpersoon voor noodgevallen</label>
+    <input required type="text" name="voornaamNood" ng-model="inschrijving.inschrijving.voornaamNood" id="inputVoornaamNood" />
+    <div ng-messages="form.voornaamNood.$error" ng-show="form.voornaamNood.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>Naam contactpersoon voor noodgevallen</label>
+    <input required type="text" name="naamNood" ng-model="inschrijving.inschrijving.naamNood" id="inputNaamNood" />
+    <div ng-messages="form.naamNood.$error" ng-show="form.naamNood.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>Telefoon contactpersoon voor noodgevallen</label>
+    <input required type="text" name="telefoonNood" ng-model="inschrijving.inschrijving.telefoonNood" id="inputTelefoonNood" />
+    <div ng-messages="form.telefoonNood.$error" ng-show="form.telefoonNood.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+    <label>Extra info</label>
+    <input required type="text" name="extraInfo" ng-model="inschrijving.inschrijving.extraInfo" id="inputExtraInfo" />
+    <div ng-messages="form.extraInfo.$error" ng-show="form.extraInfo.$touched">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+    </md-input-container>
+
+    </fieldset>
+        <div class="col-md-10 row-button">
+            <div class="buttons-right">
+                <a ng-href="#/registreer">Annuleren</a>  
+                <md-button class="md-raised md-primary" type="submit" ng-diabled="form.$invalid">Schrijf in </md-button>
+            </div>
+        </div>
+    </form>
+
+</div>
