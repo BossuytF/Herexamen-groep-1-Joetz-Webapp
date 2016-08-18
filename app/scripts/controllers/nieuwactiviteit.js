@@ -8,18 +8,23 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('NieuwactiviteitCtrl', ['ActiviteitenService', function (ActiviteitenService) {
-	var nieuwActiviteit = this;
+  .controller('NieuwactiviteitCtrl',['UserService', '$state', '$mdToast', function (UserService, $state, $mdToast) {
+    var nieuwactiviteit = this;
 
-	nieuwActiviteit.activiteit = {
-		naam:'',
-		locatie:'', 
-		datum: undefined
-	}
+			nieuwactiviteit.activiteit = {
+				titel : '',
+				locatie : '',
+				startdatum : '',
+				einddatum : '',
+				heledag : '',
+			};
 
-	nieuwActiviteit.createActiviteit = function(){
-		ActiviteitenService.create(nieuwActiviteit.activiteit).then(function(response){
-			console.log(response)
-		})
-	}
-}]);
+			nieuwactiviteit.nieuwactiviteit = function () {
+				UserService.create(nieuwactiviteit.activiteit).then(function () {
+					$mdToast.showSimple("Nieuwe activiteit is met success aangemaakt"); 		
+					$state.go('Home');
+				}, function () {
+					registreer.error = 'Er bestaat al een Activiteit met deze gegevens';
+				});
+			};
+  });
