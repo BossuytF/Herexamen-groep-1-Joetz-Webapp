@@ -2,18 +2,59 @@
 </div>
 <div class="col-md-8" id="background">
     <h2>Nieuwe activiteit</h2>
-    <h3>Titel</h3> 
-    <md-input-container class="md-block" style="width:250px;" flex-gt-sm>
-        <label>Titel</label>
-        <input ng-model="user.firstName">
-    </md-input-container>
-    <h3>Locatie</h3> 
-    <md-input-container class="md-block" style="width:250px;" flex-gt-sm>
-        <label>Locatie</label>
-        <input ng-model="user.firstName">
-    </md-input-container>
-    <h3>periode:</h3> <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker> tot <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
-    <br>
-    <md-button class="md-raised">Activiteit aanmaken</md-button>
+    <form class="form-horizontal" name="form" ng-submit="nieuwactiviteit.registreer()" role="form">
+                    <fieldset>
 
+                        <div class="alert alert-danger" ng-show="nieuwactiviteit.error">
+                            {{nieuwactiviteit.error}}
+                        </div>
+
+                        <md-input-container class="md-block">
+                            <label>Titel</label>
+                            <input required type="text" name="titel" ng-model="nieuwactiviteit.activiteit.titel" id="inputTitel" />
+                            <div ng-messages="form.titel.$error" ng-show="form.titel.$touched">
+                                <div ng-messages-include="messages.html"></div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Locatie</label>
+                            <input required type="text" name="locatie" ng-model="nieuwactiviteit.activiteit.locatie" id="inputLocatie" />
+                            <div ng-messages="form.locatie.$error" ng-show="form.locatie.$touched">
+                                <div ng-messages-include="messages.html"></div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Startdatum</label>
+                            <input required type="Date" name="startdatum" ng-model="nieuwactiviteit.activiteit.startdatum" id="inputStartdatum" />
+                            <div ng-messages="form.startdatum.$error" ng-show="form.startdatum.$touched">
+                                <div ng-messages-include="messages.html"></div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Einddatum</label>
+                            <input required type="Date" name="einddatum" ng-model="nieuwactiviteit.activiteit.einddatum" id="inputEinddatum" />
+                            <div ng-messages="form.einddatum.$error" ng-show="form.einddatum.$touched">
+                                <div ng-messages-include="messages.html"></div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Hele dag</label>
+                            <input required type="Boolean" name="heledag" ng-model="nieuwactiviteit.activiteit.heledag" id="inputHeledag" />
+                            <div ng-messages="form.heledag.$error" ng-show="form.heledag.$touched">
+                                <div ng-messages-include="messages.html"></div>
+                            </div>
+                        </md-input-container>
+                    </fieldset>
+
+                    <div class="col-md-10 row-button">
+                        <div class="buttons-right">
+                            <a ng-href="#">Annuleren</a>  
+                            <md-button class="md-raised md-primary" type="submit" ng-diabled="form.$invalid">Registreer </md-button>
+                        </div>
+                    </div>
+                </form>
 </div>
