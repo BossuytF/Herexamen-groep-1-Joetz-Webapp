@@ -8,14 +8,14 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('ActiviteitenCtrl', ['ActiviteitenService', '$stateParams', '$rootScope', '$mdToast',
-		function (ActiviteitenService, $stateParams, $rootScope, $mdToast) {
+.controller('ActiviteitenCtrl', ['ActiviteitenService', '$stateParams', '$rootScope', '$mdToast', 'NgMap',
+		function (ActiviteitenService, $stateParams, $rootScope, $mdToast, NgMap) {
 			var activiteiten = this;
 
 			activiteiten.activiteitId = $stateParams.activiteitId;
 			activiteiten.zetAanwezig = zetAanwezig;
 			activiteiten.activiteitenLijst = [];
-			
+
 			getActiviteiten();
 			getActiviteit();
 
@@ -51,7 +51,7 @@ angular.module('webappApp')
 					for (var i = 0; i < activiteiten.activiteit.aanwezigen.length; i++) {
 						console.log(activiteiten.activiteit.aanwezigen)
 						console.log($rootScope.user.id)
-						if (activiteiten.activiteit.aanwezigen[i] === $rootScope.user.id){
+						if (activiteiten.activiteit.aanwezigen[i] === $rootScope.user.id) {
 							activiteiten.alAanwezig = true;
 						}
 					}
@@ -70,8 +70,13 @@ angular.module('webappApp')
 						activiteiten.activiteit = response.data;
 						aantalAanwezigen();
 						isAanwezig();
+					});
+					navigator.geolocation.getCurrentPosition(function (position) {
+						
 					})
+					activiteiten.origin ='De Panne'	
 				}
 			}
+
 		}
 	]);

@@ -86,7 +86,10 @@
 			ga('create', 'UA-XXXXX-X');
 			ga('send', 'pageview');
 		</script>
-
+		
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgTSoVBhh2wzXrSiZw0zxFA_pDrl7H3Gs&callback=initMap"
+		async defer></script>
+		
 		<!-- build:js(.) scripts/vendor.js -->
 		<!-- bower:js -->
 		<script src="bower_components/jquery/dist/jquery.js"></script>
@@ -109,6 +112,7 @@
 		<script src="bower_components/ng-flow/dist/ng-flow.js"></script>
 		<script src="bower_components/ngtweet/dist/ngtweet.js"></script>
 		<script src="bower_components/moment/moment.js"></script>
+		<script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
 		<!-- endbower -->
 		<!-- endbuild -->
 
@@ -135,6 +139,7 @@
 <script src="scripts/services/kampenservice.js"></script>
 <script src="scripts/directives/rrn.js"></script>
 <script src="scripts/services/activiteitenservice.js"></script>
+
 		<!-- endbuild -->
 	</body>
 </html>

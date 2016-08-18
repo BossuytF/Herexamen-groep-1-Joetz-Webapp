@@ -21,7 +21,8 @@ angular
 		'LocalStorageModule',
 		'ui.router',
 		'ngMaterial',
-		'ngtweet'
+		'ngtweet', 
+		'ngMap'
 	])
 .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $mdDateLocaleProvider) {
 
