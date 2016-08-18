@@ -19,7 +19,7 @@ angular.module('webappApp')
 				omschrijving : '',
 				startDatum : undefined,
 				eindDatum : undefined,
-				aantalDagen : '',
+				aantalDagen : '',/** Da wordt toch berekend via start en einddatum?**/
 				aantalNachten : '',
 				vervoer : '',
 				formule : '',
@@ -66,7 +66,7 @@ angular.module('webappApp')
 
 			var confirm = $mdDialog.confirm()
 				.title('Pas op!')
-				.textContent('Wenst u deze wijzigen op te slaan?')
+				.textContent('Wenst u deze wijzigingen op te slaan?')
 				.ariaLabel('Pas op')
 				.targetEvent()
 				.ok('Ja')
