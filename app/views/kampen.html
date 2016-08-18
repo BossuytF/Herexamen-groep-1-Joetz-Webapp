@@ -6,7 +6,7 @@
        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6" md-cols="12"
         md-row-height-gt-md="1:1" md-row-height="4:3"
         md-gutter="8px" md-gutter-gt-sm="4px" >
-			<md-grid-tile ng-repeat="kamp in kampen.kampenlijst"
+			<md-grid-tile ng-repeat="kamp in kampen.kampenlijst" ui-sref="kampdetail({kampId = kamp.id})"
                   md-rowspan="2"
                   md-colspan="2"
                   md-colspan-sm="1"
@@ -23,7 +23,11 @@
 							<p>Locatie: {{kamp.adres.gemeente}}</p>
 							<p>Prijs: {{kamp.basisPrijs}} &#8364</p>
 							<p>Leeftijd:{{kamp.minLeeftijd}}-{{kamp.maxLeeftijd}} jaar</p>
-						</md-card-content>						  
+						</md-card-content>	
+						<md-card-actions layout="row" layout-align="end center">
+							<md-button ng-click="kampen.deleteKamp({{kamp.id}})" ng-show="user.role == 'beheerder'">Verwijderen</md-button>
+							<md-button ng-show="user.role == 'beheerder'" ui-sref="editKamp({kampId: kamp.id})">Aanpassen</md-button>
+						</md-card-actions>						
 					</md-card>
 				</md-grid-tile>
 			</md-grid-list>

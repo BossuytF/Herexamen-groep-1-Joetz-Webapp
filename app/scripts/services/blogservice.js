@@ -11,7 +11,7 @@ angular.module('webappApp')
 .service('BlogService', ['$http', function ($http) {
 
 			var service = {},
-			baseUrl = 'http://localhost:8085/';
+			baseUrl = 'http://37.139.13.237:8085/';
 
 			function getAll() {
 				return $http.get(baseUrl + 'blogs/');
@@ -26,7 +26,7 @@ angular.module('webappApp')
 			}
 
 			function get(id) {
-				return $http.get(baseUrl + 'blog/' + id)
+				return $http.get(baseUrl + 'blog/' + id);
 			}
 
 			service.getAll = getAll;

@@ -8,8 +8,8 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('LoginCtrl', ['$scope', 'AuthenticationService', '$rootScope',
-		function ($scope, AuthenticationService, $rootScope) {
+.controller('LoginCtrl', ['$scope', 'AuthenticationService', 
+		function ($scope, AuthenticationService) {
 
 			var login = this;
 			login.user = {

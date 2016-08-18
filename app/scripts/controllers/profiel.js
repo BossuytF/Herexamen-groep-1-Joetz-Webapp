@@ -65,7 +65,7 @@ angular.module('webappApp')
 					betalend : false,
 					ouder : false
 				}
-			}
+			};
 			getUser();
 
 			profiel.myDate = new Date();
@@ -112,15 +112,15 @@ angular.module('webappApp')
 						profiel.formGegevens.$setPristine();
 						profiel.formAdres.$setPristine();
 						profiel.formMutualiteit.$setPristine();
-						$state.go(toState.name)
+						$state.go(toState.name);
 					});
 				} else if (profiel.contactpersoon1form && !profiel.contactpersoon1form.$pristine || profiel.contactpersoon2form && !profiel.contactpersoon2form.$pristine) {
 					event.preventDefault();
 					$mdDialog.show(confirm).then(function () {
 						profiel.contactpersoon1form.$setPristine();
 						profiel.contactpersoon2form.$setPristine();
-						$state.go(toState.name)
-					})
+						$state.go(toState.name);
+					});
 				}
 			});
 
@@ -135,10 +135,10 @@ angular.module('webappApp')
 			function getUser() {
 				UserService.get($rootScope.user.email).then(function (response) {
 					profiel.user = response.data;
-				})
+				});
 				
 				if(profiel.user.codegerechtigde){
-					console.log(profiel.user)
+					console.log(profiel.user);
 					profiel.user.lid = true;
 				}else{
 					profiel.user.lid = false;
@@ -149,40 +149,40 @@ angular.module('webappApp')
 				profiel.edit = true;
 				UserService.updateGegevens($rootScope.user.email, profiel.user).then(function (response) {
 					getUser();
-				})
-			}
+				});
+			};
 
 			profiel.opslaanAdres = function () {
 				profiel.edit = true;
 				UserService.updateAdres($rootScope.user.email, profiel.user.adres).then(function (response) {
 					getUser();
-				})
-			}
+				});
+			};
 
 			profiel.opslaanMutualiteit = function () {
 				profiel.edit = true;
 				UserService.updateMutualiteit($rootScope.user.email, profiel.user).then(function (response) {
 					getUser();
-				})
-			}
+				});
+			};
 
 			profiel.contactpersoon1Opslaan = function () {
 				profiel.edit = true;
 				UserService.updateContactpersoon($rootScope.user.email, profiel.user.contactpersoon1, 1).then(function (response) {
 					getUser();
-				})
-			}
+				});
+			};
 
 			profiel.contactpersoon2Opslaan = function () {
 				profiel.edit = true;
 				UserService.updateContactpersoon($rootScope.user.email, profiel.user.contactpersoon2, 2).then(function (response) {
 					getUser();
-				})
-			}
+				});
+			};
 
 			profiel.editData = function () {
 				profiel.edit = false;
-			}
+			};
 
 		}
 	]);

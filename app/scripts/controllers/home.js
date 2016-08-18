@@ -13,7 +13,7 @@ angular.module('webappApp')
 			var home = this;
 			
 			BlogService.getAll().then(function (response) {
-				home.blogs = response.data
+				home.blogs = response.data;
 			});
 		}
 	]);

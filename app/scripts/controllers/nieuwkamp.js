@@ -8,8 +8,11 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('NieuwkampCtrl', ['KampenService', function (KampenService) {
+.controller('NieuwkampCtrl', ['KampenService', '$stateParams', '$state', '$mdToast', '$mdDialog',
+		function (KampenService, $stateParams, $state, $mdToast, $mdDialog) {
 			var nieuwKamp = this;
+
+			isEdit();
 
 			nieuwKamp.kamp = {
 				naam : '',
@@ -30,27 +33,56 @@ angular.module('webappApp')
 				contact : '',
 				sfeerfoto : '',
 				adres : {
-					straat;
-					'',
+					straat : '',
 					huisnummer : '',
 					bus : '',
 					gemeente : '',
 					postcode : ''
 				}
+			};
+
+			function isEdit() {
+				if ($state.includes('editKamp')) {
+					KampenService.get($stateParams.kampId).then(function (response) {
+						nieuwKamp.kamp = response.data;
+					});
+				}
 			}
 
-			function addKamp() {
-				KampenService.create(kamp).then(function (response) {
-					$mdToast.show(
-						$mdToast.simple()
-						.textContent('Kamp werd succesvol aangemaakt')
-						.position('start')
-						.capsule(true))
+			function submitKamp() {
+				if ($state.includes('nieuwKamp')) {
+					KampenService.create(nieuwKamp.kamp).then(function (response) {
+						$mdToast.show(toastAanmaken);
+					});
+				} else if ($state.includes('editKamp')) {
+					$mdDialog.show(confirm).then(function () {
+						KampenService.update(nieuwKamp.kamp, $stateParams.kampId).then(function (response) {
+							$mdToast.show(toastAanpassen);
+						});
+					});
 				}
 				state.go('kampen');
-				}
-				
-				nieuwKamp.addKamp = addKamp;
-
 			}
-		]);
+
+			var confirm = $mdDialog.confirm()
+				.title('Pas op!')
+				.textContent('Wenst u deze wijzigen op te slaan?')
+				.ariaLabel('Pas op')
+				.targetEvent()
+				.ok('Ja')
+				.cancel('Nee');
+
+			var toastAanpassen = $mdToast.simple()
+				.textContent('Kamp werd succesvol aangepast')
+				.position('start')
+				.capsule(true);
+
+				var toastAanmaken = $mdToast.simple()
+				.textContent('Kamp werd succesvol aangemaakt')
+				.position('start')
+				.capsule(true);
+
+				nieuwKamp.submitKamp = submitKamp;
+
+		}
+	]);

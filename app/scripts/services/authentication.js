@@ -11,7 +11,7 @@ angular.module('webappApp')
 .service('AuthenticationService', ['localStorageService', '$http', '$rootScope', 'UserService',
 		function (localStorageService, $http, $rootScope, UserService) {
 
-			var baseUrl = 'http://localhost:8085/';
+			var baseUrl = 'http://37.139.13.237:8085/';
 
 			var service = {};
 
@@ -37,10 +37,10 @@ angular.module('webappApp')
 					if ((decodedToken.exp * 1000) < new Date().getTime()) {
 						refreshAccessToken().then(function (response) {
 							setCredentials(response.data.token.access, _user.refreshToken);
-						})
+						});
 					} else {
 						setCredentials(_user.token, _user.refreshToken);
-					};
+					}
 
 				} else {
 					$rootScope.$emit('user:loggedOut');
@@ -86,9 +86,10 @@ angular.module('webappApp')
 					_user.isAuth = true;
 					_user.role = decodedToken.role;
 					_user.email = decodedToken.email;
+					_user.id = decodedToken.id;
 
 					getMe().then(function (response) {
-						_user.username = response.data.username
+						_user.username = response.data.username;
 					});
 
 					$rootScope.user = _user;
