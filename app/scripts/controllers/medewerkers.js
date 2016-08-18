@@ -8,6 +8,21 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-  .controller('MedewerkersCtrl', function () {
-
-  });
+  .controller('MedewerkersCtrl', ['UserService', function (UserService) {
+		var medewerkers = this;
+		
+		medewerkers.medewerkerLijst = [];
+		
+		function getAllMedewerkers(){
+			UserService.getAll().then(function(response){
+				for (var i = 0; i < response.data.length; i++){
+					if (response.data[i].role === "medewerker"){
+						medewerkers.medewerkerLijst.push(response.data[i]);
+					}
+				}
+			})
+		}
+		getAllMedewerkers();
+		
+		
+  }]);
