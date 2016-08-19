@@ -13,11 +13,11 @@ angular.module('webappApp')
 			baseUrl = 'http://37.139.13.237:8085/';
 
 			function getAll() {
-				return $http.get(baseUrl + 'kampen');
+				return $http.get(baseUrl + 'kamp');
 			}
 
 			function get(id) {
-				return $http.get(baseUrl + 'kampen/' + id);
+				return $http.get(baseUrl + 'kamp/' + id);
 			}
 
 			function create(kamp) {
