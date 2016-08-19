@@ -21,13 +21,13 @@ angular.module('webappApp')
 				return $http({
 					method : 'POST',
 					url : baseUrl + 'activiteit',
-					data :activiteit
+					data : activiteit
 				});
 			}
 
 			function update(id, email) {
 				return $http({
-					method : 'POST',
+					method : 'PUT',
 					url : baseUrl + 'activiteit/' + id + '/aanwezigen/' + email
 				});
 			}
@@ -36,10 +36,24 @@ angular.module('webappApp')
 				return $http.get(baseUrl + 'activiteit/' + id);
 			}
 
+			function remove(id) {
+				return $http.delete (baseUrl + 'activiteit/' + id)
+			}
+
+			function updateGegevens(activiteit) {
+				return $http({
+					method : 'PUT',
+					url : baseUrl + 'activiteit/' + activiteit.id,
+					data: activiteit
+				});
+			}
+
 			service.getAll = getAll;
 			service.create = create;
 			service.update = update;
 			service.get = get;
+			service.remove = remove;
+			service.updateGegevens = updateGegevens;
 
 			return service;
 		}

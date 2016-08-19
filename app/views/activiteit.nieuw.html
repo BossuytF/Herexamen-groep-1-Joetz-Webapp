@@ -4,7 +4,7 @@
 	<form class="form-horizontal" name="form" ng-submit="nieuwActiviteit.nieuwactiviteit()" role="form">
 		<fieldset>
 			
-			<legend>Nieuwe Activiteit</legend>
+			<legend>Nieuwe Activiteit/ Activiteit aanpassen</legend>
 			
 			<div class="alert alert-danger" ng-show="nieuwActiviteit.error">
                             {{nieuwActiviteit.error}}
@@ -26,7 +26,7 @@
 				</div>
 			</md-input-container>
 			
-			<label class="datep-label" for="inputGebDatum">Startdatum</label><br/>
+			<label class="datep-label" for="startdatum">Startdatum</label><br/>
 			<md-datepicker
 			id="inputStartdatum"
 			required 
@@ -34,6 +34,7 @@
 			ng-model="nieuwActiviteit.activiteit.beginUur" 
 			md-placeholder="Startdatum" 
 			md-max-date="nieuwActiviteit.activiteit.eindUur"
+			md-min-date= "nieuwActiviteit.myDate"
 			md-open-on-focus>							
 			</md-datepicker>
 			<div  class='validation-messages' ng-messages="form.startdatum.$error" ng-show="form.startdatum.$touched">

@@ -1,40 +1,21 @@
+
 'use strict';
 
 /**
  * @ngdoc function
- * @name webappApp.controller:ActiviteitenCtrl
+ * @name webappApp.controller:NieuwactiviteitCtrl
  * @description
- * # ActiviteitenCtrl
+ * # NieuwactiviteitCtrl
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('ActiviteitenCtrl', ['ActiviteitenService', '$stateParams', '$rootScope', '$mdToast', 'NgMap',
-		function (ActiviteitenService, $stateParams, $rootScope, $mdToast, NgMap) {
+.controller('ActiviteitenDetailCtrl', ['ActiviteitenService', '$stateParams', '$rootScope', '$mdToast', function (ActiviteitenService, $stateParams, $rootScope, $mdToast) {
+
 			var activiteiten = this;
-
 			activiteiten.activiteitId = $stateParams.activiteitId;
-			activiteiten.zetAanwezig = zetAanwezig;
-			activiteiten.activiteitenLijst = [];
-
-			getActiviteiten();
+			var geocoder = new google.maps.Geocoder();
+			
 			getActiviteit();
-
-			function getActiviteiten() {
-				ActiviteitenService.getAll().then(function (response) {
-					activiteiten.activiteitenLijst = response.data;
-					heleDag();
-				})
-			};
-
-			function heleDag() {
-				for (var i = 0; i < activiteiten.activiteitenLijst.length; i++) {
-					if (activiteiten.activiteitenLijst[i].heleDag) {
-						activiteiten.activiteitenLijst[i].heleDag = "Hele Dag";
-					} else {
-						activiteiten.activiteitenLijst[i].heleDag = "";
-					}
-				}
-			}
 
 			function zetAanwezig() {
 				ActiviteitenService.update(activiteiten.activiteit.id, $rootScope.user.email).then(function (response) {
@@ -71,12 +52,9 @@ angular.module('webappApp')
 						aantalAanwezigen();
 						isAanwezig();
 					});
-					navigator.geolocation.getCurrentPosition(function (position) {
-						
-					})
-					activiteiten.origin ='De Panne'	
 				}
 			}
-
+			
+			activiteiten.zetAanwezig = zetAanwezig;
 		}
 	]);
