@@ -83,11 +83,8 @@ angular
 	.state('kampdetail', {
 		url : '/:kampId/detail',
 		templateUrl : 'views/kamp.detail.html',
-		controller : function (KampenService, $stateParams, $scope) {
-			KampenService.get($stateParams.kampId).then(function (response) {
-				$scope.kamp = response.data;
-			});
-		}
+		controller : 'DetailKampCtrl',
+		controllerAs : 'detailkamp'
 	})
 	.state('nieuwKamp', {
 		url : '/kamp/nieuw',
@@ -96,10 +93,10 @@ angular
 		controllerAs : 'nieuwKamp',
 	})
 	.state('editKamp', {
-		url : '/kamp/edit/:kampId',
-		templateUrl : 'vieuws/kamp.nieuw.html',
-		controller : 'nieuwKampCtrl',
-		controllerAs: 'nieuwKamp'
+		url : '/kamp/:kampId/edit',
+		templateUrl : 'views/kamp.nieuw.html',
+		controller : 'NieuwkampCtrl',
+		controllerAs : 'nieuwKamp'
 	})
 	.state('profiel', {
 		url : '/profiel',
@@ -142,6 +139,12 @@ angular
 		templateUrl : 'views/inschrijven.html',
 		controller : 'InschrijvenCtrl',
 		controllerAs : 'inschrijven'
+	})
+	.state('medewerkerstoewijzen', {
+		url : '/medewerkers/toewijzen',
+		templateUrl : 'views/medewerker.toewijzen.html',
+		controller : 'MedewerkersCtrl',
+		controllerAs : 'medewerkers'
 	})
 	.state('medewerkers', {
 		url : '/medewerkers',

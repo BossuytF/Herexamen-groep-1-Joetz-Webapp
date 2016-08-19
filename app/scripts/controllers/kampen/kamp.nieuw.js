@@ -19,40 +19,61 @@ angular.module('webappApp')
 				omschrijving : '',
 				startDatum : undefined,
 				eindDatum : undefined,
-				aantalDagen : '',/** Da wordt toch berekend via start en einddatum?**/
-				aantalNachten : '',
+				aantalDagen : '6',
+				aantalNachten : '7',
 				vervoer : '',
-				formule : '',
-				basisPrijs : '',
-				bondPrijs : '',
-				kortingen : '',
+				prijs : '',
 				inbegrepenInPrijs : '',
 				maxLeeftijd : '',
 				minLeeftijd : '',
 				maxDeelnemers : '',
 				contact : '',
 				sfeerfoto : '',
-				adres : {
-					straat : '',
-					huisnummer : '',
-					bus : '',
-					gemeente : '',
-					postcode : ''
-				}
+				straat : '',
+				huisnummer : '',
+				bus : '',
+				gemeente : '',
+				postcode : ''
 			};
 
 			function isEdit() {
 				if ($state.includes('editKamp')) {
 					KampenService.get($stateParams.kampId).then(function (response) {
+						console.log(response)
 						nieuwKamp.kamp = response.data;
 					});
 				}
 			}
+			
+			function invullen(){
+				nieuwKamp.kamp = {
+				naam : 'Actievakantie',
+				omschrijving : 'Durf jij het aan om samen met je nieuwe vrienden tot het uiterste te gaan? Wil je je grootste angsten overwinnen? In de avontuurlijke omgeving van Vieuxville trotseren we de grootste uitdagingen. Samen met ons professioneel actieteam plaatsen we activiteiten zoals deathride, rotsklimmen, rappel, kajak … op het programma. Hebben deze activiteiten voor jou geen geheimen? Kies dan zeker voor deze actievakantie. Onze activiteiten zijn aangepast aan de leeftijd van de deelnemers.',
+				startDatum : new Date('jul 19, 2017'),
+				eindDatum : new Date('jul 26, 2017'),
+				aantalDagen : '6',
+				aantalNachten : '7',
+				vervoer : 'busVervoer',
+				prijs : '311',
+				inbegrepenInPrijs : 'Heen- en terugreis per autocar ,Verblijf in volpension, drank bij de maaltijden,  Dagelijks vieruurtje,  Begeleiding door ervaren, gebrevetteerde monitoren  , Volledig animatiepakket incl. spelmateriaal , Ongevallenverzekering',
+				maxLeeftijd : '15',
+				minLeeftijd : '11',
+				maxDeelnemers : '20',
+				contact : 'joetz.west@joetz.be',
+				sfeerfoto : 'https://goo.gl/photos/qeKpf18npNpXw8PJA',
+				straat : 'Domain de la palogne',
+				huisnummer : '5',
+				bus : '',
+				gemeente : 'Vieuxville',
+				postcode : '9000'
+			};
+			}
 
 			function submitKamp() {
 				if ($state.includes('nieuwKamp')) {
-					KampenService.create(nieuwKamp.kamp).then(function (response) {
+					KampenService.create(nieuwKamp.kamp).then(function (response) {					
 						$mdToast.show(toastAanmaken);
+						$state.go('kampen');
 					});
 				} else if ($state.includes('editKamp')) {
 					$mdDialog.show(confirm).then(function () {
@@ -61,7 +82,6 @@ angular.module('webappApp')
 						});
 					});
 				}
-				state.go('kampen');
 			}
 
 			var confirm = $mdDialog.confirm()
@@ -86,3 +106,6 @@ angular.module('webappApp')
 
 		}
 	]);
+
+	
+

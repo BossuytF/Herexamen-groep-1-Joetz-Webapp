@@ -1,13 +1,32 @@
-<div class="col-md-8 col-md-offset-2" id="background">
-	<p><br><a href="www.google.com">Terug naar overzicht</a></p>
-	<h2>Smurf's Up</h2>
-	<img ng-src="/images/plezier.jpg" class="fotokamp" alt="foto" />
-	
-	  <p><br>periode: 16 juli 2017 tot 24 juli 2017</p>
-      <p>locatie: Desselgem</p>
-      <p>prijs: 135 &#8364</p>
-      <p>leeftijd: 3-7 jaar</p>
-      <br>
-      <p>Dit is een klein tekstje met wat uitleg en info over het kamp, eventueel met een klein verslagje ofzo erbij Lorem ipsum dolor sit amet, te sea commodo luptatum. Eam natum scriptorem te, mei viderer aliquam pertinax eu. Duo utinam iuvaret eu. Ne vis munere eleifend, eu consulatu reprimique cum. </p>
-      <md-button class="md-raised">Inschrijven voor dit kamp</md-button>
+<div class="col-md-8 col-md-offset-2">
+	<p><br><a ui-sref='activiteiten'>Terug naar overzicht</a></p>
+		<md-card back-img="{{kamp.sfeerfoto}}">
+				<md-card-title>
+					<md-card-title-text>
+						<span class="md-headline">{{detailkamp.kamp.naam}}</span>
+					</md-card-title-text>
+				</md-card-title>	
+				<md-card-content>
+					<div class="row">
+						<div class= "col-md-6">
+							<map zoom="14" center="{{activiteiten.activiteit.locatie}}">
+								<directions
+										draggable="true"
+										travel-mode="DRIVING"
+										origin="current-location"
+										panel="directions-panel"
+										destination="{{activiteit.locatie}}">
+								</directions>
+							</map>
+						</div>
+						<div id="directions-panel" class="col-md-4" style="height: 300px; overflow: auto;background-color: white">
+						</div>
+					</div>
+					<h3>Aanwezig</h3>
+					<p>{{activiteiten.aanwezig}} aanwezig <br><a href="www.google.com">Bekijk alle deelnemers</a></p><!-- uit database halen & routing-->
+					</md-card-content>	
+					<md-card-actions layout="row" layout-align="end center">
+						<md-button  class="md-raised" ng-click='activiteiten.zetAanwezig()' ng-hide='activiteiten.alAanwezig'>Aanwezig</md-button>
+					</md-card-actions>						
+				</md-card>
 </div>

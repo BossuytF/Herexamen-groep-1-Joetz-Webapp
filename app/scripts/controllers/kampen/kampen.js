@@ -8,7 +8,7 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('KampenCtrl', ['KampenService', '$mdToast', '$mdDialog', '$scope', function (KampenService, $mdToast, $mdDialog, $scope) {
+.controller('KampenCtrl', ['KampenService', '$mdToast', '$mdDialog', '$scope', '$state', function (KampenService, $mdToast, $mdDialog, $scope, $state) {
 			var kampen = this;
 
 			kampen.kampenLijst = [];
@@ -39,28 +39,30 @@ angular.module('webappApp')
 				.targetEvent()
 				.ok('Ja')
 				.cancel('Nee');
-				
-				
-			function medewerkerToewijzen(id){
-				$mdDialog.show(toewijzen).then(function(){
-					KampenService.updateMedewerkers(id).then(function(response){
-						console.log(response)
-					});
+
+			function medewerkerToewijzen(id) {
+				console.log(id)
+				$mdDialog.show({
+					clickOutsideToClose : true,
+					scope : $scope,
+					locals : {
+						kampId : id
+					},
+					controller : 'MedewerkersCtrl',
+					controllerAs : 'medewerkers',
+					preserveScope : true,
+					templateUrl : '../../../views/medewerker.toewijzen.html'
 				});
 			}
-			
-/* 			var toewijzen = {
-				clickOutsideToClose: false,
-                  scope: $scope,        
-                  preserveScope: true,           
-                  template: '',
-                  controller: function DialogController($scope, $mdDialog) {
-                     $scope.closeDialog = function() {
-                        $mdDialog.hide();
-                     };
-                  };
-               } */
 
+			function goToState(id) {
+				$state.go('kampdetail', {
+					'kampId' : id
+				});
+			}
+
+			kampen.goToState = goToState;
 			kampen.deleteKamp = deleteKamp;
+			kampen.medewerkerToewijzen = medewerkerToewijzen;
 		}
 	]);

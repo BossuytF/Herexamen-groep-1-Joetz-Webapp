@@ -1,8 +1,6 @@
-<div class="col-md-2">
-</div>
-<div class="col-md-8" id="background">
+<div class="col-md-8 col-md-offset-2" id="background">
     <h2>Nieuwe Kamp</h2>
-    <form class="form-horizontal" name="form" ng-submit="nieuwKamp.kamp()" role="form">
+    <form class="form-horizontal" name="form" ng-submit="nieuwKamp.submitKamp()" role="form">
         <fieldset>
     <div class="alert alert-danger" ng-show="nieuwKamp.error">
     {{nieuwKamp.error}}
@@ -56,33 +54,9 @@
     </md-input-container>
 
     <md-input-container class="md-block">
-    <label>Formule</label>
-    <input required type="text" name="formule" ng-model="nieuwKamp.kamp.formule" id="inputFormule" />
-    <div ng-messages="form.formule.$error" ng-show="form.formule.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
-
-    <md-input-container class="md-block">
     <label>Basisprijs</label>
-    <input required type="text" name="basisPrijs" ng-model="nieuwKamp.kamp.basisPrijs" id="inputBasisPrijs" />
+    <input required type="number" name="basisPrijs" ng-model="nieuwKamp.kamp.prijs" id="inputBasisPrijs" />
     <div ng-messages="form.basisPrijs.$error" ng-show="form.basisPrijs.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
-
-    <md-input-container class="md-block">
-    <label>Bondprijs</label>
-    <input required type="text" name="bondPrijs" ng-model="nieuwKamp.kamp.bondPrijs" id="inputBondPrijs" />
-    <div ng-messages="form.bondPrijs.$error" ng-show="form.bondPrijs.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
-   
-    <md-input-container class="md-block">
-    <label>Kortingen</label>
-    <input required type="text" name="kortingen" ng-model="nieuwKamp.kamp.kortingen" id="inputKortingen" />
-    <div ng-messages="form.kortingen.$error" ng-show="form.kortingen.$touched">
         <div ng-messages-include="messages.html"></div>
     </div>
     </md-input-container>
@@ -97,7 +71,7 @@
 
     <md-input-container class="md-block">
     <label>Maximum leeftijd</label>
-    <input required type="text" name="maxLeeftijd" ng-model="nieuwKamp.kamp.maxLeeftijd" id="inputMaxLeeftijd" />
+    <input required type="number" name="maxLeeftijd" ng-model="nieuwKamp.kamp.maxLeeftijd" id="inputMaxLeeftijd" />
     <div ng-messages="form.maxLeeftijd.$error" ng-show="form.maxLeeftijd.$touched">
         <div ng-messages-include="messages.html"></div>
     </div>
@@ -105,7 +79,7 @@
 
     <md-input-container class="md-block">
     <label>Minimum leeftijd</label>
-    <input required type="text" name="minLeeftijd" ng-model="nieuwKamp.kamp.minLeeftijd" id="inputMinLeeftijd" />
+    <input required type="number" name="minLeeftijd" ng-model="nieuwKamp.kamp.minLeeftijd" id="inputMinLeeftijd" />
     <div ng-messages="form.minLeeftijd.$error" ng-show="form.minLeeftijd.$touched">
         <div ng-messages-include="messages.html"></div>
     </div>
@@ -113,7 +87,7 @@
 
     <md-input-container class="md-block">
     <label>Maximum Deelnemers</label>
-    <input required type="text" name="maxDeelnemers" ng-model="nieuwKamp.kamp.maxDeelnemers" id="inputMaxDeelnemers" />
+    <input required type="number" name="maxDeelnemers" ng-model="nieuwKamp.kamp.maxDeelnemers" id="inputMaxDeelnemers" />
     <div ng-messages="form.maxDeelnemers.$error" ng-show="form.maxDeelnemers.$touched">
         <div ng-messages-include="messages.html"></div>
     </div>
@@ -137,49 +111,50 @@
 
     <md-input-container class="md-block">
     <label>Straat</label>
-    <input required type="text" name="straat" ng-model="nieuwKamp.kamp.adres.straat" id="inputStraat" />
-    <div ng-messages="form.adres.straat.$error" ng-show="form.adres.straat.$touched">
+    <input required type="text" name="straat" ng-model="nieuwKamp.kamp.straat" id="inputStraat" />
+    <div ng-messages="form.straat.$error" ng-show="form.straat.$touched">
         <div ng-messages-include="messages.html"></div>
     </div>
     </md-input-container>
 
     <md-input-container class="md-block">
     <label>Huisnummer</label>
-    <input required type="text" name="huisnummer" ng-model="nieuwKamp.kamp.adres.huisnummer" id="inputHuisNummer" />
-    <div ng-messages="form.adres.huisnummer.$error" ng-show="form.adres.huisnummer.$touched">
+    <input required type="number" name="huisnummer" ng-model="nieuwKamp.kamp.huisnummer" id="inputHuisNummer" />
+    <div ng-messages="form.huisnummer.$error" ng-show="form.huisnummer.$touched">
         <div ng-messages-include="messages.html"></div>
     </div>
     </md-input-container>
 
     <md-input-container class="md-block">
     <label>Bus</label>
-    <input required type="text" name="bus" ng-model="nieuwKamp.kamp.adres.bus" id="inputBus" />
-    <div ng-messages="form.adres.bus.$error" ng-show="form.adres.bus.$touched">
+    <input type="text" name="bus" ng-model="nieuwKamp.kamp.bus" id="inputBus" />
+    <div ng-messages="form.us.$error" ng-show="form.bus.$touched">
         <div ng-messages-include="messages.html"></div>
     </div>
     </md-input-container>
 
     <md-input-container class="md-block">
     <label>Gemeente</label>
-    <input required type="text" name="gemeente" ng-model="nieuwKamp.kamp.adres.gemeente" id="inputGemeente" />
-    <div ng-messages="form.adres.gemeente.$error" ng-show="form.adres.gemeente.$touched">
+    <input required type="text" name="gemeente" ng-model="nieuwKamp.kamp.gemeente" id="inputGemeente" />
+    <div ng-messages="form.gemeente.$error" ng-show="form.gemeente.$touched">
         <div ng-messages-include="messages.html"></div>
     </div>
     </md-input-container>
 
     <md-input-container class="md-block">
     <label>Postcode</label>
-    <input required type="text" name="postcode" ng-model="nieuwKamp.kamp.adres.postcode" id="inputPostcode" />
-    <div ng-messages="form.adres.postcode.$error" ng-show="form.adres.postcode.$touched">
+    <input required type="number" name="postcode" ng-model="nieuwKamp.kamp.postcode" id="inputPostcode" />
+    <div ng-messages="form.postcode.$error" ng-show="form.postcode.$touched">
         <div ng-messages-include="messages.html"></div>
     </div>
     </md-input-container>
-    
     </fieldset>
+	
         <div class="col-md-10 row-button">
             <div class="buttons-right">
                 <a ng-href="#/registreer">Annuleren</a>  
-                <md-button class="md-raised md-primary" type="submit" ng-diabled="form.$invalid">Registreer </md-button>
+                <md-button class="md-raised md-primary" type="submit" ng-diabled="form.$invalid">Opslaan </md-button>
+				<md-button class="md-raised md-primary" ng-click="nieuwKamp.invullen()">Opslaan </md-button>
             </div>
         </div>
     </form>

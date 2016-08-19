@@ -6,30 +6,30 @@
        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6" md-cols="12"
         md-row-height-gt-md="1:1" md-row-height="4:3"
         md-gutter="8px" md-gutter-gt-sm="4px" >
-			<md-grid-tile ng-repeat="kamp in kampen.kampenLijst" ui-sref="kampdetail({kampId = kamp.id})"
+			<md-grid-tile ng-repeat="kamp in kampen.kampenLijst"
                   md-rowspan="3"
                   md-colspan="2"
                   md-colspan-sm="1"
                   md-colspan-xs="1"
 				  md-rowspan-sm="2"
 				  md-rowspan-sm="1">
-				<md-card style="height: 100%;">
-					<img ng-src="/images/plezier.jpg" class="md-card-image" alt="Washed Out">
-						<md-card-title >
+				<md-card >
+					<img ng-click="kampen.goToState(kamp.id)" ng-src="kamp.sfeerfoto" class="md-card-image" alt="Washed Out">
+						<md-card-title ng-click="kampen.goToState(kamp.id)">
 							<md-card-title-text>
 								<span class="md-headline">{{kamp.naam}}</span>
 							</md-card-title-text>
 						</md-card-title>	
-						<md-card-content>
-							<p>Periode: {{kamp.startDatum | date}} tot {{kamp.eindDatum | date}}
-							Locatie: {{kamp.adres.gemeente}}
-							Prijs: {{kamp.prijs}} &#8364
-							Leeftijd:{{kamp.minLeeftijd}}-{{kamp.maxLeeftijd}} jaar</p>
+						<md-card-content ng-click="kampen.goToState(kamp.id)">
+							<p>Periode: {{kamp.startDatum | date}} tot {{kamp.eindDatum | date}}</p>
+							<p>Locatie: {{kamp.adres.gemeente}}</p>
+							<p>Prijs: {{kamp.prijs}} &#8364 </p>
+							<p>Leeftijd:{{kamp.minLeeftijd}}-{{kamp.maxLeeftijd}} jaar</p>
 						</md-card-content>	
 						<md-card-actions layout="row" layout-align="end center">
-							<md-button ng-click="kampen.deleteKamp({{kamp.id}})" ng-show="user.role == 'beheerder'">Verwijderen</md-button>
-							<md-button ng-show="user.role == 'beheerder'" ui-sref="editKamp({kampId: kamp.id})">Aanpassen</md-button>
-							<md-button ng-show="user.role == 'beheerder'" ng-click="kampen.medewerkerToewijzen(kamp.id)">Medewerkers toewijzen</md-button>
+							<md-button ng-click="kampen.deleteKamp(kamp.id)">Verwijderen</md-button>
+							<md-button  ui-sref="editKamp({kampId: kamp.id})">Aanpassen</md-button>
+							<md-button  ng-click="kampen.medewerkerToewijzen(kamp.id)">Medewerkers toewijzen</md-button>
 						</md-card-actions>						
 					</md-card>
 				</md-grid-tile>

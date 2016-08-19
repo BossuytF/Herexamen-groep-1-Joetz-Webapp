@@ -39,12 +39,20 @@ angular.module('webappApp')
 			function remove(id) {
 				return $http.delete (baseUrl + 'kamp/' + id);
 			}
+			
+			function addMedewerker(id, email){
+				return $http({
+					method : 'POST',
+					url : baseUrl + 'kamp/' + id + '/medewerkers/' + email
+				});
+			}
 
 			service.getAll = getAll;
 			service.get = get;
 			service.create = create;
 			service.update = update;
 			service.remove = remove;
+			service.addMedewerker = addMedewerker;
 
 			return service;
 		}
