@@ -34,7 +34,7 @@ angular.module('webappApp')
 					firstname : '',
 					email : '',
 					rijksregisternummer : '',
-					geboortedatum : '',
+/* 					geboortedatum : undefined, */
 					adres : {
 						straat : '',
 						huisnummer : '',
@@ -52,8 +52,8 @@ angular.module('webappApp')
 					firstname : '',
 					email : '',
 					rijksregisternummer : '',
-					geboortedatum : '',
-					adres : {
+/* 					geboortedatum :undefined,
+ */					adres : {
 						straat : '',
 						huisnummer : '',
 						gemeente : '',
@@ -135,6 +135,9 @@ angular.module('webappApp')
 			function getUser() {
 				UserService.get($rootScope.user.email).then(function (response) {
 					profiel.user = response.data;
+					profiel.user.geboortedatum = new Date(profiel.user.geboortedatum)
+/* 					profiel.user.contactpersoon1.geboortedatum = new Date(profiel.user.contactpersoon1.geboortedatum)
+					profiel.user.contactpersoon2.geboortedatum = new Date(profiel.user.contactpersoon2.geboortedatum) */
 				})
 				
 				if(profiel.user.codegerechtigde){

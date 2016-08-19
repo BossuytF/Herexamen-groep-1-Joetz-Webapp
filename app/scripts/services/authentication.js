@@ -11,11 +11,12 @@ angular.module('webappApp')
 .service('AuthenticationService', ['localStorageService', '$http', '$rootScope', 'UserService',
 		function (localStorageService, $http, $rootScope, UserService) {
 
-			var baseUrl = 'http://localhost:8085/';
+			var baseUrl = 'http://37.139.13.237:8085/';
 
 			var service = {};
 
 			var _user = {
+				id:'',
 				email : '',
 				token : '',
 				isAuth : false,
@@ -88,7 +89,9 @@ angular.module('webappApp')
 					_user.email = decodedToken.email;
 
 					getMe().then(function (response) {
+						console.log(response)
 						_user.username = response.data.username
+						_user.id = response.data.id;
 					});
 
 					$rootScope.user = _user;

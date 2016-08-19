@@ -21,7 +21,8 @@ angular
 		'LocalStorageModule',
 		'ui.router',
 		'ngMaterial',
-		'ngtweet'
+		'ngtweet',
+		'ngMap'
 	])
 .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $mdDateLocaleProvider) {
 
@@ -125,9 +126,21 @@ angular
 		controller : 'ActiviteitenCtrl',
 		controllerAs : 'activiteiten'
 	})
+	.state('activiteitendetail', {
+		url : '/:activiteitId/detail',
+		templateUrl : 'views/activiteit.detail.html',
+		controller : 'ActiviteitenDetailCtrl',
+		controllerAs : 'activiteiten',
+	})
 	.state('nieuwActiviteit', {
 		url : '/nieuwActiviteit',
-		templateUrl : 'views/nieuwactiviteit.html',
+		templateUrl : 'views/activiteit.nieuw.html',
+		controller : 'NieuwactiviteitCtrl',
+		controllerAs : 'nieuwActiviteit'
+	})
+	.state('editActiviteit', {
+		url : '/activiteit/:activiteitId/edit',
+		templateUrl : 'views/activiteit.nieuw.html',
 		controller : 'NieuwactiviteitCtrl',
 		controllerAs : 'nieuwActiviteit'
 	})
