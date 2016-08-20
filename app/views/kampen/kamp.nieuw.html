@@ -18,7 +18,7 @@
 
 						<md-input-container class="md-block">
 							<label>Omschrijving</label>
-							<textarea rows="5" style= "overflow:auto;" required type="text" name="omschrijving" ng-model="nieuwKamp.kamp.omschrijving" id="inputOmschrijving" />
+							<textarea ng-trim="false" rows="5" style= "overflow:auto;" required type="text" name="omschrijving" ng-model="nieuwKamp.kamp.omschrijving" id="inputOmschrijving" />
 							<div ng-messages="form.omschrijving.$error" ng-show="form.omschrijving.$touched">
 								<div ng-messages-include="messages.html"></div>
 							</div>

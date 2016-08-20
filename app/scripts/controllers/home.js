@@ -12,38 +12,12 @@ angular.module('webappApp')
 
 			var home = this;
 
-			var COLORS = ['red','green','blue','yellow','purple']
-			
-			home.blogs = [{
-					title : 'TEST1'
-				}, {
-					title : 'TEST2'
-				}, {
-					title : 'TEST3'
-				}, {
-					title : 'TEST3'
-				}, {
-					title : 'TEST3'
-				}, {
-					title : 'TEST3'
-				}, {
-					title : 'TEST3'
-				}, {
-					title : 'TEST3'
-				}, {
-					title : 'TEST3'
-				}
-			];
-
-			/* 			blogService.getAll().then(function (response) {
-			home.blogs = response.data.blogs
-			}) */
-			giveSpans();
-			function giveSpans() {
-				for (var i = 0; i < home.blogs.length; i++) {
-					home.blogs[i].colspan = 2;
-					home.blogs[i].rowspan = 2;
-				}
+			function getArtikels() {
+				blogService.getAll().then(function (response) {
+					home.blogs =  response.data;
+				})
 			}
+			getArtikels();
+
 		}
 	]);
