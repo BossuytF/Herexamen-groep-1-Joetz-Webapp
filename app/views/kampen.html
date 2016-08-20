@@ -1,33 +1,40 @@
-<div class="col-md-2">
+<div class="col-md-8 col-md-offset-2" flex ng-cloak id="background">
+	<p>Geboortedatum: <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker></p>
+	<p> Maximumprijs: <input flex type="number"></p>
+		<p>Periode: <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker> en <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker></p>
 </div>
-<div class="col-md-8" id="background">
-    <h2>Kampen</h2>
-    <p>geboortedatum: <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker></p>
-    <p> maximumprijs: <input flex type="number"></p>
-    <p>periode: <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker> en <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker></p>
-
-<div class="col-md-8" style="margin:10px; background-color:rgb(225,225,225);" >
-  <div class="col-md-5" >
-      <h3>Smurf's up</h3>
-      <p>periode: 16 juli 2017 tot 24 juli 2017</p>
-      <p>locatie: Desselgem</p>
-      <p>prijs: 135 &#8364</p>
-      <p>leeftijd: 3-7 jaar</p>
-</div>
-<div class="col-md-6">
-      <img ng-src="/images/plezier.jpg" class="fotokamp" alt="foto" />
-</div>
-</div>
-<div class="col-md-8" style="margin:10px;">
-  <div class="col-md-5" >
-      <h3>Smurf's up</h3>
-      <p>periode: 16 juli 2017 tot 24 juli 2017</p>
-      <p>locatie: Desselgem</p>
-      <p>prijs: 135 &#8364</p>
-      <p>leeftijd: 3-7 jaar</p>
-</div>
-<div class="col-md-6">
-      <img ng-src="/images/plezier.jpg" class="fotokamp" alt="foto" />
-</div>
-</div>
+<div class="col-md-8 col-md-offset-2" flex ng-cloak>
+	<md-grid-list
+       md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6" md-cols="12"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter="8px" md-gutter-gt-sm="4px" >
+		<md-grid-tile ng-repeat="kamp in kampen.kampenLijst"
+                  md-rowspan="3"
+                  md-colspan="2"
+                  md-colspan-sm="1"
+                  md-colspan-xs="1"
+				  md-rowspan-sm="2"
+				  md-rowspan-sm="1">
+			<md-card >
+				<img ng-click="kampen.goToState(kamp.id)" ng-src="{{kamp.sfeerfoto}}" class="md-card-image" alt="Sfeerfoto">
+					<md-card-title ng-click="kampen.goToState(kamp.id)">
+						<md-card-title-text>
+							<span class="md-headline">{{kamp.naam}}</span>
+						</md-card-title-text>
+					</md-card-title>	
+					<md-card-content ng-click="kampen.goToState(kamp.id)">
+						<p>Periode: {{kamp.startDatum | date}} tot {{kamp.eindDatum | date}}</p>
+						<p>Locatie: {{kamp.adres.gemeente}}</p>
+						<p>Prijs: {{kamp.prijs}} &#8364 </p>
+						<p>Leeftijd:{{kamp.minLeeftijd}}-{{kamp.maxLeeftijd}} jaar</p>
+					</md-card-content>	
+					<md-card-actions layout="row" layout-align="end center">
+						<md-button ng-click="kampen.deleteKamp(kamp.id)">Verwijderen</md-button>
+						<md-button  ui-sref="editKamp({kampId: kamp.id})">Aanpassen</md-button>							
+						<md-button  ng-click="kampen.medewerkerToewijzen(kamp.id)">Medewerkers</md-button>
+					</md-card-actions>						
+				</md-card>
+			</md-grid-tile>
+		</md-grid-list>
+		<md-button class="md-raised" ui-sref="nieuwKamp">Nieuw kamp</md-button>
 </div>

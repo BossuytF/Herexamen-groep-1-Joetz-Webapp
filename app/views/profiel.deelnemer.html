@@ -108,7 +108,7 @@
 
 						<md-input-container class="md-block">
 							<label>Postcode</label>
-							<input ng-readonly=profiel.edit required type="number" min="8000" max="8999" name="postcode" ng-model="profiel.user.adres.postcode" id="inputPostcode" />
+							<input ng-readonly=profiel.edit required type="number" min="1000" max="9999" name="postcode" ng-model="profiel.user.adres.postcode" id="inputPostcode" />
 							<div ng-messages="profiel.formAdres.postcode.$error" ng-show="profiel.formAdres.postcode.$touched && !profiel.edit">
 								<div ng-messages-include="messages.html"></div>
 							</div>

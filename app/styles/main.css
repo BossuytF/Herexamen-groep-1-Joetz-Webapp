@@ -150,6 +150,10 @@ md-content header{
 		background-color: transparent;
 }
 
+.whiteText{
+		color: white;
+}
+
 
 .datep-label{
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

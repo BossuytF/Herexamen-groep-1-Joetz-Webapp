@@ -30,7 +30,7 @@ angular.module('webappApp')
 							$mdToast.simple()
 							.textContent('Proficiat ' + registreer.user.voornaam + ' uw account werd succesvol aangemaakt en u werd automatisch ingelogd')
 							.position('start')
-							.capsule(true))
+							.capsule(true));
 					});
 				}, function () {
 					registreer.error = 'Er bestaat al een gebruiker met deze gegevens';
