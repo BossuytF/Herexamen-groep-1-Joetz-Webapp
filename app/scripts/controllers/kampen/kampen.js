@@ -28,6 +28,7 @@ angular.module('webappApp')
 							.textContent('Kamp werd succesvol verwijderd')
 							.position('start')
 							.capsule(true));
+							getKampen();
 					});
 				});
 			}

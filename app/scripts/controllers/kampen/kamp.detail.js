@@ -16,8 +16,11 @@ angular.module('webappApp')
 			detailkamp.kamp = {};
 
 			function getKamp() {
-				KampenService.get($stateParams.id).then(function (response) {
-					detailkamp.kamp = response.data;				
+				KampenService.get($stateParams.kampId).then(function (response) {
+					detailkamp.kamp = response.data;
+					detailkamp.kamp.locatie = response.data.adres.straat + ' ' + response.data.adres.huisnummer + ' ' + response.data.adres.gemeente;
+					detailkamp.kamp.startDatum = new Date(response.data.startDatum);
+					detailkamp.kamp.eindDatum = new Date(response.data.eindDatum);
 				});
 			}
 			getKamp();

@@ -25,7 +25,7 @@
 						</md-input-container>
 
 						<md-datepicker
-     required
+     ng-required = "nieuwKamp.edit"
         name="startDatum" 
         ng-model="nieuwKamp.kamp.startDatum" 
         md-placeholder="StartDatum" 
@@ -35,7 +35,7 @@
 						</md-datepicker>
 
 						<md-datepicker
-     required
+     ng-required = "nieuwKamp.edit"
         name="eindDatum" 
         ng-model="nieuwKamp.kamp.eindDatum" 
         md-placeholder="EindDatum" 
@@ -62,7 +62,7 @@
 							</div>
 						</md-input-container>
 
-<!-- 						<md-input-container class="md-block">
+						<!-- 						<md-input-container class="md-block">
 							<label>Inbegrepen in prijs</label>
 							<input required type="text" name="inbegrepenInPrijs" ng-model="nieuwKamp.kamp.inbegrepenInPrijs" id="inputInbegrepenInPrijs" />
 							<div ng-messages="form.inbegrepenInPrijs.$error" ng-show="form.inbegrepenInPrijs.$touched">
@@ -72,7 +72,7 @@
 
 						<md-input-container class="md-block">
 							<label>Maximum leeftijd</label>
-							<input required type="number" name="maxLeeftijd" ng-model="nieuwKamp.kamp.maxLeeftijd" id="inputMaxLeeftijd" />
+							<input required type="number" name="maxLeeftijd" ng-model="nieuwKamp.kamp.maxLeeftijd" id="inputMaxLeeftijd" max="" min="{{nieuwKamp.kamp.minLeeftijd}}"/>
 							<div ng-messages="form.maxLeeftijd.$error" ng-show="form.maxLeeftijd.$touched">
 								<div ng-messages-include="messages.html"></div>
 							</div>
@@ -80,7 +80,7 @@
 
 						<md-input-container class="md-block">
 							<label>Minimum leeftijd</label>
-							<input required type="number" name="minLeeftijd" ng-model="nieuwKamp.kamp.minLeeftijd" id="inputMinLeeftijd" />
+							<input required type="number" name="minLeeftijd" ng-model="nieuwKamp.kamp.minLeeftijd" id="inputMinLeeftijd" min="" max="{{nieuwKamp.kamp.maxLeeftijd}}"/>
 							<div ng-messages="form.minLeeftijd.$error" ng-show="form.minLeeftijd.$touched">
 								<div ng-messages-include="messages.html"></div>
 							</div>
@@ -101,20 +101,19 @@
 								<div ng-messages-include="messages.html"></div>
 							</div>
 						</md-input-container>
-						
+
 						<md-autocomplete flex
-						required
+						ng-required = "nieuwKamp.edit"
 						md-input-name = "sfeerfoto"
 						md-require-match
+						md-min-length="0"
 						ng-disabled="nieuwKamp.isDisabled"
 						md-no-cache="nieuwKamp.noCache"
 						md-selected-item="nieuwKamp.selectedItem"
-						md-search-text-change="nieuwKamp.searchTextChange(ctrl.searchText)"
 						md-search-text="nieuwKamp.searchText"
 						md-selected-item-change="nieuwKamp.selectedItemChange(item)"
 						md-items="item in nieuwKamp.querySearch(nieuwKamp.searchText)"
 						md-item-text="item.name"
-						md-min-length="0"
 						md-floating-label="Sfeerfoto"
 						md-menu-class="autocomplete-custom-template">
 							<md-item-template>
@@ -128,7 +127,7 @@
 						</md-autocomplete>
 						<img style="width:204px;height:auto;" ng-src = "{{nieuwKamp.selectedItem.url}}" ng-show="nieuwKamp.selectedItem" class="img-rounded"></img>
 
-<!-- 						<md-input-container class="md-block" hidden="true">
+						<!-- 						<md-input-container class="md-block" hidden="true">
 							<label>Sfeerfoto</label>
 							<input required type="text" name="sfeerfoto" ng-model="nieuwKamp.kamp.sfeerfoto" id="inputSfeerFoto" />
 							<div ng-messages="form.sfeerfoto.$error" ng-show="form.sfeerfoto.$touched">
@@ -180,13 +179,12 @@
 					<div class="col-md-10 row-button">
 						<div class="buttons-right">
 							<a ng-href="#/registreer">Annuleren</a>  
-							<md-button class="md-raised md-primary" type="submit" ng-diabled="form.$invalid">Opslaan </md-button>
-							<md-button class="md-raised md-primary" ng-click="nieuwKamp.invullen()">Opslaan </md-button>
+							<md-button class="md-raised md-primary" type="submit" ng-disabled="form.$invalid">Opslaan </md-button>
+							<md-button class="md-raised md-primary" ng-click="nieuwKamp.invullen()">INVULLEN </md-button>
 						</div>
 					</div>
 				</form>
-				</div>
-			</md-card>
-		</div>
+			</div>
+		</md-card>
 	</div>
-	
+</div>

@@ -12,12 +12,12 @@ angular.module('webappApp')
 		function (KampenService, $stateParams, $state, $mdToast, $mdDialog, $timeout, $q, $log) {
 			var nieuwKamp = this;
 
+			nieuwKamp.edit = true;
 			nieuwKamp.simulateQuery = false;
 			nieuwKamp.isDisabled = false;
 			nieuwKamp.repos = loadAll();
 			nieuwKamp.querySearch = querySearch;
 			nieuwKamp.selectedItemChange = selectedItemChange;
-			nieuwKamp.searchTextChange = searchTextChange;
 
 			function querySearch(query) {
 				var results = query ? nieuwKamp.repos.filter(createFilterFor(query)) : nieuwKamp.repos,
@@ -33,10 +33,6 @@ angular.module('webappApp')
 				}
 			}
 
-			function searchTextChange(text) {
-				$log.info('Text changed to ' + text);
-			}
-
 			function selectedItemChange(item) {
 				nieuwKamp.kamp.sfeerfoto = item.url;
 			}
@@ -47,8 +43,6 @@ angular.module('webappApp')
 					return (item.value.indexOf(lowercaseQuery) === 0);
 				};
 			}
-
-			nieuwKamp.dateToday = new Date();
 
 			isEdit();
 
@@ -76,6 +70,7 @@ angular.module('webappApp')
 
 			function isEdit() {
 				if ($state.includes('editKamp')) {
+					nieuwKamp.edit = false;
 					KampenService.get($stateParams.kampId).then(function (response) {
 						nieuwKamp.kamp = response.data;
 						nieuwKamp.kamp.straat = response.data.adres.straat;
@@ -83,10 +78,13 @@ angular.module('webappApp')
 						nieuwKamp.kamp.bus = response.data.adres.bus;
 						nieuwKamp.kamp.gemeente = response.data.adres.gemeente;
 						nieuwKamp.kamp.postcode = response.data.adres.postcode;
-						nieuwKamp.kamp.startDatum = new Date(response.data.startDatum)
-							nieuwKamp.kamp.eindDatum = new Date(response.data.eindDatum)
+						nieuwKamp.kamp.startDatum = new Date(response.data.startDatum);
+						nieuwKamp.kamp.eindDatum = new Date(response.data.eindDatum);
 					});
-				};
+				} else {
+					nieuwKamp.dateToday = new Date();
+				}
+
 			}
 
 			function invullen() {
@@ -119,11 +117,13 @@ angular.module('webappApp')
 					});
 				} else if ($state.includes('editKamp')) {
 					$mdDialog.show(confirm).then(function () {
-						KampenService.update(nieuwKamp.kamp, $stateParams.kampId).then(function (response) {});
-						KampenService.updateAdres(nieuwKamp.kamp, $stateParams.kampId).then(function (response) {
-							$mdToast.show(toastAanpassen);
-							$state.go('kampen')
+						KampenService.update(nieuwKamp.kamp, $stateParams.kampId).then(function (response) {
+							KampenService.updateAdres(nieuwKamp.kamp, $stateParams.kampId).then(function (response) {
+								$mdToast.show(toastAanpassen);
+								$state.go('kampen')
+							});
 						});
+
 					});
 				}
 			}
@@ -147,12 +147,6 @@ angular.module('webappApp')
 				.capsule(true);
 
 			nieuwKamp.submitKamp = submitKamp;
-
-			nieuwKamp.fotos = [{
-					name : 'BLABLABLA',
-					url : 'https://lh3.googleusercontent.com/5A_7CpFAB0CtPClxfSguoQb6MGWunsEp6lmVzHOtVlwl_NrROeQddQ07o8aTre5Mwr9Ia6OcdAm2QS_Zs0ambfwt35flpQ-VcSanV9yZzpJ1zddPurp5B7BXbDY3s-dBD-4oTqcBWFaQd7-w-tDy3JHj679alZHe7lIgXZO7IPY2dTZwxznln_XYbAJmrBBLwbQOQ6Eeu2CdNfIcqBhcqgkpEHrJhV-P_IZwCNDeDfZVcmvGfir8LHcq3blX6ENFSAflFXkEFyHHYOHsKAuesC_kGYqT1tYfTbKDm2Ejw-UeTdbOyF-pUpnFnRhkkShzLO2Jx6RpZ0trn_vO6mUcZ_3At64AeQZqxkMC2uBIFe1E8bVOItEHGM8Qehokem--2TGef5k2Ff_ruKvRUzJJMgVrSEF8GZDd5sQLLMgt5v0wyzzo93n6RORsepjNzKYdh-dJUm18lxySdPSN_q-zhjL-igiWPeO-n2wzSHbzCKC0j5Sa3iyNZNYzU5FQUZwm7ZT6QeDlLGnyhziVqKZrLSszyqmo2Qe_nwjX8BDnzsSsErm-QPixNC1UugQH1vFedGkkB258W1iDry7gHsuqCGsqx5CwQZc=w958-h719-no'
-				}
-			];
 
 			function loadAll() {
 				var repos = [{
