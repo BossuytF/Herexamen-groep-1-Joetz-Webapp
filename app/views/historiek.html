@@ -4,51 +4,35 @@
 
 <md-content>
     <md-list>
-    <md-list-item class="md-2-line" ng-click="null"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
-          <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
+    <md-list-item class="md-2-line" ng-click="null" ng-repeat="kamp in kampen"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
+          <img ng-src="{{kamp.sfeerfoto}}" class="md-avatar" alt="foto" />
           <div class="md-list-item-text" layout="column">
-          <h3>Smurf's up</h3>
-          <h4>Merelbeke 24/06/2001 </h4>
+          <h3>{{kamp.naam}}</h3>
+          <h4>{{kamp.adres.gemeente}} {{kamp.startdatum}} </h4>
           </div>
         </md-list-item>
     </md-list>
   </md-content>
 </div>
 <div class="col-md-5" id="background">
-<h2>Smurf's up</h2>
+<h2>{{kampdetail.naam}}</h2>
 <br>
-<p>Dit is een klein tekstje met wat uitleg en info over het kamp, eventueel met een klein verslagje ofzo erbij Lorem ipsum dolor sit amet, te sea commodo luptatum. Eam natum scriptorem te, mei viderer aliquam pertinax eu. Duo utinam iuvaret eu. Ne vis munere eleifend, eu consulatu reprimique cum. </p><!--uit database halen-->
+<h4>{{kampdetail.adres.gemeente}}</h4>
+<br>
+<h4>{{kampdetail.startDatum}} - {{kampdetail.eindDatum}}</h4>
+<p>{{kampdetail.omschrijving}}</p><!--het kamp daje op klikt in de scope laden-->
 <br>
 <h3>Deelnemers</h3>
-<p>17 deelnemers <br><a href="www.google.com">Bekijk alle deelnemers</a></p><!-- uit database halen & routing-->
-<br>
-<h3>Foto's</h3>
-<div layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 3px;" ng-cloak>
-<md-whiteframe class="md-whiteframe-11dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
-    <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
-  </md-whiteframe>
-<p></p>
-  <md-whiteframe class="md-whiteframe-11dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
-    <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
-  </md-whiteframe>
-<p></p>
-  <md-whiteframe class="md-whiteframe-11dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
-    <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
-  </md-whiteframe>
- 
-  <md-whiteframe class="md-whiteframe-11dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
-    <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
-  </md-whiteframe>
-  <p></p>
-  <md-whiteframe class="md-whiteframe-11dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
-    <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
-  </md-whiteframe>
-  <p></p>
-  <md-whiteframe class="md-whiteframe-11dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
-    <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
-  </md-whiteframe>
+<md-content>
+    <md-list>
+    <md-list-item class="md-2-line" ng-click="null" ng-repeat="inschrijving in kampdetail.inschrijvingen"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
+          <img ng-src="{{kampdetail.sfeerfoto}}" class="md-avatar" alt="foto" /><!-- als ze geen foto hebben mss een icoon?-->
+          <div class="md-list-item-text" layout="column">
+          <h3>{{inschrijving.user.username}}</h3>
+          <h4>{{inschrijving.user.firstname}} {{inschrijving.user.lastname}}</h4>
+          </div>
+        </md-list-item>
+    </md-list>
+  </md-content>
 
-</div><!-- uit database halen & moet nog clickable worden om te vergroten-->
-
-<p><br><a href="www.google.com">Bekijk alle foto's</a></p><!-- uit database halen & routing-->
 </div>
