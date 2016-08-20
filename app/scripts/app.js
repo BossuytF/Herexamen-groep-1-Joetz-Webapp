@@ -22,7 +22,8 @@ angular
 		'ui.router',
 		'ngMaterial',
 		'ngtweet',
-		'ngMap'
+		'ngMap', 
+		'textAngular'
 	])
 .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $mdDateLocaleProvider) {
 

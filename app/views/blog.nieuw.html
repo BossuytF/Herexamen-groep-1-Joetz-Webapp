@@ -1,5 +1,5 @@
 <div class="row float-center">
-	<div class="col-md-4 col-md-offset-4">
+	<div class="col-md-6 col-md-offset-4">
 		<md-card>
 			<div class="col-md-12">
 				<form class="form-horizontal" name="nieuwBlog.form" ng-submit="nieuwBlog.nieuwBlogs()" role="form">
@@ -19,9 +19,10 @@
 							</div>
 						</md-input-container>
 
+						
 						<md-input-container class="md-block">
 							<label>Tekst</label>
-							<textarea style= "overflow:auto;" required ng-trim="false"  rows="5" name="tekst" ng-model="nieuwBlog.blog.tekst" id="inputTekst" type="text" />
+							<text-angular ng-model="nieuwBlog.blog.tekst" id="inputTekst" required name="tekst"></text-angular>
 							<div class="help-block" ng-messages="form.tekst.$error" ng-show="form.tekst.$touched">
 								<div ng-messages-include="messages.html"></div>
 							</div>
@@ -42,6 +43,7 @@
 							<md-button class="md-raised md-primary" type="submit" ng-disabled="form.$invalid">Opslaan </md-button>					
 						</div>
 					</div>
+					
 				</form>
 			</div>
 		</md-card>
