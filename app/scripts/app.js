@@ -83,7 +83,7 @@ angular
 		controllerAs : 'kampen'
 	})
 	.state('kampdetail', {
-		url : '/:kampId/detail',
+		url : '/kamp/:kampId/detail',
 		templateUrl : 'views/kamp.detail.html',
 		controller : 'DetailKampCtrl',
 		controllerAs : 'detailkamp'
@@ -161,7 +161,7 @@ angular
 		controllerAs : 'activiteiten'
 	})
 	.state('activiteitendetail', {
-		url : '/:activiteitId/detail',
+		url : '/activiteit/:activiteitId/detail',
 		templateUrl : 'views/activiteit.detail.html',
 		controller : 'ActiviteitenDetailCtrl',
 		controllerAs : 'activiteiten',

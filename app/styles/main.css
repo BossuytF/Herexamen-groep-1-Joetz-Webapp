@@ -166,5 +166,21 @@ html.md-default-theme, html, body.md-default-theme {
 		background-color:transparent;
 }
 
+.whiteTextRed{
+		background-color: rgb(218, 0, 47);
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #FFF;
+}
+
+a.md-button.md-default-theme.md-primary.md-raised, a.md-button.md-primary.md-raised, a.md-button.md-default-theme.md-primary.md-fab, a.md-button.md-primary.md-fab, .md-button.md-default-theme.md-primary.md-raised, .md-button.md-primary.md-raised, .md-button.md-default-theme.md-primary.md-fab, .md-button.md-primary.md-fab{
+				background-color: rgb(218, 0, 47);
+}
+
+.redTextWhite{
+		color: rgb(218, 0, 47);
+}
+
 
 
