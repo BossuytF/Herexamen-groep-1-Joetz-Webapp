@@ -1,0 +1,30 @@
+<div class="col-md-2">
+</div>
+<div class="col-md-3" id="background">
+  <h2>Inschrijvingen</h2>
+<md-content>
+    <md-list>
+    <md-list-item class="md-2-line" ng-click="null" ng-repeat="inschrijving in inschrijvingen"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
+          <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
+          <div class="md-list-item-text" layout="column">
+          <h3>{{inschrijving.user.username}}</h3>
+          <h4>Goedgekeurd :{{inschrijving.goedgekeurd}}</h4>
+          </div>
+        </md-list-item>
+    </md-list>
+  </md-content>
+</div>
+<div class="col-md-5" id="background">
+  <h2>Details</h2>
+  <h3>Gegevens lid</h3>
+  <p>naam : {{inschrijvingdetail.user.firstname}} {{inschrijvingdetail.user.lastname}}</p>
+  <p>adres : {{inschrijvingdetail.user.adres.straat}} {{inschrijvingdetail.user.adres.huisnummer}}  {{inschrijvingdetail.user.adres.postcode}}  {{inschrijvingdetail.user.adres.gemeente}} </p>
+  <!-- staat niet echt vermeld welke gegevens allemaal dus steek gewoon al de gegevens dat een kind heeft erin-->
+  <h3>Kampgegevens</h3>
+  <p>naam : {{inschrijvingdetail.kamp.naam}}</p>
+  <p>adres : {{inschrijvingdetail.kamp.adres.straat}} {{inschrijvingdetail.kamp.adres.huisnummer}}  {{inschrijvingdetail.kamp.adres.postcode}}  {{inschrijvingdetail.kamp.adres.gemeente}} </p>
+  <h3>Status inschrijving</h3>
+  <p>{{inschrijvingdetail.goedgekeurd}}</p>
+  <md-button class="md-raised">Accepteer inschrijving</md-button>
+  <md-button class="md-raised">Weiger inschrijving</md-button><!-- knoppen nog doen werken-->
+</div>
