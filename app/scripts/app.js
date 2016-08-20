@@ -25,6 +25,7 @@ angular
 	])
 .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $mdDateLocaleProvider) {
 
+
 	$mdDateLocaleProvider.formatDate = function (date) {
 		return moment(date).format('DD/MM/YYYY');
 	};

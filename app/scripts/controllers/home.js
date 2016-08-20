@@ -11,9 +11,9 @@ angular.module('webappApp')
 .controller('HomeCtrl', ['BlogService', function (BlogService) {
 
 			var home = this;
-			
+
 			BlogService.getAll().then(function (response) {
 				home.blogs = response.data;
 			});
-		}
+
 	]);

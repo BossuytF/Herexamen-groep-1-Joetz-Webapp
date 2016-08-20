@@ -41,7 +41,6 @@ angular.module('webappApp')
 				.cancel('Nee');
 
 			function medewerkerToewijzen(id) {
-				console.log(id)
 				$mdDialog.show({
 					clickOutsideToClose : true,
 					scope : $scope,

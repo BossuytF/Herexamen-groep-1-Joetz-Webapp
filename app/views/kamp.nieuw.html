@@ -1,162 +1,192 @@
-<div class="col-md-8 col-md-offset-2" id="background">
-    <h2>Nieuwe Kamp</h2>
-    <form class="form-horizontal" name="form" ng-submit="nieuwKamp.submitKamp()" role="form">
-        <fieldset>
-    <div class="alert alert-danger" ng-show="nieuwKamp.error">
+<div class="row float-center">
+	<div class="col-md-6 col-md-offset-3">
+		<md-card>
+			<div class="col-md-12">
+				<legend>Nieuw Kamp</legend>
+				<form class="form-horizontal" name="form" ng-submit="nieuwKamp.submitKamp()" role="form">
+					<fieldset>
+						<div class="alert alert-danger" ng-show="nieuwKamp.error">
     {{nieuwKamp.error}}
-    </div>
-    <md-input-container class="md-block">
-    <label>Naam</label>
-    <input required type="text" name="naam" ng-model="nieuwKamp.kamp.naam" id="inputNaam" />
-    <div ng-messages="form.naam.$error" ng-show="form.naam.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
+						</div>
+						<md-input-container class="md-block">
+							<label>Naam</label>
+							<input required type="text" name="naam" ng-model="nieuwKamp.kamp.naam" id="inputNaam" />
+							<div ng-messages="form.naam.$error" ng-show="form.naam.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-    <md-input-container class="md-block">
-    <label>Omschrijving</label>
-    <input required type="text" name="omschrijving" ng-model="nieuwKamp.kamp.omschrijving" id="inputOmschrijving" />
-    <div ng-messages="form.omschrijving.$error" ng-show="form.omschrijving.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
+						<md-input-container class="md-block">
+							<label>Omschrijving</label>
+							<textarea rows="5" style= "overflow:auto;" required type="text" name="omschrijving" ng-model="nieuwKamp.kamp.omschrijving" id="inputOmschrijving" />
+							<div ng-messages="form.omschrijving.$error" ng-show="form.omschrijving.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-    <md-datepicker
+						<md-datepicker
      required
         name="startDatum" 
         ng-model="nieuwKamp.kamp.startDatum" 
         md-placeholder="StartDatum" 
-        md-min-date="profiel.dateToday"
+        md-min-date="nieuwKamp.dateToday"
+		md-max-date= "nieuwKamp.kamp.eindDatum"
         md-open-on-focus>
-    </md-datepicker>
-    <div ng-messages="form.startDatum.$error" ng-show="form.startDatum.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
+						</md-datepicker>
 
-    <md-datepicker
+						<md-datepicker
      required
         name="eindDatum" 
         ng-model="nieuwKamp.kamp.eindDatum" 
         md-placeholder="EindDatum" 
-        md-min-date="profiel.dateToday"
+        md-min-date="nieuwKamp.kamp.startDatum"
         md-open-on-focus>
-    </md-datepicker>
-    <div ng-messages="form.eindDatum.$error" ng-show="form.eindDatum.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
+						</md-datepicker>
+						<div class='validation-messages' ng-messages="form.eindDatum.$error || form.startDatum.$error" ng-show="form.eindDatum.$touched || form.startDatum.$touched">
+							<div ng-messages-include="messages.html"></div>
+						</div>
 
-    <md-input-container class="md-block">
-    <label>Vervoer</label>
-    <input required type="text" name="vervoer" ng-model="nieuwKamp.kamp.vervoer" id="inputVervoer" />
-    <div ng-messages="form.vervoer.$error" ng-show="form.vervoer.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
+						<md-input-container class="md-block">
+							<label>Vervoer</label>
+							<input required type="text" name="vervoer" ng-model="nieuwKamp.kamp.vervoer" id="inputVervoer" />
+							<div ng-messages="form.vervoer.$error" ng-show="form.vervoer.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-    <md-input-container class="md-block">
-    <label>Basisprijs</label>
-    <input required type="number" name="basisPrijs" ng-model="nieuwKamp.kamp.prijs" id="inputBasisPrijs" />
-    <div ng-messages="form.basisPrijs.$error" ng-show="form.basisPrijs.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
+						<md-input-container class="md-block">
+							<label>Basisprijs</label>
+							<input required type="number" name="basisPrijs" ng-model="nieuwKamp.kamp.prijs" id="inputBasisPrijs" />
+							<div ng-messages="form.basisPrijs.$error" ng-show="form.basisPrijs.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-    <md-input-container class="md-block">
-    <label>Inbegrepen in prijs</label>
-    <input required type="text" name="inbegrepenInPrijs" ng-model="nieuwKamp.kamp.inbegrepenInPrijs" id="inputInbegrepenInPrijs" />
-    <div ng-messages="form.inbegrepenInPrijs.$error" ng-show="form.inbegrepenInPrijs.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
+<!-- 						<md-input-container class="md-block">
+							<label>Inbegrepen in prijs</label>
+							<input required type="text" name="inbegrepenInPrijs" ng-model="nieuwKamp.kamp.inbegrepenInPrijs" id="inputInbegrepenInPrijs" />
+							<div ng-messages="form.inbegrepenInPrijs.$error" ng-show="form.inbegrepenInPrijs.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container> -->
 
-    <md-input-container class="md-block">
-    <label>Maximum leeftijd</label>
-    <input required type="number" name="maxLeeftijd" ng-model="nieuwKamp.kamp.maxLeeftijd" id="inputMaxLeeftijd" />
-    <div ng-messages="form.maxLeeftijd.$error" ng-show="form.maxLeeftijd.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
+						<md-input-container class="md-block">
+							<label>Maximum leeftijd</label>
+							<input required type="number" name="maxLeeftijd" ng-model="nieuwKamp.kamp.maxLeeftijd" id="inputMaxLeeftijd" />
+							<div ng-messages="form.maxLeeftijd.$error" ng-show="form.maxLeeftijd.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-    <md-input-container class="md-block">
-    <label>Minimum leeftijd</label>
-    <input required type="number" name="minLeeftijd" ng-model="nieuwKamp.kamp.minLeeftijd" id="inputMinLeeftijd" />
-    <div ng-messages="form.minLeeftijd.$error" ng-show="form.minLeeftijd.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
+						<md-input-container class="md-block">
+							<label>Minimum leeftijd</label>
+							<input required type="number" name="minLeeftijd" ng-model="nieuwKamp.kamp.minLeeftijd" id="inputMinLeeftijd" />
+							<div ng-messages="form.minLeeftijd.$error" ng-show="form.minLeeftijd.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-    <md-input-container class="md-block">
-    <label>Maximum Deelnemers</label>
-    <input required type="number" name="maxDeelnemers" ng-model="nieuwKamp.kamp.maxDeelnemers" id="inputMaxDeelnemers" />
-    <div ng-messages="form.maxDeelnemers.$error" ng-show="form.maxDeelnemers.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
+						<md-input-container class="md-block">
+							<label>Maximum Deelnemers</label>
+							<input required type="number" name="maxDeelnemers" ng-model="nieuwKamp.kamp.maxDeelnemers" id="inputMaxDeelnemers" />
+							<div ng-messages="form.maxDeelnemers.$error" ng-show="form.maxDeelnemers.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-    <md-input-container class="md-block">
-    <label>Contact</label>
-    <input required type="text" name="contact" ng-model="nieuwKamp.kamp.contact" id="inputContact" />
-    <div ng-messages="form.contact.$error" ng-show="form.contact.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
+						<md-input-container class="md-block">
+							<label>Contact</label>
+							<input required type="text" name="contact" ng-model="nieuwKamp.kamp.contact" id="inputContact" />
+							<div ng-messages="form.contact.$error" ng-show="form.contact.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
+						
+						<md-autocomplete flex
+						required
+						md-input-name = "sfeerfoto"
+						md-require-match
+						ng-disabled="nieuwKamp.isDisabled"
+						md-no-cache="nieuwKamp.noCache"
+						md-selected-item="nieuwKamp.selectedItem"
+						md-search-text-change="nieuwKamp.searchTextChange(ctrl.searchText)"
+						md-search-text="nieuwKamp.searchText"
+						md-selected-item-change="nieuwKamp.selectedItemChange(item)"
+						md-items="item in nieuwKamp.querySearch(nieuwKamp.searchText)"
+						md-item-text="item.name"
+						md-min-length="0"
+						md-floating-label="Sfeerfoto"
+						md-menu-class="autocomplete-custom-template">
+							<md-item-template>
+								<span class="item-title">
+									<span> <img ng-src="{{item.url}}" width="70"></img>{{item.name}} </span>
+								</span>
+							</md-item-template>
+							<div ng-messages="form.sfeerfoto.$error" ng-show="form.sfeerfoto.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-autocomplete>
+						<img style="width:204px;height:auto;" ng-src = "{{nieuwKamp.selectedItem.url}}" ng-show="nieuwKamp.selectedItem" class="img-rounded"></img>
 
-    <md-input-container class="md-block">
-    <label>Sfeerfoto</label>
-    <input required type="text" name="sfeerfoto" ng-model="nieuwKamp.kamp.sfeerfoto" id="inputSfeerFoto" />
-    <div ng-messages="form.sfeerfoto.$error" ng-show="form.sfeerfoto.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
+<!-- 						<md-input-container class="md-block" hidden="true">
+							<label>Sfeerfoto</label>
+							<input required type="text" name="sfeerfoto" ng-model="nieuwKamp.kamp.sfeerfoto" id="inputSfeerFoto" />
+							<div ng-messages="form.sfeerfoto.$error" ng-show="form.sfeerfoto.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container> -->
 
-    <md-input-container class="md-block">
-    <label>Straat</label>
-    <input required type="text" name="straat" ng-model="nieuwKamp.kamp.straat" id="inputStraat" />
-    <div ng-messages="form.straat.$error" ng-show="form.straat.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
+						<md-input-container class="md-block">
+							<label>Straat</label>
+							<input required type="text" name="straat" ng-model="nieuwKamp.kamp.straat" id="inputStraat" />
+							<div ng-messages="form.straat.$error" ng-show="form.straat.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-    <md-input-container class="md-block">
-    <label>Huisnummer</label>
-    <input required type="number" name="huisnummer" ng-model="nieuwKamp.kamp.huisnummer" id="inputHuisNummer" />
-    <div ng-messages="form.huisnummer.$error" ng-show="form.huisnummer.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
+						<md-input-container class="md-block">
+							<label>Huisnummer</label>
+							<input required type="number" name="huisnummer" ng-model="nieuwKamp.kamp.huisnummer" id="inputHuisNummer" />
+							<div ng-messages="form.huisnummer.$error" ng-show="form.huisnummer.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-    <md-input-container class="md-block">
-    <label>Bus</label>
-    <input type="text" name="bus" ng-model="nieuwKamp.kamp.bus" id="inputBus" />
-    <div ng-messages="form.us.$error" ng-show="form.bus.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
+						<md-input-container class="md-block">
+							<label>Bus</label>
+							<input type="text" name="bus" ng-model="nieuwKamp.kamp.bus" id="inputBus" />
+							<div ng-messages="form.us.$error" ng-show="form.bus.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-    <md-input-container class="md-block">
-    <label>Gemeente</label>
-    <input required type="text" name="gemeente" ng-model="nieuwKamp.kamp.gemeente" id="inputGemeente" />
-    <div ng-messages="form.gemeente.$error" ng-show="form.gemeente.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
+						<md-input-container class="md-block">
+							<label>Gemeente</label>
+							<input required type="text" name="gemeente" ng-model="nieuwKamp.kamp.gemeente" id="inputGemeente" />
+							<div ng-messages="form.gemeente.$error" ng-show="form.gemeente.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
 
-    <md-input-container class="md-block">
-    <label>Postcode</label>
-    <input required type="number" name="postcode" ng-model="nieuwKamp.kamp.postcode" id="inputPostcode" />
-    <div ng-messages="form.postcode.$error" ng-show="form.postcode.$touched">
-        <div ng-messages-include="messages.html"></div>
-    </div>
-    </md-input-container>
-    </fieldset>
+						<md-input-container class="md-block">
+							<label>Postcode</label>
+							<input required type="number" name="postcode" ng-model="nieuwKamp.kamp.postcode" id="inputPostcode" />
+							<div ng-messages="form.postcode.$error" ng-show="form.postcode.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
+					</fieldset>
+
+					<div class="col-md-10 row-button">
+						<div class="buttons-right">
+							<a ng-href="#/registreer">Annuleren</a>  
+							<md-button class="md-raised md-primary" type="submit" ng-diabled="form.$invalid">Opslaan </md-button>
+							<md-button class="md-raised md-primary" ng-click="nieuwKamp.invullen()">Opslaan </md-button>
+						</div>
+					</div>
+				</form>
+				</div>
+			</md-card>
+		</div>
+	</div>
 	
-        <div class="col-md-10 row-button">
-            <div class="buttons-right">
-                <a ng-href="#/registreer">Annuleren</a>  
-                <md-button class="md-raised md-primary" type="submit" ng-diabled="form.$invalid">Opslaan </md-button>
-				<md-button class="md-raised md-primary" ng-click="nieuwKamp.invullen()">Opslaan </md-button>
-            </div>
-        </div>
-    </form>
-
-</div>

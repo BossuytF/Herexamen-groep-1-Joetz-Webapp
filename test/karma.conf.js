@@ -40,6 +40,7 @@ module.exports = function(config) {
       'bower_components/ng-flow/dist/ng-flow.js',
       'bower_components/ngtweet/dist/ngtweet.js',
       'bower_components/moment/moment.js',
+      'bower_components/angular-google-picker/dist/google-picker.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

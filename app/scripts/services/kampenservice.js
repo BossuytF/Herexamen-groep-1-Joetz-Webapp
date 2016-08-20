@@ -39,11 +39,26 @@ angular.module('webappApp')
 			function remove(id) {
 				return $http.delete (baseUrl + 'kamp/' + id);
 			}
-			
-			function addMedewerker(id, email){
+
+			function addMedewerker(id, email) {
 				return $http({
 					method : 'POST',
 					url : baseUrl + 'kamp/' + id + '/medewerkers/' + email
+				});
+			}
+
+			function updateAdres(kamp, id) {
+				return $http({
+					method : 'PUT',
+					url : baseUrl + 'kamp/' + id + '/adres',
+					data : {
+						naamgebouw: kamp.naamgebouw, 
+						straat: kamp.straat,
+						huisnummer: kamp.huisnummer,
+						bus: kamp.bus,
+						gemeente: kamp.gemeente, 
+						postcode: kamp.postcode
+					}
 				});
 			}
 
@@ -53,6 +68,7 @@ angular.module('webappApp')
 			service.update = update;
 			service.remove = remove;
 			service.addMedewerker = addMedewerker;
+			service.updateAdres = updateAdres;
 
 			return service;
 		}

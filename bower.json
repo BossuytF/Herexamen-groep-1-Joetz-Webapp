@@ -19,7 +19,9 @@
     "angular-material": "^1.0.9",
     "ng-flow": "~2",
     "ngtweet": "^0.6.1",
-    "moment": "^2.14.1"
+    "moment": "^2.14.1",
+    "angular-picasa-album": "angular-google-picasa-gallery#^0.0.4",
+    "angular-google-picker": "^0.2.2"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
