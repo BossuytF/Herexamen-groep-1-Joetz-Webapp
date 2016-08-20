@@ -50,13 +50,19 @@ angular
 		controllerAs : 'home'
 	})
 	.state('detailblog', {
-		url : '/blog/:detailId',
+		url : '/blog/:blogId',
 		templateUrl : 'views/blog.detail.html',
-		controller : function (BlogService, $stateParams, $scope) {
-			BlogService.get($stateParams.blogId).then(function (response) {
+		controller : function (blogService, $stateParams, $scope) {
+			blogService.get($stateParams.blogId).then(function (response) {
 				$scope.blog = response.data;
 			});
 		}
+	})
+	.state('nieuwBlog', {
+		url : '/nieuw/blog',
+		templateUrl : 'views/blog.nieuw.html',
+		controller : 'NieuwBlogCtrl',
+		controllerAs: 'nieuwBlog'
 	})
 	.state('about', {
 		url : '/about',
@@ -78,49 +84,49 @@ angular
 	})
 	.state('kampen', {
 		url : '/kampen',
-		templateUrl : 'views/kampen.html',
+		templateUrl : 'views/kampen/kampen.html',
 		controller : 'KampenCtrl',
 		controllerAs : 'kampen'
 	})
 	.state('kampdetail', {
 		url : '/kamp/:kampId/detail',
-		templateUrl : 'views/kamp.detail.html',
+		templateUrl : 'views/kampen/kamp.detail.html',
 		controller : 'DetailKampCtrl',
 		controllerAs : 'detailkamp'
 	})
 	.state('nieuwKamp', {
 		url : '/kamp/nieuw',
-		templateUrl : 'views/kamp.nieuw.html',
+		templateUrl : 'views/kampen/kamp.nieuw.html',
 		controller : 'NieuwkampCtrl',
 		controllerAs : 'nieuwKamp',
 	})
 	.state('editKamp', {
 		url : '/kamp/:kampId/edit',
-		templateUrl : 'views/kamp.nieuw.html',
+		templateUrl : 'views/kampen/kamp.nieuw.html',
 		controller : 'NieuwkampCtrl',
 		controllerAs : 'nieuwKamp'
 	})
 	.state('profiel', {
 		url : '/profiel',
-		templateUrl : 'views/profiel.html',
+		templateUrl : 'views/profiel/profiel.html',
 		controller : 'ProfielCtrl',
 		controllerAs : 'profiel'
 	})
 	.state('profiel.deelnemer', {
 		url : '/deelnemer',
-		templateUrl : 'views/profiel.deelnemer.html',
+		templateUrl : 'views/profiel/profiel.deelnemer.html',
 		controller : 'ProfielCtrl',
 		controllerAs : 'profiel'
 	})
 	.state('profiel.ouders', {
 		url : '/ouders',
-		templateUrl : 'views/profiel.ouders.html',
+		templateUrl : 'views/profiel/profiel.ouders.html',
 		controller : 'ProfielCtrl',
 		controllerAs : 'profiel'
 	})
 	.state('profiel.contactpersoon', {
 		url : '/contactpersoon',
-		templateUrl : 'views/profiel.contactpersoon.html',
+		templateUrl : 'views/profiel/profiel.contactpersoon.html',
 		controller : 'ProfielCtrl',
 		controllerAs : 'profiel'
 	})
@@ -132,7 +138,7 @@ angular
 	})
 	.state('profiel.wachtwoord', {
 		url : '/wachtwoord',
-		templateUrl : 'views/profiel.wachtwoord.html',
+		templateUrl : 'views/profiel/profiel.wachtwoord.html',
 		controller : 'ProfielCtrl',
 		controllerAs : 'profiel'
 	})
@@ -156,25 +162,25 @@ angular
 	})
 	.state('activiteiten', {
 		url : '/activiteiten',
-		templateUrl : 'views/activiteiten.html',
+		templateUrl : 'views/activiteiten/activiteiten.html',
 		controller : 'ActiviteitenCtrl',
 		controllerAs : 'activiteiten'
 	})
 	.state('activiteitendetail', {
 		url : '/activiteit/:activiteitId/detail',
-		templateUrl : 'views/activiteit.detail.html',
+		templateUrl : 'views/activiteiten/activiteit.detail.html',
 		controller : 'ActiviteitenDetailCtrl',
 		controllerAs : 'activiteiten',
 	})
 	.state('nieuwActiviteit', {
 		url : '/nieuwActiviteit',
-		templateUrl : 'views/activiteit.nieuw.html',
+		templateUrl : 'views/activiteiten/activiteit.nieuw.html',
 		controller : 'NieuwactiviteitCtrl',
 		controllerAs : 'nieuwActiviteit'
 	})
 	.state('editActiviteit', {
 		url : '/activiteit/:activiteitId/edit',
-		templateUrl : 'views/activiteit.nieuw.html',
+		templateUrl : 'views/activiteiten/activiteit.nieuw.html',
 		controller : 'NieuwactiviteitCtrl',
 		controllerAs : 'nieuwActiviteit'
 	})

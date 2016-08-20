@@ -1,0 +1,49 @@
+<div class="row float-center">
+	<div class="col-md-4 col-md-offset-4">
+		<md-card>
+			<div class="col-md-12">
+				<form class="form-horizontal" name="nieuwBlog.form" ng-submit="nieuwBlog.nieuwBlogs()" role="form">
+
+					<fieldset>
+						<md-card-header class="col-xs-offset-1 row-top-white">Nieuw Artikel</md-card-header>
+
+						<div class="alert alert-danger" ng-show="nieuwBlog.error">
+						{{nieuwBlog.error}}
+						</div>
+
+						<md-input-container class="md-block">
+							<label>Titel</label>
+							<input required type="text" name="titel" ng-model="nieuwBlog.blog.titel" id="inputTitel" />
+							<div ng-messages="form.titel.$error" ng-show="form.titel.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
+
+						<md-input-container class="md-block">
+							<label>Tekst</label>
+							<textarea style= "overflow:auto;" required ng-trim="false"  rows="5" name="tekst" ng-model="nieuwBlog.blog.tekst" id="inputTekst" type="text" />
+							<div class="help-block" ng-messages="form.tekst.$error" ng-show="form.tekst.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>		
+
+						<md-input-container class="md-block">
+							<label>Foto</label>
+							<input required name="foto" ng-model="nieuwBlog.blog.foto" id="inputFoto" type="text" />
+							<div class="help-block" ng-messages="form.foto.$error" ng-show="form.foto.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>				
+
+					</fieldset>
+
+					<div class="col-md-10 row-button">
+						<div class="buttons-right">  
+							<md-button class="md-raised md-primary" type="submit" ng-disabled="form.$invalid">Opslaan </md-button>					
+						</div>
+					</div>
+				</form>
+			</div>
+		</md-card>
+	</div>
+</div>
