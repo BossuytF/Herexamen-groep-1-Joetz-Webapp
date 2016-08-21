@@ -8,43 +8,47 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-  .controller('InschrijvenCtrl', ['UserService', '$state', '$mdToast', 'AuthenticationService', function (UserService, $state, $mdToast, AuthenticationService) {
+.controller('InschrijvenCtrl', ['$state', '$mdToast',  '$rootScope', 
+function ($state, $mdToast, $rootScope) {
 
 			var inschrijving = this;
 
-			inschrijving.inschrijving = {
-				aansluitingsNrOuder1 : '',
-				codeGerechtigde : '',
-				aansluitingsNrOuder2 : '',
-				rijksregisterNrCont : '',/** alles met cont erbij halen van user**/
-				voornaamCont : '',
-				naamCont : '',
-				straatCont : '',
-				huisnummerCont : '',
-				busCont : '',
-				gemeenteCont : '',
-				postcodeCont : '',
-				e-mailCont : '',
-				telefoonCont : '',
-				rijksregisterNrDln : '',
-				voornaamDln : '',
-				naamDln : '',
-				straatDln : '',
-				huisnummerDln : '',
-				busDln : '',
-				gemeenteDln : '',
-				postcodeDln : '',
-				emailDln : '',
-				telefoonDln : '',
-				voornaamNood : '',
-				naamNood : '',
-				telefoonNood : '',
-				extraInfo : ''
-			};
+			inschrijving.inschr = {
+				kampId : '',
+				userId : $rootScope.user.id, 
+				extraInformatie:'', 
+				betaald: false,
+				goedgekeurd: false
+			};		
+			
+			function getUser(){
+				UserService.get($rootScope.user.id).then(function(response){
+					inschrijving.deelnemer = response.data;
+					getBetalend();
+					getContactpersoon();
+				})
+			}
+			getUser();
+			
+			function getBetalend(){
+				if (inschrijving.deelnemer.contactpersoon1.betalend){
+					inschrijving.betalend = inschrijving.deelnemer.contactpersoon1;
+				} else if (inschrijving.deelnemer.contactpersoon2.betalend){
+					inschrijving.betalend = inschrijving.deelnemer.contactpersoon2;
+				}
+			}
+			
+			function getContactpersoon(){
+				if (inschrijving.deelnemer.contactpersoon1.ouder){
+					inschrijving.contactpersoon = inschrijving.deelnemer.contactpersoon1;
+				}else if(inschrijving.deelnemer.contactpersoon2.ouder){
+					inschrijving.contactpersoon = inschrijving.deelnemer.contactpersoon2;
+				}
+			}
 
-			registreer.registreer = function () {
-				UserService.create(registreer.user).then(function () {
-					AuthenticationService.login(registreer.user.email, registreer.user.password)
+/* 			inschrijving.schrijfIn = function () {
+				UserService.create(inschrijving.inschrijvings).then(function () {
+					AuthenticationService.login()
 					.then(function (response) {
 						AuthenticationService.setCredentials(response.data.token.access, response.data.token.refresh);
 						$mdToast.show(
@@ -54,9 +58,9 @@ angular.module('webappApp')
 							.capsule(true))
 					});
 				}, function () {
-					registreer.error = 'Er bestaat al een gebruiker met deze gegevens';
+					inschrijving.error = 'Er bestaat al een gebruiker met deze gegevens';
 				});
-			};
+			} */
 
 		}
 	]);
