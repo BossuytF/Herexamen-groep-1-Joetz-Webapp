@@ -16,7 +16,7 @@ angular.module('webappApp')
 		function getAllMedewerkers(){
 			UserService.getAll().then(function(response){
 				for (var i = 0; i < response.data.length; i++){
-					if (response.data[i].role === "medewerker"){
+					if (response.data[i].role === "monitor"){
 						medewerkers.medewerkerLijst.push(response.data[i]);
 					}
 				}
