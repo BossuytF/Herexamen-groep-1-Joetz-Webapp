@@ -4,36 +4,24 @@
 
 <md-content>
     <md-list>
-    <md-list-item class="md-2-line" ng-click="selectKamp(inschrijving)" ng-repeat="inschrijving in InschrijvingsLijst"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
-          <img ng-src="{{inschrijving.kamp.sfeerfoto}}" class="md-avatar" alt="foto" />
+    <md-list-item class="md-2-line" ng-click="selectKamp(kamp)" ng-repeat="kamp in inschrijvingen.KampenLijst"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
+          <img ng-src="{{kamp.sfeerfoto}}" class="md-avatar" alt="foto" />
           <div class="md-list-item-text" layout="column">
-          <h3>{{inschrijving.kamp.naam}}</h3>
-          <h4>{{inschrijving.kamp.adres.gemeente}} {{kamp.startdatum}} </h4>
+          <h3>{{kamp.naam}}</h3>
+          <h4>{{kamp.adres.gemeente}} {{kamp.startdatum}} </h4>
           </div>
         </md-list-item>
     </md-list>
   </md-content>
 </div>
 <div class="col-md-5" id="background">
-<h2>{{kampdetail.naam}}</h2>
+<h2>{{detailkamp.naam}}</h2>
 {{test}}
 <br>
-<h4>{{kampdetail.adres.gemeente}}</h4>
+<h4>{{detailkamp.adres.gemeente}}</h4>
 <br>
-<h4>{{kampdetail.startDatum}} - {{kampdetail.eindDatum}}</h4>
-<p>{{kampdetail.omschrijving}}</p><!--het kamp daje op klikt in de scope laden-->
-<br>
-<h3>Deelnemers</h3>
-<md-content>
-    <md-list>
-    <md-list-item class="md-2-line" ng-click="null" ng-repeat="inschrijving in kampdetail.inschrijvingen"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
-          <img ng-src="{{kampdetail.sfeerfoto}}" class="md-avatar" alt="foto" /><!-- als ze geen foto hebben mss een icoon?-->
-          <div class="md-list-item-text" layout="column">
-          <h3>{{inschrijving.user.username}}</h3>
-          <h4>{{inschrijving.user.firstname}} {{inschrijving.user.lastname}}</h4>
-          </div>
-        </md-list-item>
-    </md-list>
-  </md-content>
+<h4>{{detailkamp.startDatum}} - {{detailkamp.eindDatum}}</h4>
+<p>{{detailkamp.omschrijving}}</p><!--het kamp daje op klikt in de scope laden-->
+
 
 </div>
