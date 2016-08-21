@@ -9,7 +9,7 @@
             <div class="panel-body">
                 <table class="table">
                     <thead>
-                        <tr>
+                        <tr> 
                             <th class="numbering">#</th>
                             <th>Email</th>
                             <th>Rol</th>
@@ -36,6 +36,66 @@
                                         <p class="ap">Bewerk</p><span class="glyphicon glyphicon-edit"></span>
                                     </a>
                                     <a ng-show="selectedUser == user" ng-click="updateUser(user)" class="glyphicon_with_action edit a">
+                                        <p class="ap">Sla op</p><span class="glyphicon glyphicon-floppy-saved"></span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inschrijvingen Panel -->
+    <div>
+        <h3>Inschrijvingen</h3>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <p ng-if="selectedInschrijving.email" class="pull-right">Geselecteerde inschrijving: {{selectedInschrijving.email}}</p>
+                <h2 class="panel-title">Bewerk inschrijvingen</h2>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="numbering">#</th>
+                            <th>Kamp</th>
+                            <th>Email</th>
+                            <th>Betaald</th>
+                            <th>Goedgekeurd</th>
+                            <th class="actionsKolom">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="inschrijving in inschrijvingen">
+                            <th class="numbering" scope="row">{{$index+1}}</th>
+                            <td>{{inschrijving.kamp}}</td>
+                            <td>{{inschrijving.email}}</td>
+                            <td ng-hide="selectedInschrijving == inschrijving">{{inschrijving.betaald}}</td>
+                            <td ng-show="selectedInschrijving == inschrijving">
+                                <div class="pull-right">
+                                    <select ng-model="selectedBetaald" ng-change="changeBetaald()" class="form-control">
+                                        <option ng-selected="selectedInschrijving.betaald == true">true</option>
+                                        <option ng-selected="selectedInschrijving.betaald == false">false</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td ng-hide="selectedInschrijving == inschrijving">{{inschrijving.goedgekeurd}}</td>
+                            <td ng-show="selectedInschrijving == inschrijving">
+                                <div class="pull-right">
+                                    <select ng-model="selectedGoedgekeurd" ng-change="changeGoedgekeurd()" class="form-control">
+                                        <option ng-selected="selectedInschrijving.goedgekeurd == true">true</option>
+                                        <option ng-selected="selectedInschrijving.goedgekeurd == false">false</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="actionsKolom">
+                                <div>
+                                    <a ng-hide="selectedInschrijving == inschrijving" ng-click="selectInschrijving(inschrijving)" class="glyphicon_with_action edit a">
+                                        <p class="ap">Bewerk</p><span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                    <a ng-show="selectedInschrijving == inschrijving" ng-click="updateInschrijving(inschrijving)" class="glyphicon_with_action edit a">
                                         <p class="ap">Sla op</p><span class="glyphicon glyphicon-floppy-saved"></span>
                                     </a>
                                 </div>
