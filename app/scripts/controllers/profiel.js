@@ -34,7 +34,7 @@ angular.module('webappApp')
 					firstname : '',
 					email : '',
 					rijksregisternummer : '',
-/* 					geboortedatum : undefined, */
+					/* 					geboortedatum : undefined, */
 					adres : {
 						straat : '',
 						huisnummer : '',
@@ -44,16 +44,17 @@ angular.module('webappApp')
 					},
 					telefoonnummer : '',
 					aansluitingsnr : '',
-					betalend : false,
-					ouder : false
+					betalend : "false",
+					ouder : "false"
 				},
 				contactpersoon2 : {
 					lastname : '',
 					firstname : '',
 					email : '',
 					rijksregisternummer : '',
-/* 					geboortedatum :undefined,
- */					adres : {
+					/* 					geboortedatum :undefined,
+					 */
+					adres : {
 						straat : '',
 						huisnummer : '',
 						gemeente : '',
@@ -62,8 +63,8 @@ angular.module('webappApp')
 					},
 					telefoonnummer : '',
 					aansluitingsnr : '',
-					betalend : false,
-					ouder : false
+					betalend : "false",
+					ouder : "false"
 				}
 			}
 			getUser();
@@ -136,14 +137,14 @@ angular.module('webappApp')
 				UserService.get($rootScope.user.email).then(function (response) {
 					profiel.user = response.data;
 					profiel.user.geboortedatum = new Date(profiel.user.geboortedatum)
-/* 					profiel.user.contactpersoon1.geboortedatum = new Date(profiel.user.contactpersoon1.geboortedatum)
-					profiel.user.contactpersoon2.geboortedatum = new Date(profiel.user.contactpersoon2.geboortedatum) */
+						/* 					profiel.user.contactpersoon1.geboortedatum = new Date(profiel.user.contactpersoon1.geboortedatum)
+						profiel.user.contactpersoon2.geboortedatum = new Date(profiel.user.contactpersoon2.geboortedatum) */
 				})
-				
-				if(profiel.user.codegerechtigde){
+
+				if (profiel.user.codegerechtigde) {
 					console.log(profiel.user)
 					profiel.user.lid = true;
-				}else{
+				} else {
 					profiel.user.lid = false;
 				}
 			}
@@ -170,6 +171,14 @@ angular.module('webappApp')
 			}
 
 			profiel.contactpersoon1Opslaan = function () {
+				if (!profiel.user.contactpersoon1.ouder) {
+					profiel.user.contactpersoon1.ouder = false;
+				}
+
+				if (!profiel.user.contactpersoon1.betalend) {
+					profiel.user.contactpersoon1.betalend = false;
+				}
+
 				profiel.edit = true;
 				UserService.updateContactpersoon($rootScope.user.email, profiel.user.contactpersoon1, 1).then(function (response) {
 					getUser();
@@ -177,6 +186,14 @@ angular.module('webappApp')
 			}
 
 			profiel.contactpersoon2Opslaan = function () {
+				if (!profiel.user.contactpersoon2.ouder) {
+					profiel.user.contactpersoon2.ouder = false;
+				}
+
+				if (!profiel.user.contactpersoon2.betalend) {
+					profiel.user.contactpersoon2.betalend = false;
+				}
+				
 				profiel.edit = true;
 				UserService.updateContactpersoon($rootScope.user.email, profiel.user.contactpersoon2, 2).then(function (response) {
 					getUser();

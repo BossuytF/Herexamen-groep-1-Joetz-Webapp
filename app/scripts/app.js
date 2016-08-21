@@ -140,7 +140,10 @@ angular
 		url : '/inschrijven',
 		templateUrl : 'views/inschrijven.html',
 		controller : 'InschrijvenCtrl',
-		controllerAs : 'inschrijven'
+		controllerAs : 'inschrijven', 
+		params: {
+            kampId: null
+        },
 	})
 	.state('medewerkerstoewijzen', {
 		url : '/medewerkers/toewijzen',

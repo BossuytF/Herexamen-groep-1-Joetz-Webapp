@@ -1,6 +1,7 @@
-<div class="col-md-2">
+<div class="col-md-8 col-md-offset-2" flex ng-cloak>
+<div class="alert alert-danger" ng-show="home.error">
+	{{home.error}}
 </div>
-<div class="col-md-8" flex ng-cloak>
 	<md-grid-list
        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6" md-cols="12"
         md-row-height-gt-md="1:1" md-row-height="4:3"
@@ -25,5 +26,4 @@
 	<twitter-timeline>
 		<a class="twitter-timeline" data-lang="nl" data-height="800" href="https://twitter.com/VzwJoetz">Tweets by VzwJoetz</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</twitter-timeline>
-
 </div>
