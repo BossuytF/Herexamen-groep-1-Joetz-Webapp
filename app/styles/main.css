@@ -9,12 +9,13 @@
 body {
   padding: 0;
   padding-top: 70px;
-  background-image: url("../images/body_water.jpg");
+  background-image: url("../images/body_water.jpg")!important;
   background-size: 100% 100%;
+  background-attachment: fixed;
 }
 
 html {
-    height: 100%
+    height: 100%;;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -24,6 +25,7 @@ html {
   padding-left: 15px;
   padding-right: 15px;
 }
+
 .fotokamp{
   height: 200px;
   width: 700px;
@@ -148,7 +150,37 @@ md-content header{
 		background-color: transparent;
 }
 
+.whiteText{
+		color: white;
+}
 
+
+.datep-label{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+	color:rgba(0,0,0,0.54);
+}
+
+html.md-default-theme, html, body.md-default-theme {
+		background-color:transparent;
+}
+
+.whiteTextRed{
+		background-color: rgb(218, 0, 47);
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #FFF;
+}
+
+a.md-button.md-default-theme.md-primary.md-raised, a.md-button.md-primary.md-raised, a.md-button.md-default-theme.md-primary.md-fab, a.md-button.md-primary.md-fab, .md-button.md-default-theme.md-primary.md-raised, .md-button.md-primary.md-raised, .md-button.md-default-theme.md-primary.md-fab, .md-button.md-primary.md-fab{
+				background-color: rgb(218, 0, 47);
+}
+
+.redTextWhite{
+		color: rgb(218, 0, 47);
+}
 
 
 

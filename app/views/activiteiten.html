@@ -1,37 +1,41 @@
-<div class="col-md-2">
+<div class="col-md-8 col-md-offset-2">
+		<md-grid-list
+		   md-cols="1" 
+		   md-cols-sm="2" 
+		   md-cols-md="3" 
+		   md-cols-gt-md="6" 
+		   md-cols="12"
+           md-row-height-gt-md="1:1" 
+		   md-row-height="4:3"
+           md-gutter="8px" 
+		   md-gutter-gt-sm="4px" >
+			<md-grid-tile ng-repeat="activiteit in activiteiten.activiteitenLijst" 
+                  md-rowspan="1"
+                  md-colspan="2"
+                  md-colspan-sm="1"
+                  md-colspan-xs="1">
+				<md-card style="height: 100%; width: 100%; overflow:auto;">
+					<md-card-title ng-click="activiteiten.detailAct(activiteit.id)">
+						<md-card-title-text>
+							<span class="md-headline">{{activiteit.naam}}</span>
+								<p>{{activiteit.heleDag}} </p>
+							<p>{{activiteit.locatie}},  {{activiteit.beginUur | date}}</p>
+						</md-card-title-text>
+						<md-card-title-media>
+							<div class="md-media-md card-media"><img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" /></div>
+						</md-card-title-media>
+					</md-card-title>
+					<md-card-actions layout="row" layout-align="end center">
+						<md-button ng-click="activiteiten.remove(activiteit.id)">Verwijderen</md-button>
+						<md-button ui-sref="editActiviteit({activiteitId: activiteit.id})">Aanpassen</md-button>
+					</md-card-actions>
+				</md-card>
+			</md-grid-tile>
+		</md-grid-list>
+	<md-button  class="md-raised md-primary" ui-sref="nieuwActiviteit">Nieuwe activiteit</md-button>
 </div>
-<div class="col-md-8">
 
-<md-content>
-    <md-list>
-    <md-list-item class="md-3-line" ng-click="null"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
-          <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
-          <div class="md-list-item-text" layout="column">
-          <h3>Teambuilding</h3>
-          <p>Hele dag </p>
-          <p>Merelbeke 24/06/2016 </p>
-          </div>
-        </md-list-item>
-        <md-list-item class="md-3-line" ng-click="null"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
-          <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
-          <div class="md-list-item-text" layout="column">
-          <h3>Teambuilding p2</h3>
-          <p>Hele dag </p>
-          <p>Merelbeke 24/06/2016 </p>
-          </div>
-        </md-list-item>
 
-    <md-list-item class="md-3-line" ng-click="null"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
-          <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
-          <div class="md-list-item-text" layout="column">
-          <h3>Teambuilding p2</h3>
-          <p>Hele dag </p>
-          <p>Merelbeke 24/06/2016 </p>
-          </div>
-        </md-list-item>        
-    </md-list>
-  </md-content>
-  <md-button class="md-raised">Nieuwe activiteit</md-button><!-- enkel voor beheerders-->
-</div>
+
 
 

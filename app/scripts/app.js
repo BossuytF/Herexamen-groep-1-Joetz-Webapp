@@ -21,9 +21,11 @@ angular
 		'LocalStorageModule',
 		'ui.router',
 		'ngMaterial',
-		'ngtweet'
+		'ngtweet',
+		'ngMap'
 	])
 .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $mdDateLocaleProvider) {
+
 
 	$mdDateLocaleProvider.formatDate = function (date) {
 		return moment(date).format('DD/MM/YYYY');
@@ -36,7 +38,7 @@ angular
 
 		var m = moment(dateString, 'DD/MM/YYYY', true);
 		return m.isValid() ? m.toDate() : new Date(NaN);
-	}
+	};
 
 	$urlRouterProvider.otherwise('/home');
 
@@ -46,6 +48,15 @@ angular
 		templateUrl : 'views/home.html',
 		controller : 'HomeCtrl',
 		controllerAs : 'home'
+	})
+	.state('detailblog', {
+		url : '/blog/:detailId',
+		templateUrl : 'views/blog.detail.html',
+		controller : function (BlogService, $stateParams, $scope) {
+			BlogService.get($stateParams.blogId).then(function (response) {
+				$scope.blog = response.data;
+			});
+		}
 	})
 	.state('about', {
 		url : '/about',
@@ -70,6 +81,24 @@ angular
 		templateUrl : 'views/kampen.html',
 		controller : 'KampenCtrl',
 		controllerAs : 'kampen'
+	})
+	.state('kampdetail', {
+		url : '/kamp/:kampId/detail',
+		templateUrl : 'views/kamp.detail.html',
+		controller : 'DetailKampCtrl',
+		controllerAs : 'detailkamp'
+	})
+	.state('nieuwKamp', {
+		url : '/kamp/nieuw',
+		templateUrl : 'views/kamp.nieuw.html',
+		controller : 'NieuwkampCtrl',
+		controllerAs : 'nieuwKamp',
+	})
+	.state('editKamp', {
+		url : '/kamp/:kampId/edit',
+		templateUrl : 'views/kamp.nieuw.html',
+		controller : 'NieuwkampCtrl',
+		controllerAs : 'nieuwKamp'
 	})
 	.state('profiel', {
 		url : '/profiel',
@@ -113,6 +142,12 @@ angular
 		controller : 'InschrijvenCtrl',
 		controllerAs : 'inschrijven'
 	})
+	.state('medewerkerstoewijzen', {
+		url : '/medewerkers/toewijzen',
+		templateUrl : 'views/medewerker.toewijzen.html',
+		controller : 'MedewerkersCtrl',
+		controllerAs : 'medewerkers'
+	})
 	.state('medewerkers', {
 		url : '/medewerkers',
 		templateUrl : 'views/medewerkers.html',
@@ -125,17 +160,23 @@ angular
 		controller : 'ActiviteitenCtrl',
 		controllerAs : 'activiteiten'
 	})
+	.state('activiteitendetail', {
+		url : '/activiteit/:activiteitId/detail',
+		templateUrl : 'views/activiteit.detail.html',
+		controller : 'ActiviteitenDetailCtrl',
+		controllerAs : 'activiteiten',
+	})
 	.state('nieuwActiviteit', {
 		url : '/nieuwActiviteit',
-		templateUrl : 'views/nieuwactiviteit.html',
+		templateUrl : 'views/activiteit.nieuw.html',
 		controller : 'NieuwactiviteitCtrl',
 		controllerAs : 'nieuwActiviteit'
 	})
-	.state('nieuwKamp', {
-		url : '/nieuwKamp',
-		templateUrl : 'views/nieuwkamp.html',
-		controller : 'NieuwkampCtrl',
-		controllerAs : 'nieuwKamp'
+	.state('editActiviteit', {
+		url : '/activiteit/:activiteitId/edit',
+		templateUrl : 'views/activiteit.nieuw.html',
+		controller : 'NieuwactiviteitCtrl',
+		controllerAs : 'nieuwActiviteit'
 	})
 	.state('registreer', {
 		url : '/registreer',

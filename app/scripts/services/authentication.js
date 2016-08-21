@@ -16,6 +16,7 @@ angular.module('webappApp')
 			var service = {};
 
 			var _user = {
+				id:'',
 				email : '',
 				token : '',
 				isAuth : false,
@@ -88,7 +89,9 @@ angular.module('webappApp')
 					_user.email = decodedToken.email;
 
 					getMe().then(function (response) {
+						console.log(response)
 						_user.username = response.data.username
+						_user.id = response.data.id;
 					});
 
 					$rootScope.user = _user;

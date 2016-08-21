@@ -43,22 +43,6 @@ angular.module('webappApp')
 				for (var i = 0; i < home.blogs.length; i++) {
 					home.blogs[i].colspan = 2;
 					home.blogs[i].rowspan = 2;
-					home.blogs[i].color = randomColor();
-				}
-			}
-
-			function randomColor() {
-				return COLORS[Math.floor(Math.random() * COLORS.length)];
-			}
-
-			function randomSpan() {
-				var r = Math.random();
-				if (r < 0.8) {
-					return 1;
-				} else if (r < 0.9) {
-					return 2;
-				} else {
-					return 3;
 				}
 			}
 		}
