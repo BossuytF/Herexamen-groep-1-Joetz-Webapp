@@ -26,10 +26,10 @@
 						</div>
 					</div>
 					<h3>Aanwezig</h3>
-					<p>{{activiteiten.aanwezig}} aanwezig <br><a href="www.google.com">Bekijk alle deelnemers</a></p><!-- uit database halen & routing-->
+					<p>{{activiteiten.aanwezig}} aanwezig <br><!-- <a href="www.google.com">Bekijk alle deelnemers</a></p> --><!-- uit database halen & routing-->
 					</md-card-content>	
 					<md-card-actions layout="row" layout-align="end center">
-						<md-button  class="md-raised md-primary" ng-click='activiteiten.zetAanwezig()' ng-hide='activiteiten.alAanwezig'>Aanwezig</md-button>
+						<md-button  class="md-raised md-primary" ng-click='activiteiten.zetAanwezig()' ng-hide='activiteiten.alAanwezig || user.role =="lid"'>Aanwezig</md-button>
 					</md-card-actions>						
 				</md-card>
 			</div>

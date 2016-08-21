@@ -18,7 +18,7 @@
 					  </md-card>
 		</md-grid-tile>
 	</md-grid-list>
-			<md-button class="md-raised md-primary" ui-sref="nieuwBlog">Nieuw artikel</md-button>
+			<md-button ng-show="user.role != 'lid' && user.isAuth" class="md-raised md-primary" ui-sref="nieuwBlog">Nieuw artikel</md-button>
 </div>
 <div class="col-md-2" style="padding:10px;">
 	<twitter-timeline>
