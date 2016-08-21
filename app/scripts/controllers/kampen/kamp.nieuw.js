@@ -138,12 +138,12 @@ angular.module('webappApp')
 
 			var toastAanpassen = $mdToast.simple()
 				.textContent('Kamp werd succesvol aangepast')
-				.position('start')
+				.position('top right')
 				.capsule(true);
 
 			var toastAanmaken = $mdToast.simple()
 				.textContent('Kamp werd succesvol aangemaakt')
-				.position('start')
+				.position('top right')
 				.capsule(true);
 
 			nieuwKamp.submitKamp = submitKamp;

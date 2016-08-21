@@ -21,6 +21,7 @@ angular.module('webappApp')
 				AuthenticationService.login(login.user.email, login.user.password)
 				.then(function (response) {
 					AuthenticationService.setCredentials(response.data.token.access, response.data.token.refresh);
+					$state.go('home')
 				}, function () {
 					login.error = "Wachtwoord of gebruikersnaam fout";
 				});

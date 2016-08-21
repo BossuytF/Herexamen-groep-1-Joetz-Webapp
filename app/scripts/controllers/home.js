@@ -45,5 +45,7 @@ angular.module('webappApp')
 					home.blogs[i].rowspan = 2;
 				}
 			}
+			
+			
 		}
 	]);

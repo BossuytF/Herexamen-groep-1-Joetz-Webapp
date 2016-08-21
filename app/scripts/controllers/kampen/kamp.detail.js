@@ -8,11 +8,11 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('DetailKampCtrl', ['KampenService', '$stateParams', '$state', '$mdToast', '$mdDialog', 'InschrijvingService', '$rootScope', 
+.controller('DetailKampCtrl', ['KampenService', '$stateParams', '$state', '$mdToast', '$mdDialog', 'InschrijvingService', '$rootScope',
 		function (KampenService, $stateParams, $state, $mdToast, $mdDialog, InschrijvingService, $rootScope) {
 
 			var detailkamp = this;
-			
+
 			detailkamp.ingeschreven = false;
 			detailkamp.volzet = false;
 
@@ -29,23 +29,39 @@ angular.module('webappApp')
 				});
 			}
 			getKamp();
-			
-			function ingeschreven(){
-				for (var i = 0; i < detailkamp.kamp.inschrijvingen.length; i++){
-					InschrijvingService.get(detailkamp.kamp.inschrijvingen[i]).then(function(response){
-						if (response.data.user == $rootScope.user.id){
+
+			function ingeschreven() {
+				for (var i = 0; i < detailkamp.kamp.inschrijvingen.length; i++) {
+					InschrijvingService.get(detailkamp.kamp.inschrijvingen[i]).then(function (response) {
+						if (response.data.user == $rootScope.user.id) {
 							detailkamp.ingeschreven = true;
 						}
 					})
 				}
-				console.log(detailkamp.ingeschreven)
 			}
-			
-			function volzet(){
-				if (detailkamp.kamp.inschrijvingen.length >= detailkamp.kamp.maxDeelnemers){
+
+			function volzet() {
+				if (detailkamp.kamp.inschrijvingen.length >= detailkamp.kamp.maxDeelnemers) {
 					detailkamp.volzet = true;
 				}
-				console.log(detailkamp.volzet)
+			}
+
+			function age() {
+				var age = getAge($rootScope.user.geboortedatum);
+				if (detailkamp.kamp.minLeeftijd > age || detailkamp.kamp.maxLeeftijd < age) {
+					detailkamp.birthDate = true;
+				}
+			}
+
+			function getAge(dateString) {
+				var today = new Date();
+				var birthDate = new Date(dateString);
+				var age = today.getFullYear() - birthDate.getFullYear();
+				var m = today.getMonth() - birthDate.getMonth();
+				if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+					age--;
+				}
+				return age;
 			}
 		}
 	]);

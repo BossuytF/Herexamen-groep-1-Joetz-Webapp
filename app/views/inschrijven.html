@@ -3,8 +3,20 @@
 	<form class="form-horizontal" name="form" ng-submit="inschrijven.schrijfIn()" role="form">
 		<fieldset>
 
-			<div class="alert alert-danger" ng-show="inschrijven.error">
-				{{inschrijven.error}}
+			<div class="alert alert-danger" ng-show="inschrijven.errorBetalend">
+				{{inschrijven.errorBetalend}}
+			</div>
+			
+			<div class="alert alert-danger" ng-show="inschrijven.errorDeelnemer">
+				{{inschrijven.errorDeelnemer}}
+			</div>
+			
+			<div class="alert alert-danger" ng-show="inschrijven.errorContactpersoon">
+				{{inschrijven.errorContactpersoon}}
+			</div>
+			
+			<div class="alert alert-danger" ng-show="inschrijven.errorLid">
+				{{inschrijven.errorLid}}
 			</div>
 			
 			<div id="deelnemer">
@@ -61,7 +73,7 @@
 		<div class="col-md-10 row-button">
 			<div class="buttons-right">
 				<a ng-href="#/kampen">Annuleren</a>  
-				<md-button class="md-raised md-primary" type="submit" ng-disabled="form.$invalid">Schrijf in </md-button>
+				<md-button class="md-raised md-primary" type="submit" ng-disabled="form.$invalid || inschrijven.error">Schrijf in </md-button>
 			</div>
 		</div>
 	</form>

@@ -39,6 +39,11 @@ angular.module('webappApp')
 				} else if (inschrijven.deelnemer.contactpersoon2.betalend) {
 					inschrijven.betalend = inschrijven.deelnemer.contactpersoon2;
 				}
+				
+				if (!inschrijven.betalend){
+					inschrijven.errorBetalend = "Er is nog geen betalende ouder aangesteld in het profiel, om u te kunnen inschrijven dient u eerst een ouder aan te duiden die het kamp zal betalen.";
+					inschrijven.error = true;
+				}
 			}
 
 			function getContactpersoon() {

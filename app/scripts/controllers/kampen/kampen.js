@@ -26,7 +26,7 @@ angular.module('webappApp')
 						$mdToast.show(
 							$mdToast.simple()
 							.textContent('Kamp werd succesvol verwijderd')
-							.position('start')
+							.position('top right')
 							.capsule(true));
 							getKampen();
 					});

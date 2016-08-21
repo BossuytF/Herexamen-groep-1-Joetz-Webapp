@@ -8,8 +8,8 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('ProfielCtrl', ['$rootScope', '$mdDialog', '$scope', '$state', 'UserService',
-		function ($rootScope, $mdDialog, $scope, $state, UserService) {
+.controller('ProfielCtrl', ['$rootScope', '$mdDialog', '$scope', '$state', 'UserService', 'AuthenticationService',
+		function ($rootScope, $mdDialog, $scope, $state, UserService, AuthenticationService) {
 			var profiel = this;
 
 			profiel.edit = true;
@@ -150,23 +150,30 @@ angular.module('webappApp')
 			}
 
 			profiel.opslaanGegevens = function () {
-				profiel.edit = true;
 				UserService.updateGegevens($rootScope.user.email, profiel.user).then(function (response) {
 					getUser();
+					AuthenticationService.init();
+					profiel.formGegevens.$setPristine();
+					profiel.edit = true;
 				})
 			}
 
 			profiel.opslaanAdres = function () {
-				profiel.edit = true;
+
 				UserService.updateAdres($rootScope.user.email, profiel.user.adres).then(function (response) {
 					getUser();
+					AuthenticationService.init();
+					profiel.formAdres.$setPristine();
+					profiel.edit = true;
 				})
 			}
 
 			profiel.opslaanMutualiteit = function () {
-				profiel.edit = true;
 				UserService.updateMutualiteit($rootScope.user.email, profiel.user).then(function (response) {
 					getUser();
+					AuthenticationService.init();
+					profiel.formMutualiteit.$setPristine();
+					profiel.edit = true;
 				})
 			}
 
@@ -179,9 +186,11 @@ angular.module('webappApp')
 					profiel.user.contactpersoon1.betalend = false;
 				}
 
-				profiel.edit = true;
 				UserService.updateContactpersoon($rootScope.user.email, profiel.user.contactpersoon1, 1).then(function (response) {
 					getUser();
+					AuthenticationService.init();
+					profiel.contactpersoon1form.$setPristine();
+					profiel.edit = true;
 				})
 			}
 
@@ -193,10 +202,12 @@ angular.module('webappApp')
 				if (!profiel.user.contactpersoon2.betalend) {
 					profiel.user.contactpersoon2.betalend = false;
 				}
-				
-				profiel.edit = true;
+
 				UserService.updateContactpersoon($rootScope.user.email, profiel.user.contactpersoon2, 2).then(function (response) {
 					getUser();
+					AuthenticationService.init();
+					profiel.contactpersoon2form.$setPristine();
+					profiel.edit = true;
 				})
 			}
 
