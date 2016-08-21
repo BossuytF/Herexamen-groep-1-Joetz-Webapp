@@ -8,38 +8,38 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('HistoriekCtrl', ['UserService', 'InschrijvingService' , 'KampenService','$mdToast', '$mdDialog', '$scope', '$state', '$rootScope', 
-function (UserService, InschrijvingService, KampenService, $mdToast, $mdDialog, $scope, $state, $rootScope) {
-			var inschrijvingen = this;
-			inschrijvingen.KampenLijst = [];
-			inschrijvingen.InschrijvingsLijst = [];
+.controller('HistoriekCtrl', ['UserService', 'InschrijvingService', 'KampenService', '$mdToast', '$mdDialog', '$scope', '$state', '$rootScope',
+		function (UserService, InschrijvingService, KampenService, $mdToast, $mdDialog, $scope, $state, $rootScope) {
+
+			var historiek = this;
+			historiek.KampenLijst = [];
+			historiek.InschrijvingsLijst = [];
 
 			function getInschrijvingen() {
 				UserService.get($rootScope.user.email).then(function (response) {
-					inschrijvingen.user = response.data;
-					for (i = 0; i < inschrijvingen.user.inschrijvingen.length; i++) { 
-    InschrijvingService.get(inschrijvingen.user.inschrijvingen[i]).then(function (response) {
-    	inschrijvingen.InschrijvingsItem = response.data;
-    	inschrijvingen.InschrijvingsLijst[i] = inschrijvingen.InschrijvingsItem;
-    	KampenService.get(inschrijvingen.InschrijvingsItem.kamp).then(function (response) {
-    	inschrijvingen.KampenLijst[i] = response.data;
+					historiek.user = response.data;
+					for (var i = 0; i < historiek.user.inschrijvingen.length; i++) {
+						InschrijvingService.get(historiek.user.inschrijvingen[i]).then(function (response) {
+							historiek.InschrijvingsItem = response.data;
+							historiek.InschrijvingsLijst[i] = historiek.InschrijvingsItem;
+							KampenService.get(historiek.InschrijvingsItem.kamp).then(function (response) {
+								historiek.KampenLijst[i] = response.data;
+							});
+
+						});
+
+					}
 
 				});
+			}
 
-				});
-
-}
-					
-});
-			}		
-			
 			getInschrijvingen();
 
 			function setKamp() {
-				if (inschrijvingen.KampenLijst.length > 0) {
-					inschrijvingen.detailkamp = KampenLijst[0];
+				if (historiek.KampenLijst.length > 0) {
+					historiek.detailkamp = KampenLijst[0];
 				} else {
-					inschrijvingen.detailkamp = {
+					historiek.detailkamp = {
 						naam : 'Je hebt nog geen kampen meegedaan',
 						gemeente : '',
 						startDatum : '',
@@ -50,8 +50,8 @@ function (UserService, InschrijvingService, KampenService, $mdToast, $mdDialog, 
 			}
 			setKamp();
 
-			inschrijvingen.selectKamp = function (kamp) {
-				inschrijvingen.detailkamp = inschrijving.kamp;
+			historiek.selectKamp = function (kamp) {
+				historiek.detailkamp = kamp;
 			}
 		}
 	]);

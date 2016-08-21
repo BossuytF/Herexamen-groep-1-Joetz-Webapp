@@ -4,7 +4,7 @@
 
 <md-content>
     <md-list>
-    <md-list-item class="md-2-line" ng-click="selectKamp(kamp)" ng-repeat="kamp in inschrijvingen.KampenLijst"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
+    <md-list-item class="md-2-line" ng-click="historiek.selectKamp(kamp)" ng-repeat="kamp in historiek.KampenLijst"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
           <img ng-src="{{kamp.sfeerfoto}}" class="md-avatar" alt="foto" />
           <div class="md-list-item-text" layout="column">
           <h3>{{kamp.naam}}</h3>
@@ -15,13 +15,13 @@
   </md-content>
 </div>
 <div class="col-md-5" id="background">
-<h2>{{detailkamp.naam}}</h2>
+<h2>{{historiek.detailkamp.naam}}</h2>
 {{test}}
 <br>
-<h4>{{detailkamp.adres.gemeente}}</h4>
+<h4>{{historiek.detailkamp.adres.gemeente}}</h4>
 <br>
-<h4>{{detailkamp.startDatum}} - {{detailkamp.eindDatum}}</h4>
-<p>{{detailkamp.omschrijving}}</p><!--het kamp daje op klikt in de scope laden-->
+<h4>{{historiek.detailkamp.startDatum}} - {{historiek.detailkamp.eindDatum}}</h4>
+<p>{{historiek.detailkamp.omschrijving}}</p><!--het kamp daje op klikt in de scope laden-->
 
 
 </div>

@@ -11,7 +11,7 @@ angular.module('webappApp')
 .service('AuthenticationService', ['localStorageService', '$http', '$rootScope', 'UserService',
 		function (localStorageService, $http, $rootScope, UserService) {
 
-			var baseUrl = 'http://localhost:8085/';
+			var baseUrl = 'http://37.139.13.237:8085/';
 
 			var service = {};
 
