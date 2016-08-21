@@ -14,6 +14,13 @@ angular.module('webappApp')
 			var historiek = this;
 			historiek.KampenLijst = [];
 			historiek.InschrijvingsLijst = [];
+			historiek.detailkamp = {
+						naam : 'Je hebt nog geen kampen meegedaan',
+						gemeente : '',
+						startDatum : '',
+						eindDatum : '',
+						omschrijving : ''
+					};
 
 			function getInschrijvingen() {
 				UserService.get($rootScope.user.email).then(function (response) {
@@ -23,7 +30,8 @@ angular.module('webappApp')
 							historiek.InschrijvingsItem = response.data;
 							historiek.InschrijvingsLijst[i] = historiek.InschrijvingsItem;
 							KampenService.get(historiek.InschrijvingsItem.kamp).then(function (response) {
-								historiek.KampenLijst[i] = response.data;
+								historiek.KampenLijst.push(response.data);
+								setKamp();
 							});
 
 						});
@@ -37,7 +45,8 @@ angular.module('webappApp')
 
 			function setKamp() {
 				if (historiek.KampenLijst.length > 0) {
-					historiek.detailkamp = KampenLijst[0];
+					historiek.detailkamp = historiek.KampenLijst[0];
+					historiek.Datum = historiek.detailkamp.startDatum.substring(0,10) + " tot " + historiek.detailkamp.eindDatum.substring(0,10);
 				}else {
 					historiek.detailkamp = {
 						naam : 'Je hebt nog geen kampen meegedaan',
@@ -48,12 +57,12 @@ angular.module('webappApp')
 					};
 				}
 			}
-			setKamp();
-
+			
 			historiek.selectKamp = function (kamp) {
 				historiek.detailkamp = kamp;
-				historiek.startDatum = historiek.detailkamp.startDatum.substring(0,10);
-				historiek.eindDatum = historiek.detailkamp.eindDatum.substring(0,10);
+				historiek.Datum = historiek.detailkamp.startDatum.substring(0,10)+ " tot " + historiek.detailkamp.eindDatum.substring(0,10);;
+
+
 			}
 		}
 	]);
