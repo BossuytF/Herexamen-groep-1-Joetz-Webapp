@@ -38,7 +38,7 @@ angular.module('webappApp')
 			function setKamp() {
 				if (historiek.KampenLijst.length > 0) {
 					historiek.detailkamp = KampenLijst[0];
-				} else {
+				}else {
 					historiek.detailkamp = {
 						naam : 'Je hebt nog geen kampen meegedaan',
 						gemeente : '',
@@ -52,6 +52,8 @@ angular.module('webappApp')
 
 			historiek.selectKamp = function (kamp) {
 				historiek.detailkamp = kamp;
+				historiek.startDatum = historiek.detailkamp.startDatum.substring(0,10);
+				historiek.eindDatum = historiek.detailkamp.eindDatum.substring(0,10);
 			}
 		}
 	]);

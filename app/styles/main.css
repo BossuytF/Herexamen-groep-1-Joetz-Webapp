@@ -25,8 +25,9 @@ html {
   padding-right: 15px;
 }
 .fotokamp{
-  height: 200px;
-  width: 700px;
+  margin-left: 30%;
+  width: 40%; 
+  height: 30%;
 
 }
 /* Custom page header */
