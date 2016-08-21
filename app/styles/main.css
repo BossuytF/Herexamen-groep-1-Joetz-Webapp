@@ -18,6 +18,8 @@ html {
     height: 100%;;
 }
 
+select option:empty { display:none }
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,

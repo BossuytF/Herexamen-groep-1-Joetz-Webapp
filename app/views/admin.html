@@ -23,7 +23,7 @@
                             <td ng-hide="selectedUser == user">{{user.role}}</td>
                             <td ng-show="selectedUser == user">
                                 <div class="pull-right">
-                                    <select ng-model="selectedRole" ng-change="changeRole()" class="form-control">
+                                    <select ng-model="selectedRole" class="form-control">
                                         <option ng-selected="selectedUser.role == 'lid'">lid</option>
                                         <option ng-selected="selectedUser.role == 'monitor'">monitor</option>
                                         <option ng-selected="selectedUser.role == 'beheerder'">beheerder</option>
@@ -75,18 +75,18 @@
                             <td ng-hide="selectedInschrijving == inschrijving">{{inschrijving.betaald}}</td>
                             <td ng-show="selectedInschrijving == inschrijving">
                                 <div class="pull-right">
-                                    <select ng-model="selectedBetaald" ng-change="changeBetaald()" class="form-control">
-                                        <option ng-selected="selectedInschrijving.betaald == true">true</option>
-                                        <option ng-selected="selectedInschrijving.betaald == false">false</option>
+                                    <select ng-model="selectedBetaald" class="form-control">
+                                        <option>true</option>
+                                        <option>false</option>
                                     </select>
                                 </div>
                             </td>
                             <td ng-hide="selectedInschrijving == inschrijving">{{inschrijving.goedgekeurd}}</td>
                             <td ng-show="selectedInschrijving == inschrijving">
                                 <div class="pull-right">
-                                    <select ng-model="selectedGoedgekeurd" ng-change="changeGoedgekeurd()" class="form-control">
-                                        <option ng-selected="selectedInschrijving.goedgekeurd == true">true</option>
-                                        <option ng-selected="selectedInschrijving.goedgekeurd == false">false</option>
+                                    <select ng-model="selectedGoedgekeurd" class="form-control">
+                                        <option>true</option>
+                                        <option>false</option>
                                     </select>
                                 </div>
                             </td>

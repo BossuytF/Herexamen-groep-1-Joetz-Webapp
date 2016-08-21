@@ -46,26 +46,41 @@ angular.module('webappApp')
             $scope.selectedInschrijving = 'none';
             $scope.selectedBetaald = 'none';
             $scope.selectedGoedgekeurd = 'none';
+            var temp;
+            var temp2;
 
             // Fetch all inschrijvingen
             // Sort by kamp ascending
             $scope.inschrijvingen = InschrijvingService.getAll().then(function(response) {
                 $scope.inschrijvingen = response.data;
-                // Get inschrijving email
+                // Get inschrijving userid
                 for (var i = $scope.inschrijvingen.length - 1; i >= 0; i--) {
                     $scope.inschrijvingen[i].email = $scope.inschrijvingen[i].user;
                 }
-                // Get inschrijving kampnaam
+                // Get inschrijving kampid
                 for (var i = $scope.inschrijvingen.length - 1; i >= 0; i--) {
-                        $scope.inschrijvingen[i].kamp = $scope.inschrijvingen[i].kamp;
+                    $scope.inschrijvingen[i].kamp = $scope.inschrijvingen[i].kamp;
                 }
-                /* Get inschrijving kampnamen ipv id's lukt niet kankerboel
-                for (var i = $scope.inschrijvingen.length - 1; i >= 0; i--) {
-                    KampenService.get($scope.inschrijvingen[i].kamp).then(function(response) {
-                        console.log("Response data" + response.data.naam);
-                        $scope.inschrijvingen[i].kamp = response.data.naam;
-                    });
-                }*/
+                KampenService.getAll().then(function(response) {
+                    temp = response.data;
+                    for (var i = $scope.inschrijvingen.length - 1; i >= 0; i--) {
+                        for (var j = temp.length - 1; j >= 0; j--) {
+                            if ($scope.inschrijvingen[i].kamp === temp[j].id) {
+                                $scope.inschrijvingen[i].kamp = temp[j].naam;
+                            }
+                        }
+                    }
+                });
+                UserService.getAll().then(function(response) {
+                    temp2 = response.data;
+                    for (var i = $scope.inschrijvingen.length - 1; i >= 0; i--) {
+                        for (var j = temp2.length - 1; j >= 0; j--) {
+                            if ($scope.inschrijvingen[i].email === temp2[j].id) {
+                                $scope.inschrijvingen[i].email = temp2[j].email;
+                            }
+                        }
+                    }
+                });
             })
 
             // Select user
