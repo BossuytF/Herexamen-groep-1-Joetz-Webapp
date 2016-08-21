@@ -48,15 +48,13 @@
 					<div class="collapse navbar-collapse navbar-responsive-collapse " id="js-navbar-collapse">
 
 						<ul class="nav navbar-nav ">
-							<li ><a href="#/">Home</a></li>
+							<li><a href="#/">Home</a></li>
 							<li><a ui-sref="kampen">Kampen</a></li>
-							<li><a ui-sref="vergeten">TestPagina</a></li>
-							<li><a ui-sref="medewerkers">Medewerkers</a></li>
+							<li ng-show="user.role != 'lid' && user.isAuth"><a ui-sref="medewerkers">Medewerkers</a></li>
 							<li ng-show="user.role != 'lid' && user.isAuth" ><a ui-sref="activiteiten">Activiteiten</a></li>
-							<li><a ui-sref="historiek">Historiek</a></li>
+							<li ng-show="user.isAuth"><a ui-sref="historiek">Historiek</a></li>
 							<li ng-show="user.role == 'beheerder' && user.isAuth"><a ui-sref="admin">
 							Admin</a></li>
-							<li><a ng-href="#/">Contact</a></li>
 						</ul>
 
 						<ul class="nav navbar-nav navbar-right">

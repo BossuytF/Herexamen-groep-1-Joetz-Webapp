@@ -29,7 +29,7 @@ angular.module('webappApp')
 						$mdToast.show(
 							$mdToast.simple()
 							.textContent('Proficiat ' + registreer.user.voornaam + ' uw account werd succesvol aangemaakt en u werd automatisch ingelogd')
-							.position('start')
+							.position('top right')
 							.capsule(true));
 					});
 				}, function () {

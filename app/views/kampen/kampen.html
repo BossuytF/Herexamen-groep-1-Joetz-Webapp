@@ -29,12 +29,12 @@
 						<p>Leeftijd:{{kamp.minLeeftijd}}-{{kamp.maxLeeftijd}} jaar</p>
 					</md-card-content>	
 					<md-card-actions layout="row" layout-align="end center">
-						<md-button ng-click="kampen.deleteKamp(kamp.id)">Verwijderen</md-button>
-						<md-button  ui-sref="editKamp({kampId: kamp.id})">Aanpassen</md-button>							
-						<md-button  ng-click="kampen.medewerkerToewijzen(kamp.id)">Medewerkers</md-button>
+						<md-button ng-show="user.role == 'beheerder' && user.isAuth" ng-click="kampen.deleteKamp(kamp.id)">Verwijderen</md-button>
+						<md-button  ng-show="user.role == 'beheerder' && user.isAuth" ui-sref="editKamp({kampId: kamp.id})">Aanpassen</md-button>							
+						<md-button  ng-show="user.role == 'beheerder' && user.isAuth" ng-click="kampen.medewerkerToewijzen(kamp.id)">Medewerkers</md-button>
 					</md-card-actions>						
 				</md-card>
 			</md-grid-tile>
 		</md-grid-list>
-		<md-button class="md-raised md-primary" ui-sref="nieuwKamp">Nieuw kamp</md-button>
+		<md-button ng-show="user.role == 'beheerder' && user.isAuth" class="md-raised md-primary" ui-sref="nieuwKamp">Nieuw kamp</md-button>
 </div>
