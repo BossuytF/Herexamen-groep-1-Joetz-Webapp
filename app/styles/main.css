@@ -182,5 +182,102 @@ a.md-button.md-default-theme.md-primary.md-raised, a.md-button.md-primary.md-rai
 		color: rgb(218, 0, 47);
 }
 
+/*// ALS CSS BREEK VERWIJDER ALLES HIERONDER*/
+
+.glyphicon_with_action {
+    cursor: pointer;
+    cursor: hand;
+    margin-right: 1vw;
+}
+
+.glyphicon {
+    margin-left: 0.5vw;
+}
+
+.edit:hover {
+    color: darkcyan;
+}
+
+.panel {
+    margin-top: 2vh;
+    min-width: 1vw;
+}
+
+.panel-body {
+    padding: 0;
+    height: 75vh;
+    overflow: auto;
+    width: 100%;
+}
+
+tr {
+    text-align: right;
+}
+
+tbody tr:hover {
+    background-color: #F9F9F9;
+}
+
+.numbering {
+    text-align: center;
+    vertical-align: middle !important;
+    /*display: inline-block;*/
+    width: 50px !important;
+}
 
 
+/* Table column sizes*/
+
+th:nth-child(2) {
+    text-align: right;
+    width: 25%;
+}
+
+th:nth-child(3) {
+    text-align: right;
+    width: 15%;
+}
+
+td {
+    vertical-align: middle !important;
+}
+
+td:nth-child(2) {
+    text-align: right;
+}
+
+td:nth-child(3) {
+    text-align: right;
+}
+
+.actionsKolom {
+    text-align: right;
+    width: 100%;
+}
+
+.actionsKolom button {
+    margin-right: 1vw;
+}
+
+.a{
+    color: inherit;
+    text-decoration: none !important;
+    display: inline-block;
+}
+
+.ap{
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+h3 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 500px) {
+    a>p {
+        display: none;
+    }
+}

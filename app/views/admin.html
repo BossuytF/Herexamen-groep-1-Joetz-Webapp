@@ -1,0 +1,48 @@
+    <!-- User Panel -->
+    <div>
+        <h3>Gebruikers</h3>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <p ng-if="selectedUser.email" class="pull-right">Geselecteerde gebruiker: {{selectedUser.email}}</p>
+                <h2 class="panel-title">Bewerk gebruikers</h2>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="numbering">#</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th class="actionsKolom">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="user in users">
+                            <th class="numbering" scope="row">{{$index+1}}</th>
+                            <td>{{user.email}}</td>
+                            <td ng-hide="selectedUser == user">{{user.role}}</td>
+                            <td ng-show="selectedUser == user">
+                                <div class="pull-right">
+                                    <select ng-model="selectedRole" ng-change="changeRole()" class="form-control">
+                                        <option ng-selected="selectedUser.role == 'lid'">lid</option>
+                                        <option ng-selected="selectedUser.role == 'monitor'">monitor</option>
+                                        <option ng-selected="selectedUser.role == 'beheerder'">beheerder</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="actionsKolom">
+                                <div>
+                                    <a ng-hide="selectedUser == user" ng-click="selectUser(user)" class="glyphicon_with_action edit a">
+                                        <p class="ap">Bewerk</p><span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                    <a ng-show="selectedUser == user" ng-click="updateUser(user)" class="glyphicon_with_action edit a">
+                                        <p class="ap">Sla op</p><span class="glyphicon glyphicon-floppy-saved"></span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
