@@ -5,7 +5,7 @@
 				<form class="form-horizontal" name="nieuwBlog.form" ng-submit="nieuwBlog.nieuwBlogs()" role="form">
 
 					<fieldset>
-						<md-card-header class="col-xs-offset-1 row-top-white">Nieuw Artikel</md-card-header>
+						<md-card-header class="align-header col-xs-offset-1 h4 row-top-white">Nieuw artikel</md-card-header>
 
 						<div class="alert alert-danger" ng-show="nieuwBlog.error">
 						{{nieuwBlog.error}}
@@ -21,7 +21,6 @@
 
 						
 						<md-input-container class="md-block">
-							<label>Tekst</label>
 							<text-angular ng-model="nieuwBlog.blog.tekst" id="inputTekst" required name="tekst"></text-angular>
 							<div class="help-block" ng-messages="form.tekst.$error" ng-show="form.tekst.$touched">
 								<div ng-messages-include="messages.html"></div>

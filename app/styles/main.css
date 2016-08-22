@@ -18,6 +18,16 @@ body {
   margin-top: 20px;
 }
 
+.align-header{
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.align-vert{
+  display: inline-block;
+  vertical-align: middle;
+}
+
 html {
     height: 100%;;
 }

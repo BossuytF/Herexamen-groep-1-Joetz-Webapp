@@ -60,8 +60,8 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li ng-hide="user.isAuth"><a ui-sref="login"><img src="/images/login.png"> Log in</a></li>
 							<li ng-hide="user.isAuth"><a ui-sref="registreer">Registreer</a></li>
-							<li ng-show="user.isAuth"><a ui-sref="profiel.deelnemer"><i class="material-icons">account_circle</i>{{user.username}}</a></li>
-							<li ng-show="user.isAuth" ng-click="main.logout()"><a><i class="material-icons">power_settings_new</i>Log uit</a></li>
+							<li ng-show="user.isAuth"><a ui-sref="profiel.deelnemer"><i class="align-vert material-icons">account_circle</i>{{user.username}}</a></li>
+							<li ng-show="user.isAuth" ng-click="main.logout()"><a><i class="align-vert material-icons">power_settings_new</i>Log uit</a></li>
 						</ul>
 					</div>
 				</div>
