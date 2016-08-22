@@ -1,0 +1,33 @@
+<div class="col-md-8 col-md-offset-2" flex ng-cloak>
+
+<div class="alert alert-danger" ng-show="errorDetails && user.role == 'lid' ">
+	Om u in te kunnen schrijven voor een kamp moet u eerst alle info invullen van de deelnemer en de ouders.
+</div>
+
+	<md-grid-list
+       md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6" md-cols="12"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter="8px" md-gutter-gt-sm="4px" md-gutter-gt-md="20px">
+        <md-button ng-show="user.role != 'lid' && user.isAuth" class="md-raised md-primary" ui-sref="nieuwBlog">Nieuw artikel</md-button>
+		<md-grid-tile ng-repeat="blog in home.blogs" ui-sref="detailblog({blogId: blog.id})"
+                  md-rowspan="2"
+                  md-colspan="2"
+                  md-colspan-sm="1"
+                  md-colspan-xs="1">
+					  <md-card class="space" style="height: 100%; width: 100%; overflow:auto;">
+						  <img ng-src="{{blog.foto}}" class="md-card-image" alt="Washed Out">
+						  <md-card-title>
+							  <md-card-title-text>
+								  <span class="md-headline">{{blog.titel}}</span>
+							  </md-card-title-text>
+						  </md-card-title>					  
+					  </md-card>
+		</md-grid-tile>
+	</md-grid-list>
+			
+</div>
+<div class="col-md-2" style="padding:10px;">
+	<twitter-timeline>
+		<a class="twitter-timeline" data-lang="nl" data-height="800" href="https://twitter.com/VzwJoetz">Tweets by VzwJoetz</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</twitter-timeline>
+</div>

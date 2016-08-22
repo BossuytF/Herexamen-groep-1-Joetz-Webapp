@@ -1,1 +1,74 @@
-<p>This is the registreer view.</p>
+<div class="row float-center">
+	<div class="col-md-4 col-md-offset-4">
+		<md-card>
+			<div class="col-md-12">
+				<legend> Registreer </legend>
+				<form class="form-horizontal" name="form" ng-submit="registreer.registreer()" role="form">
+					<fieldset>
+
+						<div class="alert alert-danger" ng-show="registreer.error">
+							{{registreer.error}}
+						</div>
+
+						<md-input-container class="md-block">
+							<label>Gebruikersnaam</label>
+							<input required type="text" name="username" ng-model="registreer.user.username" id="inputUsername" />
+							<div ng-messages="form.username.$error" ng-show="form.username.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
+
+						<md-input-container class="md-block">
+							<label>Naam</label>
+							<input required type="text" name="naam" ng-model="registreer.user.naam" id="inputNaam" />
+							<div ng-messages="form.naam.$error" ng-show="form.naam.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
+
+						<md-input-container class="md-block">
+							<label>Voornaam</label>
+							<input required type="text" name="voornaam" ng-model="registreer.user.voornaam" id="inputVoornaam" />
+							<div ng-messages="form.voornaam.$error" ng-show="form.voornaam.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
+
+						<md-input-container class="md-block">
+							<label>Email</label>
+							<input required type="email" name="email" ng-model="registreer.user.email" id="inputEmail" />
+							<div ng-messages="form.email.$error" ng-show="form.email.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
+
+						<md-input-container class="md-block">
+							<label>Wachtwoord</label>
+							<input ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{12,})/" required type="password" name="password" ng-model="registreer.user.password" id="inputPassword" />
+							<div ng-messages="form.password.$error" ng-show="form.password.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
+
+						<md-input-container class="md-block">
+							<label>Bevestig wachtwoord</label>
+							<input compare-to="registreer.user.password" required type="password" name="confirmPassword" ng-model="registreer.user.confirmPassword" id="inputConfirmPassword" />
+							<div ng-messages="form.confirmPassword.$error" ng-show="form.confirmPassword.$touched">
+								<div ng-messages-include="messages.html"></div>
+							</div>
+						</md-input-container>
+					</fieldset>
+
+					<div class="col-md-10 row-button">
+						<div class="buttons-right">
+							<a ng-href="#/home">Annuleren</a>  
+							<md-button class="md-raised md-primary" type="submit" ng-disabled="form.$invalid">Registreer </md-button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</md-card>
+	</div>
+</div>
+
+

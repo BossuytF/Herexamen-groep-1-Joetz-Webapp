@@ -1,0 +1,45 @@
+<md-dialog aria-label="Medewerkers toewijzen">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Medewerkers toewijzen</h2>
+        <span flex></span>
+        <md-button class="md-primary" ng-click="cancel()">
+		close
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+		  <md-contact-chips
+		  ng-model="medewerkers.toegewezen"
+		  md-contacts="medewerkers.querySearch($query)"
+		  md-contact-name="name"
+		  md-contact-image="image"
+		  md-contact-email="email"
+		  md-require-match="true"
+		  md-highlight-flags="i"
+		  filter-selected="medewerkers.filterSelected"
+		  placeholder="Medewerkers">
+		  </md-contact-chips>
+		  <md-list class="fixedRows">
+			  <md-subheader class="md-no-sticky">Contacts</md-subheader>
+			  <md-list-item class="md-2-line contact-item" ng-repeat="medewerker in medewerkers.medewerkerLijst">
+				  <img ng-src="{{medewerker.image}}" class="md-avatar" alt="{{medewerker.name}}" />
+				  <div class="md-list-item-text compact">
+					  <h3>{{medewerker.name}}</h3>
+					  <p>{{medewerker.email}}</p>
+				  </div>
+			  </md-list-item>
+		  </md-list>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="medewerkers.toewijzen()">
+       Toewijzen
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+

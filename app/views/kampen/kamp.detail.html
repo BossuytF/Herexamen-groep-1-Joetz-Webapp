@@ -1,0 +1,54 @@
+<div class="col-md-8 col-md-offset-2">
+<div class="alert alert-danger" ng-show="errorDetails && user.role == 'lid' ">
+	Om u in te kunnen schrijven voor een kamp moet u eerst alle info invullen van de deelnemer en de ouders.
+</div>
+	<p><br><a ui-sref='kampen'>Terug naar overzicht</a></p>
+		<md-card class="redTextWhite" style="background-color: white;">
+			<md-card-title>
+				<md-card-title-text>
+					<h3  class="blackText" class="md-headline">{{detailkamp.kamp.naam}}</h3>
+				</md-card-title-text>
+			</md-card-title>	
+			<md-card-content>
+				<div class="row">
+					<div class="col-md-8">
+						<p class="blackText">{{detailkamp.kamp.omschrijving}}</p>
+
+					</div>
+					<md-divider></md-divider>
+					<div class="col-md-4">
+						<p class="blackText"> Vertrek : {{detailkamp.kamp.startDatum | date}}</p>
+						<p class="blackText"> Terug : {{detailkamp.kamp.eindDatum | date}}</p>
+						<md-divider ></md-divider>
+						<p class="blackText"> Locatie: {{detailkamp.kamp.locatie}}</p>
+						<md-divider ></md-divider>
+						<p class="blackText">Van : {{detailkamp.kamp.minLeeftijd}} tot {{detailkamp.kamp.maxLeeftijd}}</p>	
+						<md-divider></md-divider>
+						<p class="blackText">{{detailkamp.kamp.vervoer}} </p>
+						<md-divider ></md-divider>
+						<p class="blackText">Prijs:{{detailkamp.kamp.prijs}} &#8364</p>
+						<md-divider ></md-divider>
+						<p class="blackText">Contact:{{detailkamp.kamp.contact}} </p>
+					</div>
+				</div>
+				<div class="row">
+					<div class= "col-md-6">
+						<map zoom="14" center="{{detailkamp.kamp.locatie}}">
+							<directions
+										draggable="true"
+										travel-mode="DRIVING"
+										origin="current-location"
+										panel="directions-panel"
+										destination="{{detailkamp.kamp.locatie}}">
+							</directions>
+						</map>
+					</div>
+					<div id="directions-panel" class="col-md-4" style="height: 300px; overflow: auto;background-color: white">
+					</div>
+				</div>
+			</md-card-content>	
+			<md-card-actions layout="row" layout-align="end center">
+				<md-button  class="md-raised md-primary" ui-sref="inschrijven({kampId: detailkamp.kamp.id})" ng-disabled='detailkamp.ingeschreven || detailkamp.volzet || detailkamp.birthDate' ng-hide='detailkamp.ingeschreven || detailkamp.volzet || detailkamp.birthDate || user.role != "lid"'>Inschrijven</md-button>
+			</md-card-actions>						
+		</md-card>
+	</div>

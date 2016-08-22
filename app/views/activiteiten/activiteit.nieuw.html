@@ -1,0 +1,72 @@
+<div class="col-md-2">
+</div>
+<div class="col-md-8" id="background">
+	<form class="form-horizontal" name="form" ng-submit="nieuwActiviteit.nieuwactiviteit()" role="form">
+		<fieldset>
+			
+			<legend>Nieuwe activiteit / Activiteit aanpassen</legend>
+			
+			<div class="alert alert-danger" ng-show="nieuwActiviteit.error">
+                            {{nieuwActiviteit.error}}
+			</div>
+
+			<md-input-container class="md-block">
+				<label>Titel</label>
+				<input required type="text" name="titel" ng-model="nieuwActiviteit.activiteit.naam" id="inputTitel" />
+				<div ng-messages="form.titel.$error" ng-show="form.titel.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+
+			<md-input-container class="md-block">
+				<label>Locatie</label>
+				<input required type="text" name="locatie" ng-model="nieuwActiviteit.activiteit.locatie" id="inputLocatie" />
+				<div ng-messages="form.locatie.$error" ng-show="form.locatie.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+			
+			<label class="datep-label" for="startdatum">Startdatum</label><br/>
+			<md-datepicker
+			id="inputStartdatum"
+			required 
+			name="startdatum" 
+			ng-model="nieuwActiviteit.activiteit.beginUur" 
+			md-placeholder="Startdatum" 
+			md-max-date="nieuwActiviteit.activiteit.eindUur"
+			md-min-date= "nieuwActiviteit.myDate"
+			md-open-on-focus>							
+			</md-datepicker>
+			<div  class='validation-messages' ng-messages="form.startdatum.$error" ng-show="form.startdatum.$touched">
+				<div ng-messages-include="messages.html"></div>
+			</div><br/>
+			
+			<label class="datep-label" for="einddatum">Einddatum</label><br/>
+			<md-datepicker
+			id="inputEinddatum"
+			required 
+			name="einddatum" 
+			ng-model="nieuwActiviteit.activiteit.eindUur" 
+			md-placeholder="Einddatum" 
+			md-min-date="nieuwActiviteit.activiteit.beginUur"
+			md-open-on-focus>							
+			</md-datepicker>
+			<div  class='validation-messages' ng-messages="form.einddatum.$error" ng-show="form.einddatum.$touched">
+				<div ng-messages-include="messages.html"></div>
+			</div>
+			
+			<md-input-container class="md-block">
+				<md-switch class="md-primary" md-no-ink aria-label="heleDag" ng-model="nieuwActiviteit.activiteit.heleDag">
+					Hele Dag 
+				</md-switch>
+			</md-input-container>
+		</fieldset>
+
+		<div class="col-md-10 row-button">
+			<div class="buttons-right">
+				<a ng-href="#/activiteiten">Annuleren</a>  
+				<md-button class="md-raised md-primary" type="submit" ng-disabled="form.$invalid">Opslaan </md-button>
+			</div>
+		</div>
+	</form>
+</div>

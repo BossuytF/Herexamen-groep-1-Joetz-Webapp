@@ -1,0 +1,38 @@
+<div class="col-md-8 col-md-offset-2 redTextWhite" flex ng-cloak>
+<div class="alert alert-danger" ng-show="errorDetails && user.role == 'lid' ">
+	Om u in te kunnen schrijven voor een kamp moet u eerst alle info invullen van de deelnemer en de ouders.
+</div>
+	<md-grid-list
+       md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6" md-cols="12"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter="8px" md-gutter-gt-sm="4px" >
+		<md-grid-tile ng-repeat="kamp in kampen.kampenLijst"
+                  md-rowspan="3"
+                  md-colspan="2"
+                  md-colspan-sm="1"
+                  md-colspan-xs="1"
+				  md-rowspan-sm="2"
+				  md-rowspan-sm="1">
+			<md-card >
+				<img ng-click="kampen.goToState(kamp.id)" ng-src="{{kamp.sfeerfoto}}" class="md-card-image" alt="Sfeerfoto">
+					<md-card-title ng-click="kampen.goToState(kamp.id)">
+						<md-card-title-text>
+							<span class="md-headline">{{kamp.naam}}</span>
+						</md-card-title-text>
+					</md-card-title>	
+					<md-card-content ng-click="kampen.goToState(kamp.id)">
+						<p>Periode: {{kamp.startDatum | date}} tot {{kamp.eindDatum | date}}</p>
+						<p>Locatie: {{kamp.adres.gemeente}}</p>
+						<p>Prijs: {{kamp.prijs}} &#8364 </p>
+						<p>Leeftijd:{{kamp.minLeeftijd}}-{{kamp.maxLeeftijd}} jaar</p>
+					</md-card-content>	
+					<md-card-actions layout="row" layout-align="end center">
+						<md-button ng-show="user.role == 'beheerder' && user.isAuth" ng-click="kampen.deleteKamp(kamp.id)">Verwijderen</md-button>
+						<md-button  ng-show="user.role == 'beheerder' && user.isAuth" ui-sref="editKamp({kampId: kamp.id})">Aanpassen</md-button>							
+						<md-button  ng-show="user.role == 'beheerder' && user.isAuth" ng-click="kampen.medewerkerToewijzen(kamp.id)">Medewerkers</md-button>
+					</md-card-actions>						
+				</md-card>
+			</md-grid-tile>
+		</md-grid-list>
+		<md-button ng-show="user.role == 'beheerder' && user.isAuth" class="md-raised md-primary" ui-sref="nieuwKamp">Nieuw kamp</md-button>
+</div>

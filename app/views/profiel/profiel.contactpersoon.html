@@ -1,0 +1,37 @@
+<div class="well">
+	<form class="form-horizontal" name="profiel.form" ng-submit="login.logIn()" role="form">
+
+		<fieldset>
+			<legend>Gegevens van de Contactpersoon in geval van nood</legend>
+
+			<md-input-container class="md-block">
+				<label>Naam</label>
+				<input required type="text" name="naam" ng-model="profiel.deelnemer.naam" id="inputNaam" />
+				<div ng-messages="profiel.form.naam.$error" ng-show="profiel.form.naam.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+
+			<md-input-container class="md-block">
+				<label>Voornaam</label>
+				<input required type="text" name="voornaam" ng-model="profiel.user.voornaam" id="inputVoornaam" />
+				<div ng-messages="profiel.form.voornaam.$error" ng-show="profiel.form.voornaam.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+			
+			<md-input-container class="md-block">
+				<label>Telefoonnummer</label>
+				<input required type="text" name="voornaam" ng-model="profiel.user.voornaam" id="inputVoornaam" />
+				<div ng-messages="profiel.form.voornaam.$error" ng-show="profiel.form.voornaam.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+
+		<div class="col-md-10 row-button">
+			<div class="buttons-right">
+				<md-button class="md-raised md-primary" type="submit" ng-hide="profiel.form.$pristine" ng-disabled="profiel.form.$invalid || profiel.form.$pristine">Opslaan </md-button>					
+			</div>
+		</div>
+	</form>
+</div>

@@ -8,7 +8,31 @@
 
 body {
   padding: 0;
+  padding-top: 70px;
+  background-image: url("../images/body_water.jpg")!important;
+  background-size: 100% 100%;
+  background-attachment: fixed;
 }
+
+.space{
+  margin-top: 20px;
+}
+
+.align-header{
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.align-vert{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+html {
+    height: 100%;;
+}
+
+select option:empty { display:none }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
@@ -18,10 +42,15 @@ body {
   padding-right: 15px;
 }
 
+.fotokamp{
+  height: 200px;
+  width: 700px;
+
+}
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
+  /* border-bottom: 1px solid #e5e5e5; */
+  /* margin-bottom: 10px; */
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -58,6 +87,9 @@ body {
 }
 .marketing p + h4 {
   margin-top: 28px;
+}
+#background{
+  background-color:rgb(255,255,255);
 }
 
 /* Responsive: Portrait tablets and up */
@@ -99,6 +131,191 @@ body {
 	margin:auto;
 }
 
+ul{
+		padding-bottom:0;
+		padding-left: 0;
+		margin-bottom:0;
+		list-style: none;
+}
+
+.borderBtn{
+		margin:0;
+		margin-bottom:1px;
+}
+
+.buttonList{
+		padding:0;
+}
+
+md-content header{
+		background-color: transparent;
+}
+
+.validation-messages{
+		color: rgb(221,44,0);
+		font-size: 12px;
+}
+
+.sidenav-well {
+		background-color: transparent;
+		margin: 10px;
+		padding-top: 70px;
+}
+
+.bgTransparent{
+		background-color: transparent;
+}
+
+.whiteText{
+		color: white;
+}
+
+.blackText{
+    color: black;
+}
 
 
+.datep-label{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+	color:rgba(0,0,0,0.54);
+}
 
+html.md-default-theme, html, body.md-default-theme {
+		background-color:transparent;
+}
+
+.whiteTextRed{
+		background-color: rgb(218, 0, 47);
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #FFF;
+}
+
+a.md-button.md-default-theme.md-primary.md-raised, a.md-button.md-primary.md-raised, a.md-button.md-default-theme.md-primary.md-fab, a.md-button.md-primary.md-fab, .md-button.md-default-theme.md-primary.md-raised, .md-button.md-primary.md-raised, .md-button.md-default-theme.md-primary.md-fab, .md-button.md-primary.md-fab{
+				background-color: rgb(218, 0, 47);
+}
+
+.redTextWhite{
+		color: rgb(218, 0, 47);
+}
+
+/*// ALS CSS BREEK VERWIJDER ALLES HIERONDER*/
+
+.glyphicon_with_action {
+    cursor: pointer;
+    cursor: hand;
+    margin-right: 1vw;
+}
+
+.glyphicon {
+    margin-left: 0.5vw;
+}
+
+.edit:hover {
+    color: darkcyan;
+}
+
+.panel {
+    margin-top: 2vh;
+    min-width: 1vw;
+}
+
+.panel-body {
+    padding: 0;
+    height: 75vh;
+    overflow: auto;
+    width: 100%;
+}
+
+tr {
+    text-align: right;
+}
+
+tbody tr:hover {
+    background-color: #F9F9F9;
+}
+
+.numbering {
+    text-align: center;
+    vertical-align: middle !important;
+    /*display: inline-block;*/
+    width: 50px !important;
+}
+
+
+/* Table column sizes*/
+
+th:nth-child(2) {
+    text-align: right;
+    width: 25%;
+}
+
+th:nth-child(3) {
+    text-align: right;
+    width: 15%;
+}
+
+th:nth-child(4) {
+    text-align: right;
+    width: 15%;
+}
+
+th:nth-child(5) {
+    text-align: right;
+    width: 15%;
+}
+
+td {
+    vertical-align: middle !important;
+}
+
+td:nth-child(2) {
+    text-align: right;
+}
+
+td:nth-child(3) {
+    text-align: right;
+}
+
+td:nth-child(4) {
+    text-align: right;
+}
+
+td:nth-child(5) {
+    text-align: right;
+}
+
+.actionsKolom {
+    text-align: right;
+    width: 100%;
+}
+
+.actionsKolom button {
+    margin-right: 1vw;
+}
+
+.a{
+    color: inherit;
+    text-decoration: none !important;
+    display: inline-block;
+}
+
+.ap{
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+h3 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 500px) {
+    a>p {
+        display: none;
+    }
+}

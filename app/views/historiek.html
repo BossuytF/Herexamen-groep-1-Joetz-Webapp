@@ -1,1 +1,28 @@
-<p>This is the historiek view.</p>
+<div class="col-md-2">
+</div>
+<div class="col-md-3">
+
+<md-content>
+    <md-list>
+    <md-list-item class="md-2-line" ng-click="historiek.selectKamp(kamp)" ng-repeat="kamp in historiek.KampenLijst"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
+          <img ng-src="{{kamp.sfeerfoto}}" class="md-avatar" alt="foto" />
+          <div class="md-list-item-text align-vert" layout="column">
+          <h3 class="align-vert">{{kamp.naam}}</h3>
+          <h4 class="align-vert">{{kamp.adres.gemeente}} {{kamp.startdatum}} </h4>
+          </div>
+        </md-list-item>
+    </md-list>
+  </md-content>
+</div>
+<div class="col-md-5" id="background">
+<h2>{{historiek.detailkamp.naam}}</h2>
+<br><br>
+<img ng-src="{{historiek.detailkamp.sfeerfoto}}" class="fotokamp" alt="foto" style="width:auto;"/>
+<br><br>
+<h4>{{historiek.detailkamp.adres.gemeente}}</h4>
+<br>
+<h4>{{historiek.Datum}}</h4>
+<br>
+<p>{{historiek.detailkamp.omschrijving}}</p><!--het kamp daje op klikt in de scope laden-->
+<br><br>
+</div>

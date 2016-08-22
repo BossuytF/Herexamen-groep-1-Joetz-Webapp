@@ -1,1 +1,27 @@
-<p>This is the medewerkers view.</p>
+<div class="col-md-2">
+</div>
+<div class="col-md-8" id="background" style="padding: 0px;">
+	<md-content>
+    <md-list style="padding: 0px;">
+      <md-list-item class="md-3-line" ng-click="null">
+          <img ng-src="#" class="md-avatar" alt="Avatar" />
+          <div style="width:25%;" class="md-list-item-text" layout="column" style="text-align:left;">
+          <h3 style="text-align:left;width:25%;">Email</h3>
+          </div>
+          <div class="md-list-item-text" layout="column" style="text-align:left;">
+          <h3 style="text-align:left;">Gebruikersnaam</h3>
+          </div>
+      </md-list-item>
+      <md-list-item class="md-3-line" ng-click="null" ng-repeat="medewerker in medewerkers.medewerkerLijst">
+          <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
+          <div style="width:25%;" class="md-list-item-text" layout="column">
+          <p style="width:25%;">{{medewerker.firstname}} {{medewerker.lastname}}</p>
+          <p style="width:25%;">{{medewerker.email}}</p>
+          </div>
+          <div style="text-align:left;" class="md-list-item-text" layout="column">
+          <h3 style="text-align:left;" class="md-list-item-text">{{medewerker.username}}</h3>
+          </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</div>
