@@ -8,7 +8,7 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('MedewerkersCtrl', ['UserService', '$q', '$timeout', 'KampenService', 'kampId', function (UserService, $q, $timeout, KampenService, kampId) {
+.controller('MedewerkersCtrl', ['UserService', '$q', '$timeout', 'KampenService', function (UserService, $q, $timeout, KampenService) {
 			var medewerkers = this;
 			var user = {};
 

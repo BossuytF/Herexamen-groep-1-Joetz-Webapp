@@ -27,7 +27,7 @@ angular.module('webappApp')
 
 			function update(id, email) {
 				return $http({
-					method : 'PUT',
+					method : 'POST',
 					url : baseUrl + 'activiteit/' + id + '/aanwezigen/' + email
 				});
 			}

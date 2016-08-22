@@ -1,5 +1,5 @@
 <div class="col-md-8 col-md-offset-2" id="background">
-	<legend>Nieuwe Inschrijving</legend>
+	<legend>Nieuwe inschrijving bevestigen</legend>
 	<form class="form-horizontal" name="form" ng-submit="inschrijven.schrijfIn()" role="form">
 		<fieldset>
 
@@ -20,6 +20,7 @@
 			</div>
 			
 			<div id="deelnemer">
+				<br>
 				<h4>Deelnemer </h4>
 				<md-divider></md-divider>
 				<p> Naam : {{inschrijven.deelnemer.firstname}} {{inschrijven.deelnemer.lastname}}</p>
@@ -30,6 +31,7 @@
 			</div>
 
 			<div id="betalend">
+			<br>
 			<h4>Betalende ouder: </h4>
 			<md-divider></md-divider>
 				<p> Naam : {{inschrijven.betalend.firstname}} {{inschrijven.betalend.lastname}}</p>
@@ -42,6 +44,7 @@
 			</div>
 			
 			<div id="contact">
+			<br>
 				<h4>Contactpersoon </h4>
 				<md-divider></md-divider>
 				<p> Naam : {{inschrijven.contactpersoon.firstname}} {{inschrijven.contactpersoon.lastname}}</p>
@@ -54,6 +57,7 @@
 			</div>
 			
 			<div id="info">
+			<br>
 				<h4>Ledeninfo </h4>
 				<md-divider></md-divider>
 				<p>Code gerechtigde: {{inschrijven.deelnemer.codegerechtigde}}</p>
