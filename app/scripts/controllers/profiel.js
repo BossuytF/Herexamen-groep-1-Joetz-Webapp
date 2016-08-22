@@ -8,8 +8,8 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('ProfielCtrl', ['$rootScope', '$mdDialog', '$scope', '$state', 'UserService',
-		function ($rootScope, $mdDialog, $scope, $state, UserService) {
+.controller('ProfielCtrl', ['$rootScope', '$mdDialog', '$scope', '$state', 'UserService', 'AuthenticationService',
+		function ($rootScope, $mdDialog, $scope, $state, UserService, AuthenticationService) {
 			var profiel = this;
 
 			profiel.edit = true;
@@ -34,7 +34,7 @@ angular.module('webappApp')
 					firstname : '',
 					email : '',
 					rijksregisternummer : '',
-/* 					geboortedatum : undefined, */
+					/* 					geboortedatum : undefined, */
 					adres : {
 						straat : '',
 						huisnummer : '',
@@ -44,16 +44,17 @@ angular.module('webappApp')
 					},
 					telefoonnummer : '',
 					aansluitingsnr : '',
-					betalend : false,
-					ouder : false
+					betalend : "false",
+					ouder : "false"
 				},
 				contactpersoon2 : {
 					lastname : '',
 					firstname : '',
 					email : '',
 					rijksregisternummer : '',
-/* 					geboortedatum :undefined,
- */					adres : {
+					/* 					geboortedatum :undefined,
+					 */
+					adres : {
 						straat : '',
 						huisnummer : '',
 						gemeente : '',
@@ -62,8 +63,8 @@ angular.module('webappApp')
 					},
 					telefoonnummer : '',
 					aansluitingsnr : '',
-					betalend : false,
-					ouder : false
+					betalend : "false",
+					ouder : "false"
 				}
 			}
 			getUser();
@@ -136,50 +137,77 @@ angular.module('webappApp')
 				UserService.get($rootScope.user.email).then(function (response) {
 					profiel.user = response.data;
 					profiel.user.geboortedatum = new Date(profiel.user.geboortedatum)
-/* 					profiel.user.contactpersoon1.geboortedatum = new Date(profiel.user.contactpersoon1.geboortedatum)
-					profiel.user.contactpersoon2.geboortedatum = new Date(profiel.user.contactpersoon2.geboortedatum) */
+						/* 					profiel.user.contactpersoon1.geboortedatum = new Date(profiel.user.contactpersoon1.geboortedatum)
+						profiel.user.contactpersoon2.geboortedatum = new Date(profiel.user.contactpersoon2.geboortedatum) */
 				})
-				
-				if(profiel.user.codegerechtigde){
+
+				if (profiel.user.codegerechtigde) {
 					console.log(profiel.user)
 					profiel.user.lid = true;
-				}else{
+				} else {
 					profiel.user.lid = false;
 				}
 			}
 
 			profiel.opslaanGegevens = function () {
-				profiel.edit = true;
 				UserService.updateGegevens($rootScope.user.email, profiel.user).then(function (response) {
 					getUser();
+					AuthenticationService.init();
+					profiel.formGegevens.$setPristine();
+					profiel.edit = true;
 				})
 			}
 
 			profiel.opslaanAdres = function () {
-				profiel.edit = true;
+
 				UserService.updateAdres($rootScope.user.email, profiel.user.adres).then(function (response) {
 					getUser();
+					AuthenticationService.init();
+					profiel.formAdres.$setPristine();
+					profiel.edit = true;
 				})
 			}
 
 			profiel.opslaanMutualiteit = function () {
-				profiel.edit = true;
 				UserService.updateMutualiteit($rootScope.user.email, profiel.user).then(function (response) {
 					getUser();
+					AuthenticationService.init();
+					profiel.formMutualiteit.$setPristine();
+					profiel.edit = true;
 				})
 			}
 
 			profiel.contactpersoon1Opslaan = function () {
-				profiel.edit = true;
+				if (!profiel.user.contactpersoon1.ouder) {
+					profiel.user.contactpersoon1.ouder = false;
+				}
+
+				if (!profiel.user.contactpersoon1.betalend) {
+					profiel.user.contactpersoon1.betalend = false;
+				}
+
 				UserService.updateContactpersoon($rootScope.user.email, profiel.user.contactpersoon1, 1).then(function (response) {
 					getUser();
+					AuthenticationService.init();
+					profiel.contactpersoon1form.$setPristine();
+					profiel.edit = true;
 				})
 			}
 
 			profiel.contactpersoon2Opslaan = function () {
-				profiel.edit = true;
+				if (!profiel.user.contactpersoon2.ouder) {
+					profiel.user.contactpersoon2.ouder = false;
+				}
+
+				if (!profiel.user.contactpersoon2.betalend) {
+					profiel.user.contactpersoon2.betalend = false;
+				}
+
 				UserService.updateContactpersoon($rootScope.user.email, profiel.user.contactpersoon2, 2).then(function (response) {
 					getUser();
+					AuthenticationService.init();
+					profiel.contactpersoon2form.$setPristine();
+					profiel.edit = true;
 				})
 			}
 

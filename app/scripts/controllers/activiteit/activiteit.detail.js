@@ -22,7 +22,7 @@ angular.module('webappApp')
 					$mdToast.show(
 						$mdToast.simple()
 						.textContent('U bent nu aanwezig op deze activiteit')
-						.position('start')
+						.position('top right')
 						.capsule(true))
 				})
 			}

@@ -1,1 +1,82 @@
-<p>This is the inschrijven view.</p>
+<div class="col-md-8 col-md-offset-2" id="background">
+	<legend>Nieuwe Inschrijving</legend>
+	<form class="form-horizontal" name="form" ng-submit="inschrijven.schrijfIn()" role="form">
+		<fieldset>
+
+			<div class="alert alert-danger" ng-show="inschrijven.errorBetalend">
+				{{inschrijven.errorBetalend}}
+			</div>
+			
+			<div class="alert alert-danger" ng-show="inschrijven.errorDeelnemer">
+				{{inschrijven.errorDeelnemer}}
+			</div>
+			
+			<div class="alert alert-danger" ng-show="inschrijven.errorContactpersoon">
+				{{inschrijven.errorContactpersoon}}
+			</div>
+			
+			<div class="alert alert-danger" ng-show="inschrijven.errorLid">
+				{{inschrijven.errorLid}}
+			</div>
+			
+			<div id="deelnemer">
+				<h4>Deelnemer </h4>
+				<md-divider></md-divider>
+				<p> Naam : {{inschrijven.deelnemer.firstname}} {{inschrijven.deelnemer.lastname}}</p>
+				<p> Geboortedatum : {{inschrijven.deelnemer.geboortedatum | date}}
+				<p> Rijksregisternummer : {{inschrijven.deelnemer.rijksregisternummer}}</p>
+				<p> Adres : {{inschrijven.deelnemer.adres.straat}} {{inschrijven.deelnemer.adres.huisnummer}}{{inschrijven.betalend.adres.bus}}</br>
+				{{inschrijven.deelnemer.adres.gemeente}} {{inschrijven.deelnemer.adres.postcode}}</p>
+			</div>
+
+			<div id="betalend">
+			<h4>Betalende ouder: </h4>
+			<md-divider></md-divider>
+				<p> Naam : {{inschrijven.betalend.firstname}} {{inschrijven.betalend.lastname}}</p>
+				<p> Rijksregisternummer : {{inschrijven.betalend.rijksregisternummer}}</p>
+				<p> Adres : {{inschrijven.betalend.adres.straat}} {{inschrijven.betalend.adres.huisnummer}}{{inschrijven.betalend.adres.bus}}</br>
+				 {{inschrijven.betalend.adres.gemeente}} {{inschrijven.betalend.adres.postcode}}</p>
+				<p> Contact : </br>
+					Tel : {{inschrijven.betalend.telefoonnummer}}</br>
+					Email : {{inschrijven.betalend.email}}</p>
+			</div>
+			
+			<div id="contact">
+				<h4>Contactpersoon </h4>
+				<md-divider></md-divider>
+				<p> Naam : {{inschrijven.contactpersoon.firstname}} {{inschrijven.contactpersoon.lastname}}</p>
+				<p> Rijksregisternummer : {{inschrijven.contactpersoon.rijksregisternummer}}</p>
+				<p> Adres : {{inschrijven.contactpersoon.adres.straat}} {{inschrijven.contactpersoon.adres.huisnummer}}{{inschrijven.contactpersoon.adres.bus}}</br>
+				{{inschrijven.contactpersoon.adres.gemeente}} {{inschrijven.contactpersoon.adres.postcode}}</p>
+				<p> Contact : </br>
+					Tel : {{inschrijven.contactpersoon.telefoonnummer}}</br>
+				Email : {{inschrijven.contactpersoon.email}}</p>
+			</div>
+			
+			<div id="info">
+				<h4>Ledeninfo </h4>
+				<md-divider></md-divider>
+				<p>Code gerechtigde: {{inschrijven.deelnemer.codegerechtigde}}</p>
+				<p> Aansluitingsnr1 : {{inschrijven.deelnemer.contactpersoon1.aansluitnummer}}</p>
+				<p> Aansluitingsnr2 : {{inschrijven.deelnemer.contactpersoon2.aansluitnummer}}</p>
+			</div>
+
+			<md-input-container class="md-block">
+				<label>Extra info</label>
+				<input required type="text" name="extraInfo" ng-model="inschrijven.inschr.extraInformatie" id="inputExtraInfo" />
+				<div ng-messages="form.extraInfo.$error" ng-show="form.extraInfo.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
+			</md-input-container>
+
+		</fieldset>
+		<div class="col-md-10 row-button">
+			<div class="buttons-right">
+				<a ng-href="#/kampen">Annuleren</a>  
+				<md-button class="md-raised md-primary" type="submit" ng-disabled="form.$invalid || inschrijven.error">Schrijf in </md-button>
+			</div>
+		</div>
+	</form>
+
+</div>
+

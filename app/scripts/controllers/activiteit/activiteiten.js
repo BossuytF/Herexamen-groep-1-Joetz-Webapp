@@ -39,7 +39,7 @@ angular.module('webappApp')
 						$mdToast.show(
 							$mdToast.simple()
 							.textContent('Activiteit werd succesvol verwijderd')
-							.position('start')
+							.position('top right')
 							.capsule(true));
 					});
 				});
