@@ -37,7 +37,6 @@ angular.module('webappApp')
 			init();
 
 			function deelnemerError() {
-				console.log($rootScope.user)
 				if (typeof $rootScope.user != 'undefined') {
 					UserService.get($rootScope.user.email).then(function (response) {
 						main.userr = response.data;
