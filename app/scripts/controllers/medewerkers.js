@@ -9,6 +9,7 @@
  */
 angular.module('webappApp')
 .controller('MedewerkersCtrl', ['UserService', '$q', '$timeout', 'KampenService',  '$rootScope', function (UserService, $q, $timeout, KampenService, $rootScope) {
+
 			var medewerkers = this;
 			var user = {};
 
