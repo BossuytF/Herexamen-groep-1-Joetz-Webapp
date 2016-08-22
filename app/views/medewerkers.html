@@ -3,52 +3,12 @@
 <div class="col-md-8" id="background">
 	<md-content>
     <md-list>
-    <md-list-item class="md-3-line" ng-click="null"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
+    <md-list-item class="md-3-line" ng-click="null" ng-repeat="medewerker in medewerkers.medewerkerLijst">
           <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
           <div class="md-list-item-text" layout="column">
-          <h3>John Doe</h3>
-          <p>+00 000 00 00 00</p>
-          <p>John.Doe@email.com</p>
-          </div>
-        </md-list-item>
-    <md-list-item class="md-3-line" ng-click="null"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
-          <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
-          <div class="md-list-item-text" layout="column">
-          <h3>John Doe</h3>
-          <p>+00 000 00 00 00</p>
-          <p>John.Doe@email.com</p>
-          </div>
-        </md-list-item>
-    <md-list-item class="md-3-line" ng-click="null"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
-          <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
-          <div class="md-list-item-text" layout="column">
-          <h3>John Doe</h3>
-          <p>+00 000 00 00 00</p>
-          <p>John.Doe@email.com</p>
-          </div>
-        </md-list-item>
-    <md-list-item class="md-3-line" ng-click="null"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
-          <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
-          <div class="md-list-item-text" layout="column">
-          <h3>John Doe</h3>
-          <p>+00 000 00 00 00</p>
-          <p>John.Doe@email.com</p>
-          </div>
-        </md-list-item>
-    <md-list-item class="md-3-line" ng-click="null"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
-          <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
-          <div class="md-list-item-text" layout="column">
-          <h3>John Doe</h3>
-          <p>+00 000 00 00 00</p>
-          <p>John.Doe@email.com</p>
-          </div>
-        </md-list-item>
-    <md-list-item class="md-3-line" ng-click="null"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
-          <img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" />
-          <div class="md-list-item-text" layout="column">
-          <h3>John Doe</h3>
-          <p>+00 000 00 00 00</p>
-          <p>John.Doe@email.com</p>
+          <h3>{{medewerker.username}}</h3>
+          <p>{{medewerker.firstname}} {{medewerker.lastname}}</p>
+          <p>{{medewerker.email}}</p>
           </div>
         </md-list-item>
     </md-list>
