@@ -3,32 +3,32 @@
 	Om u in te kunnen schrijven voor een kamp moet u eerst alle info invullen van de deelnemer en de ouders.
 </div>
 	<p><br><a ui-sref='kampen'>Terug naar overzicht</a></p>
-		<md-card class="redTextWhite" style="background-image : url({{detailkamp.kamp.sfeerfoto}}); background-size:100% 100%;">
+		<md-card class="redTextWhite" style="background-color: white;">
 			<md-card-title>
 				<md-card-title-text>
-					<h3  class="whiteText" class="md-headline">{{detailkamp.kamp.naam}}</h3>
+					<h3  class="blackText" class="md-headline">{{detailkamp.kamp.naam}}</h3>
 				</md-card-title-text>
 			</md-card-title>	
 			<md-card-content>
 				<div class="row">
 					<div class="col-md-8">
-						<p class="whiteText">{{detailkamp.kamp.omschrijving}}</p>
+						<p class="blackText">{{detailkamp.kamp.omschrijving}}</p>
 
 					</div>
 					<md-divider></md-divider>
 					<div class="col-md-4">
-						<p class="whiteText"> Vertrek : {{detailkamp.kamp.startDatum | date}}</p>
-						<p class="whiteText"> Terug : {{detailkamp.kamp.eindDatum | date}}</p>
+						<p class="blackText"> Vertrek : {{detailkamp.kamp.startDatum | date}}</p>
+						<p class="blackText"> Terug : {{detailkamp.kamp.eindDatum | date}}</p>
 						<md-divider ></md-divider>
-						<p class="whiteText"> Locatie: {{detailkamp.kamp.locatie}}</p>
+						<p class="blackText"> Locatie: {{detailkamp.kamp.locatie}}</p>
 						<md-divider ></md-divider>
-						<p class="whiteText">Van : {{detailkamp.kamp.minLeeftijd}} tot {{detailkamp.kamp.maxLeeftijd}}</p>	
+						<p class="blackText">Van : {{detailkamp.kamp.minLeeftijd}} tot {{detailkamp.kamp.maxLeeftijd}}</p>	
 						<md-divider></md-divider>
-						<p class="whiteText">{{detailkamp.kamp.vervoer}} </p>
+						<p class="blackText">{{detailkamp.kamp.vervoer}} </p>
 						<md-divider ></md-divider>
-						<p class="whiteText">Prijs:{{detailkamp.kamp.prijs}} &#8364</p>
+						<p class="blackText">Prijs:{{detailkamp.kamp.prijs}} &#8364</p>
 						<md-divider ></md-divider>
-						<p class="whiteText">Contact:{{detailkamp.kamp.contact}} </p>
+						<p class="blackText">Contact:{{detailkamp.kamp.contact}} </p>
 					</div>
 				</div>
 				<div class="row">

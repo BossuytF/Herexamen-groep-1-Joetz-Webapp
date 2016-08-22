@@ -57,6 +57,9 @@ angular.module('webappApp')
 			function schrijfIn() {
 				InschrijvingService.create(inschrijven.inschr).then(function (response) {
 					console.log(response);
+					$state.go('kampdetail', {
+						'kampId' : inschrijven.inschr.kampId
+					});
 				})
 			}
 			inschrijven.schrijfIn = schrijfIn;
