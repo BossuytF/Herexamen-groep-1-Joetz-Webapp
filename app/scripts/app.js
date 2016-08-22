@@ -144,7 +144,7 @@ angular
                 controllerAs: 'profiel'
             })
             .state('inschrijven', {
-                url: '/inschrijven',
+                url: '/:kampId/inschrijven',
                 templateUrl: 'views/inschrijven.html',
                 controller: 'InschrijvenCtrl',
                 controllerAs: 'inschrijven'
