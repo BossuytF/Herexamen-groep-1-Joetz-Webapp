@@ -29,8 +29,8 @@ angular.module('webappApp')
 						$mdToast.show(
 							$mdToast.simple()
 							.textContent('Proficiat ' + registreer.user.voornaam + ' uw account werd succesvol aangemaakt en u werd automatisch ingelogd')
-							.position('top right')
 							.capsule(true));
+						$state.go('home')
 					});
 				}, function () {
 					registreer.error = 'Er bestaat al een gebruiker met deze gegevens';

@@ -8,7 +8,7 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('KampenCtrl', ['KampenService', '$mdToast', '$mdDialog', '$scope', '$state', function (KampenService, $mdToast, $mdDialog, $scope, $state) {
+.controller('KampenCtrl', ['KampenService', '$mdToast', '$mdDialog', '$scope', '$state', '$rootScope', function (KampenService, $mdToast, $mdDialog, $scope, $state, $rootScope) {
 			var kampen = this;
 
 			kampen.kampenLijst = [];
@@ -42,12 +42,10 @@ angular.module('webappApp')
 				.cancel('Nee');
 
 			function medewerkerToewijzen(id) {
+				$rootScope.kampID = id;
 				$mdDialog.show({
 					clickOutsideToClose : true,
 					scope : $scope,
-					locals : {
-						kampId : id
-					},
 					controller : 'MedewerkersCtrl',
 					controllerAs : 'medewerkers',
 					preserveScope : true,

@@ -8,7 +8,8 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('MedewerkersCtrl', ['UserService', '$q', '$timeout', 'KampenService', function (UserService, $q, $timeout, KampenService) {
+.controller('MedewerkersCtrl', ['UserService', '$q', '$timeout', 'KampenService',  '$rootScope', function (UserService, $q, $timeout, KampenService, $rootScope) {
+
 			var medewerkers = this;
 			var user = {};
 
@@ -82,7 +83,7 @@ angular.module('webappApp')
 			function toewijzen(){
 				var usr;
 				for (usr in medewerkers.toegewezen){
-					KampenService.addMedewerker(kampId, medewerkers.medewerkerLijst[usr].email).then(function(response){
+					KampenService.addMedewerker($rootScope.kampID, medewerkers.medewerkerLijst[usr].email).then(function(response){
 						console.log(response);
 					})
 				}

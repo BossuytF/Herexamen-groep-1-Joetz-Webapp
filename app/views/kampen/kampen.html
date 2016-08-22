@@ -1,4 +1,7 @@
 <div class="col-md-8 col-md-offset-2 redTextWhite" flex ng-cloak>
+<div class="alert alert-danger" ng-show="errorDetails && user.role == 'lid' ">
+	Om u in te kunnen schrijven voor een kamp moet u eerst alle info invullen van de deelnemer en de ouders.
+</div>
 	<md-grid-list
        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6" md-cols="12"
         md-row-height-gt-md="1:1" md-row-height="4:3"
