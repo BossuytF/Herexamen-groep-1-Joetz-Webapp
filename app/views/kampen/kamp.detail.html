@@ -45,7 +45,7 @@
 				</div>
 			</md-card-content>	
 			<md-card-actions layout="row" layout-align="end center">
-				<md-button  class="md-raised md-primary" ui-sref="inschrijven({kampId: detailkamp.kamp.id})" ng-disabled='detailkamp.ingeschreven || detailkamp.volzet || detailkamp.birthDate' ng-hide='detailkamp.ingeschreven || detailkamp.volzet || detailkamp.birthDate'>Inschrijven</md-button>
+				<md-button  class="md-raised md-primary" ui-sref="inschrijven({kampId: detailkamp.kamp.id})" ng-disabled='detailkamp.ingeschreven || detailkamp.volzet || detailkamp.birthDate' ng-hide='detailkamp.ingeschreven || detailkamp.volzet || detailkamp.birthDate || user.role != "lid"'>Inschrijven</md-button>
 			</md-card-actions>						
 		</md-card>
 	</div>

@@ -52,7 +52,7 @@
 							<li><a ui-sref="kampen">Kampen</a></li>
 							<li ng-show="user.role != 'lid' && user.isAuth"><a ui-sref="medewerkers">Medewerkers</a></li>
 							<li ng-show="user.role != 'lid' && user.isAuth" ><a ui-sref="activiteiten">Activiteiten</a></li>
-							<li ng-show="user.isAuth"><a ui-sref="historiek">Historiek</a></li>
+							<li ng-show="user.isAuth && user.role=='lid'"><a ui-sref="historiek">Historiek</a></li>
 							<li ng-show="user.role == 'beheerder' && user.isAuth"><a ui-sref="admin">
 							Admin</a></li>
 						</ul>
