@@ -11,12 +11,15 @@
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
 		<link rel="stylesheet" href="bower_components/snackbarjs/dist/snackbar.min.css" />
 		<link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+		<link rel="stylesheet" href="bower_components/textAngular/dist/textAngular.css" />
 		<!-- endbower -->
 		<!-- endbuild -->
 		<!-- build:css(.tmp) styles/main.css -->
 		<link rel="stylesheet" href="styles/main.css"/>
 		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
 		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons"/>
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+		
 		<!-- endbuild -->
 	</head>
 	<body ng-app="webappApp" ng-controller="MainCtrl as main">
@@ -25,7 +28,7 @@
     <![endif]-->
 
 		<!-- Add your site or application content here -->
-			<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+			<nav class="navbar navbar-default navbar-fixed-top whiteTextRed" role="navigation" style="margin-bottom: 0">
 				<div class="container-fluid">
 					<div class="navbar-header">
 					
@@ -42,16 +45,16 @@
 
 					</div>
 
-					<div class="collapse navbar-collapse navbar-responsive-collapse" id="js-navbar-collapse">
+					<div class="collapse navbar-collapse navbar-responsive-collapse " id="js-navbar-collapse">
 
 						<ul class="nav navbar-nav ">
-							<li ng-class="{active: $state.includes('home') }" ><a href="#/">Home</a></li>
-							<li ng-class="{ active: $state.includes('kampen') }"><a ui-sref="kampen">Kampen</a></li>
-							<li ng-class="{ active: $state.includes('activiteiten') }"><a ui-sref="activiteiten">Activiteiten</a></li>
-							<li ng-class="{ active: $state.includes('vergeten') }"><a ui-sref="vergeten">TestPagina</a></li>
-							<li ng-class="{ active: $state.includes('medewerkers') }"><a ui-sref="medewerkers">Medewerkers</a></li>
-							<li ng-class="{ active: $state.includes('historiek') }"><a ui-sref="historiek">Historiek</a></li>
-							<li ng-class="{ active: $state.includes('contact') }"><a ng-href="#/">Contact</a></li>
+							<li><a href="#/">Home</a></li>
+							<li><a ui-sref="kampen">Kampen</a></li>
+							<li ng-show="user.role != 'lid' && user.isAuth"><a ui-sref="medewerkers">Medewerkers</a></li>
+							<li ng-show="user.role != 'lid' && user.isAuth" ><a ui-sref="activiteiten">Activiteiten</a></li>
+							<li ng-show="user.isAuth"><a ui-sref="historiek">Historiek</a></li>
+							<li ng-show="user.role == 'beheerder' && user.isAuth"><a ui-sref="admin">
+							Admin</a></li>
 						</ul>
 
 						<ul class="nav navbar-nav navbar-right">
@@ -67,7 +70,7 @@
 
 
 		<div class="index container-fluid">
-			<div ui-view=""></div>
+			<div ui-view></div>
 		</div>
 
 		<div class="footer">
@@ -87,7 +90,10 @@
 			ga('create', 'UA-XXXXX-X');
 			ga('send', 'pageview');
 		</script>
-
+		
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgTSoVBhh2wzXrSiZw0zxFA_pDrl7H3Gs&callback=initMap"
+		async defer></script>
+		
 		<!-- build:js(.) scripts/vendor.js -->
 		<!-- bower:js -->
 		<script src="bower_components/jquery/dist/jquery.js"></script>
@@ -110,8 +116,19 @@
 		<script src="bower_components/ng-flow/dist/ng-flow.js"></script>
 		<script src="bower_components/ngtweet/dist/ngtweet.js"></script>
 		<script src="bower_components/moment/moment.js"></script>
+		<script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
+		<script src="bower_components/rangy/rangy-core.js"></script>
+		<script src="bower_components/rangy/rangy-classapplier.js"></script>
+		<script src="bower_components/rangy/rangy-highlighter.js"></script>
+		<script src="bower_components/rangy/rangy-selectionsaverestore.js"></script>
+		<script src="bower_components/rangy/rangy-serializer.js"></script>
+		<script src="bower_components/rangy/rangy-textrange.js"></script>
+		<script src="bower_components/textAngular/dist/textAngular.js"></script>
+		<script src="bower_components/textAngular/dist/textAngular-sanitize.js"></script>
+		<script src="bower_components/textAngular/dist/textAngularSetup.js"></script>
 		<!-- endbower -->
 		<!-- endbuild -->
+
 
 		<!-- build:js({.tmp,app}) scripts/scripts.js -->
 		<script src="scripts/app.js"></script>
@@ -119,23 +136,32 @@
 		<script src="scripts/controllers/about.js"></script>
 		<script src="scripts/controllers/login.js"></script>
 		<script src="scripts/controllers/historiek.js"></script>
-		<script src="scripts/controllers/kampen.js"></script>
+		<script src="scripts/controllers/kampen/kampen.js"></script>
 		<script src="scripts/controllers/profiel.js"></script>
 		<script src="scripts/controllers/inschrijven.js"></script>
 		<script src="scripts/controllers/medewerkers.js"></script>
-		<script src="scripts/controllers/activiteiten.js"></script>
-		<script src="scripts/controllers/nieuwactiviteit.js"></script>
-		<script src="scripts/controllers/nieuwkamp.js"></script>
+		<script src="scripts/controllers/activiteit/activiteiten.js"></script>
+		<script src="scripts/controllers/activiteit/activiteit.nieuw.js"></script>
+		<script src="scripts/controllers/activiteit/activiteit.detail.js"></script>
+		<script src="scripts/controllers/kampen/kamp.nieuw.js"></script>
+		<script src="scripts/controllers/kampen/kamp.detail.js"></script>
 		<script src="scripts/controllers/registreer.js"></script>
 		<script src="scripts/controllers/vergeten.js"></script>
 		<script src="scripts/services/authentication.js"></script>
 		<script src="scripts/services/userservice.js"></script>
 		<script src="scripts/controllers/home.js"></script>
 		<script src="scripts/directives/password.js"></script>
-<script src="scripts/services/blogservice.js"></script>
-<script src="scripts/services/inschrijvingservice.js"></script>
-<script src="scripts/services/kampenservice.js"></script>
-<script src="scripts/directives/rrn.js"></script>
+		<script src="scripts/services/blogservice.js"></script>
+		<script src="scripts/services/kampenservice.js"></script>
+		<script src="scripts/directives/rrn.js"></script>
+		<script src="scripts/services/activiteitenservice.js"></script>
+		<script src="scripts/services/blogservice.js"></script>
+		<script src="scripts/services/kampenservice.js"></script>
+		<script src="scripts/directives/rrn.js"></script>
+		<script src="scripts/controllers/blog.nieuw.js"></script>
+		<script src="scripts/controllers/admin.js"></script>
+		<script src="scripts/services/inschrijvingservice.js"></script>
+
 		<!-- endbuild -->
 	</body>
 </html>

@@ -29,9 +29,8 @@ select option:empty { display:none }
 }
 
 .fotokamp{
-  margin-left: 30%;
-  width: 40%; 
-  height: 30%;
+  height: 200px;
+  width: 700px;
 
 }
 /* Custom page header */
