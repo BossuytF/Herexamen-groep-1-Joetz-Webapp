@@ -1,6 +1,6 @@
 # Joetz-Webapp
 
-Herexamen Project III: Mobeil Apps
+Herexamen Project III: Mobile Apps
 
 Fabrice Bossuyt
 Ward Debaene
