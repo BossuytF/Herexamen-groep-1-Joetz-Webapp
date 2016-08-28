@@ -25,13 +25,12 @@ angular.module('webappApp')
 			function getAllMedewerkers() {
 				UserService.getAll().then(function (response) {
 					for (var i = 0; i < response.data.length; i++) {
-/* 						if (response.data[i].role === "medewerker") { */
+						if (response.data[i].role === "monitor") { 
 							user = response.data[i];
 							user._lowername = user.firstname.toLowerCase +user.lastname.toLowerCase;
 							user.name =user.firstname + ' ' + user.lastname;
-
 							medewerkers.medewerkerLijst.push(user);
-					/* 	} */
+						} 
 					}
 				})
 			}

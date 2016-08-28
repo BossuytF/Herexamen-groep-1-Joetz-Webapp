@@ -1,28 +1,60 @@
-<div class="col-md-2">
+<div class="col-md-3 col-md-offset-2" ng-show="!historiek.leeg">
+	<md-content>
+		<md-list>
+			<md-list-item class="md-2-line" ng-click="historiek.selectKamp(kamp)" ng-repeat="kamp in historiek.KampenLijst"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
+				<img ng-src="{{kamp.sfeerfoto}}" class="md-avatar" />
+				<div class="md-list-item-text align-vert" layout="column">
+					<h3 style='text-align: left;'>{{kamp.naam}}</h3>
+					<h4>{{kamp.adres.gemeente}}<h4>
+					<h4>{{kamp.startDatum | date:  'dd-MM-yyyy'}} </h4>
+				</div>
+			</md-list-item>
+		</md-list>
+	</md-content>
 </div>
-<div class="col-md-3">
 
-<md-content>
-    <md-list>
-    <md-list-item class="md-2-line" ng-click="historiek.selectKamp(kamp)" ng-repeat="kamp in historiek.KampenLijst"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
-          <img ng-src="{{kamp.sfeerfoto}}" class="md-avatar" alt="foto" />
-          <div class="md-list-item-text align-vert" layout="column">
-          <h3 class="align-vert">{{kamp.naam}}</h3>
-          <h4 class="align-vert">{{kamp.adres.gemeente}} {{kamp.startdatum}} </h4>
-          </div>
-        </md-list-item>
-    </md-list>
-  </md-content>
+<div class="col-md-5" id="background" ng-show="!historiek.leeg">
+	<h2 style='text-align: center;'>{{historiek.detailkamp.naam}}</h2>
+	<img ng-src="{{historiek.detailkamp.sfeerfoto}}" class=""  style="width:100%;"/>
+	<div class="row">
+		<div class="col-md-8">
+			<p class="blackText">{{historiek.detailkamp.omschrijving}}</p>
+		</div>
+		<md-divider></md-divider>
+		<div class="col-md-4">
+			<p class="blackText"> Van   {{historiek.detailkamp.startDatum | date:  'dd-MM-yyyy'}} tot {{historiek.detailkamp.eindDatum | date:  'dd-MM-yyyy'}}</p>
+			<md-divider ></md-divider>
+			<p class="blackText"> Locatie: {{historiek.detailkamp.locatie}}</p>
+			<md-divider ></md-divider>
+			<p class="blackText">Leeftijden : {{historiek.detailkamp.minLeeftijd}} tot {{historiek.detailkamp.maxLeeftijd}} jaar</p>	
+			<md-divider></md-divider>
+			<p class="blackText">Vervoersmethode: {{historiek.detailkamp.vervoer}} </p>
+			<md-divider ></md-divider>
+			<p class="blackText">Prijs: {{historiek.detailkamp.prijs}} &#8364</p>
+			<md-divider ></md-divider>
+			<p class="blackText">Contact: {{historiek.detailkamp.contact}} </p>
+		</div>
+	</div>
+	<div class="row" style="margin-bottom: 20px;">
+		<div class= "col-md-6">
+			<map zoom="14" center="{{historiek.detailkamp.locatie}}">
+				<directions
+					draggable="true"
+					travel-mode="DRIVING"
+					origin="current-location"
+					panel="directions-panel"
+					destination="{{historiek.detailkamp.locatie}}">
+				</directions>
+			</map>
+		</div>
+		<div id="directions-panel" class="col-md-6" style="height: 300px; overflow: auto;background-color: white">
+		</div>
+	</div>
 </div>
-<div class="col-md-5" id="background">
-<h2>{{historiek.detailkamp.naam}}</h2>
-<br><br>
-<img ng-src="{{historiek.detailkamp.sfeerfoto}}" class="fotokamp" alt="foto" style="width:auto;"/>
-<br><br>
-<h4>{{historiek.detailkamp.adres.gemeente}}</h4>
-<br>
-<h4>{{historiek.Datum}}</h4>
-<br>
-<p>{{historiek.detailkamp.omschrijving}}</p><!--het kamp daje op klikt in de scope laden-->
-<br><br>
-</div>
+
+		<div class="col-md-4 col-md-offset-4" id="background" ng-show="historiek.leeg">
+			<h3> Aan de slag!  </h3>
+			<h3> Je bent nog nooit op kamp geweest ...   </h3>
+
+			<h3><md-button class="md-primary md-raised align-horiz" ui-sref="kampen">Kies snel een kamp</md-button></h3>
+		</div>

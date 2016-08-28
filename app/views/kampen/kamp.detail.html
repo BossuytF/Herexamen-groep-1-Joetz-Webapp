@@ -3,7 +3,7 @@
 	Om u in te kunnen schrijven voor een kamp moet u eerst alle info invullen van de deelnemer en de ouders.
 </div>
 	<p><br><a ui-sref='kampen'>Terug naar overzicht</a></p>
-		<md-card class="redTextWhite" style="background-color: white;">
+		<md-card class="" style="background-color: white;">
 			<md-card-title>
 				<md-card-title-text>
 					<h3  class="blackText" class="md-headline">{{detailkamp.kamp.naam}}</h3>
@@ -17,18 +17,17 @@
 					</div>
 					<md-divider></md-divider>
 					<div class="col-md-4">
-						<p class="blackText"> Vertrek : {{detailkamp.kamp.startDatum | date}}</p>
-						<p class="blackText"> Terug : {{detailkamp.kamp.eindDatum | date}}</p>
+						<p class="blackText"> Van   {{detailkamp.kamp.startDatum | date:  'dd-MM-yyyy'}} tot {{detailkamp.kamp.eindDatum | date:  'dd-MM-yyyy'}}</p>
 						<md-divider ></md-divider>
 						<p class="blackText"> Locatie: {{detailkamp.kamp.locatie}}</p>
 						<md-divider ></md-divider>
-						<p class="blackText">Van : {{detailkamp.kamp.minLeeftijd}} tot {{detailkamp.kamp.maxLeeftijd}}</p>	
+						<p class="blackText">Leeftijden : {{detailkamp.kamp.minLeeftijd}} tot {{detailkamp.kamp.maxLeeftijd}} jaar</p>	
 						<md-divider></md-divider>
-						<p class="blackText">{{detailkamp.kamp.vervoer}} </p>
+						<p class="blackText">Vervoersmethode: {{detailkamp.kamp.vervoer}} </p>
 						<md-divider ></md-divider>
-						<p class="blackText">Prijs:{{detailkamp.kamp.prijs}} &#8364</p>
+						<p class="blackText">Prijs: {{detailkamp.kamp.prijs}} &#8364</p>
 						<md-divider ></md-divider>
-						<p class="blackText">Contact:{{detailkamp.kamp.contact}} </p>
+						<p class="blackText">Contact: {{detailkamp.kamp.contact}} </p>
 					</div>
 				</div>
 				<div class="row">

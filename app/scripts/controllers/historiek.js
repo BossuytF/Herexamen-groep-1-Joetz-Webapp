@@ -21,7 +21,7 @@ angular.module('webappApp')
 						eindDatum : '',
 						omschrijving : ''
 					};
-
+			historiek.leeg = true;
 			function getInschrijvingen() {
 				UserService.get($rootScope.user.email).then(function (response) {
 					historiek.user = response.data;
@@ -45,24 +45,20 @@ angular.module('webappApp')
 
 			function setKamp() {
 				if (historiek.KampenLijst.length > 0) {
-					historiek.detailkamp = historiek.KampenLijst[0];
-					historiek.Datum = historiek.detailkamp.startDatum.substring(0,10) + " tot " + historiek.detailkamp.eindDatum.substring(0,10);
+					historiek.leeg = false;
+					historiek.selectKamp(historiek.KampenLijst[0]);
+					//historiek.Datum = historiek.detailkamp.startDatum.substring(0,10) + " tot " + historiek.detailkamp.eindDatum.substring(0,10);
 				}else {
-					historiek.detailkamp = {
-						naam : 'Je hebt nog geen kampen meegedaan',
-						gemeente : '',
-						startDatum : '',
-						eindDatum : '',
-						omschrijving : ''
-					};
+					historiek.leeg = true;
 				}
 			}
 			
 			historiek.selectKamp = function (kamp) {
 				historiek.detailkamp = kamp;
-				historiek.Datum = historiek.detailkamp.startDatum.substring(0,10)+ " tot " + historiek.detailkamp.eindDatum.substring(0,10);;
-
-
+				historiek.detailkamp.startDatum = new Date(historiek.detailkamp.startDatum);
+				historiek.detailkamp.eindDatum = new Date(historiek.detailkamp.eindDatum);
+				historiek.detailkamp.locatie = kamp.adres.straat + ' ' + kamp.adres.huisnummer + ' ' + kamp.adres.gemeente;
+				//historiek.Datum ="Van " +  new Date(historiek.detailkamp.startDatum) + " tot " + new Date(historiek.detailkamp.eindDatum);
 			}
 		}
 	]);

@@ -21,7 +21,7 @@
 						</md-card-title-text>
 					</md-card-title>	
 					<md-card-content ng-click="kampen.goToState(kamp.id)">
-						<p>Periode: {{kamp.startDatum | date}} tot {{kamp.eindDatum | date}}</p>
+						<p>Periode: {{kamp.startDatum | date:  'dd-MM-yyyy'}} tot {{kamp.eindDatum | date:  'dd-MM-yyyy'}}</p>
 						<p>Locatie: {{kamp.adres.gemeente}}</p>
 						<p>Prijs: {{kamp.prijs}} &#8364 </p>
 						<p>Leeftijd:{{kamp.minLeeftijd}}-{{kamp.maxLeeftijd}} jaar</p>
