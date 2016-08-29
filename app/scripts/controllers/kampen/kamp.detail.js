@@ -8,13 +8,15 @@
  * Controller of the webappApp
  */
 angular.module('webappApp')
-.controller('DetailKampCtrl', ['KampenService', '$stateParams', '$state', '$mdToast', '$mdDialog', 'InschrijvingService', '$rootScope',
-		function (KampenService, $stateParams, $state, $mdToast, $mdDialog, InschrijvingService, $rootScope) {
+.controller('DetailKampCtrl', ['KampenService', '$stateParams', '$state', '$mdToast', '$mdDialog', 'InschrijvingService', '$rootScope', 'UserService', 
+		function (KampenService, $stateParams, $state, $mdToast, $mdDialog, InschrijvingService, $rootScope, UserService) {
 
 			var detailkamp = this;
 
 			detailkamp.ingeschreven = false;
 			detailkamp.volzet = false;
+			detailkamp.aanwezigeLijst = [];
+			detailkamp.medewerkerLijst = [];
 
 			detailkamp.kamp = {};
 
@@ -26,6 +28,7 @@ angular.module('webappApp')
 					detailkamp.kamp.eindDatum = new Date(response.data.eindDatum);
 					ingeschreven();
 					volzet();
+					getMedewerkers();
 				});
 			}
 			getKamp();
@@ -36,6 +39,7 @@ angular.module('webappApp')
 						if (response.data.user == $rootScope.user.id) {
 							detailkamp.ingeschreven = true;
 						}
+						detailkamp.aanwezigeLijst.push(response.data.user);
 					})
 				}
 			}
@@ -44,6 +48,18 @@ angular.module('webappApp')
 				if (detailkamp.kamp.inschrijvingen.length >= detailkamp.kamp.maxDeelnemers) {
 					detailkamp.volzet = true;
 				}
+			}
+			
+			function getMedewerkers(){
+				UserService.getAll().then(function(response){
+					for (var user in response.data){
+						for (var usr in detailkamp.kamp.medewerkers){
+							if (response.data[user].id == detailkamp.kamp.medewerkers[usr]){
+								detailkamp.medewerkerLijst.push(response.data[user])
+							}
+						}
+					}
+				})
 			}
 
 			function age() {

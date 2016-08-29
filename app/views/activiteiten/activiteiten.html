@@ -19,15 +19,15 @@
 						<md-card-title-text>
 							<span class="md-headline">{{activiteit.naam}}</span>
 								<p>{{activiteit.heleDag}} </p>
-							<p>{{activiteit.locatie}},  {{activiteit.beginUur | date}}</p>
+							<p>{{activiteit.locatie }},  {{activiteit.beginUur | date: "dd-MM-yyyy"}}</p>
 						</md-card-title-text>
 						<md-card-title-media>
 							<div class="md-media-md card-media"><img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" /></div>
 						</md-card-title-media>
 					</md-card-title>
 					<md-card-actions layout="row" layout-align="end center">
-						<md-button ng-show="user.role == 'beheerder' && user.isAuth" ng-click="activiteiten.remove(activiteit.id)">Verwijderen</md-button>
-						<md-button ng-show="user.role == 'beheerder' && user.isAuth" ui-sref="editActiviteit({activiteitId: activiteit.id})">Aanpassen</md-button>
+						<md-button ng-show="user.role == 'beheerder' && user.isAuth" ng-click="activiteiten.remove(activiteit.id)"  class="md-icon-button"><i title="Verwijderen"  class="material-icons align-vert">delete</i></md-button>
+						<md-button ng-show="user.role == 'beheerder' && user.isAuth" ui-sref="editActiviteit({activiteitId: activiteit.id})" class="md-icon-button"><i title="Aanpassen" class="material-icons align-vert">mode_edit</i></md-button>
 					</md-card-actions>
 				</md-card>
 			</md-grid-tile>

@@ -170,9 +170,9 @@ md-content header{
 		color: white;
 }
 
-.blackText{
+/* .blackText{
     color: black;
-}
+} */
 
 
 .datep-label{
@@ -326,3 +326,46 @@ h3 {
   border-right-style: solid;
   height: 100%;
 }
+
+.md-item-text.compact {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  }
+  
+  .contact-item {
+  box-sizing: border-box; }
+  
+  .contact-item .md-list-item-text {
+    padding: 14px 0;
+    max-width: 190px; 
+	}
+	
+	.contact-item .md-list-item-text h3 {
+      margin: 0 !important;
+      padding: 0;
+      line-height: 1.2em !important;
+	  }
+	  
+	  .contact-item .md-list-item-text h3, .contact-item .md-list-item-text p {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden; 
+	  text-align:left;
+	  }
+	  
+	  
+	  @media (min-width: 960px) {
+    .contact-item {
+      float: left;
+      width: 25%; } }
+	  
+	  .fixedRows {
+  height: 250px;
+  overflow: hidden; }
+  
+  
+  .contact-list-item{
+		border-radius:25px;
+		background-color:white;
+		margin:10px;
+  }

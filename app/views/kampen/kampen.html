@@ -1,4 +1,4 @@
-<div class="col-md-8 col-md-offset-2 redTextWhite" flex ng-cloak>
+<div class="col-md-8 col-md-offset-2" flex ng-cloak>
 <div class="alert alert-danger" ng-show="errorDetails && user.role == 'lid' ">
 	Om u in te kunnen schrijven voor een kamp moet u eerst alle info invullen van de deelnemer en de ouders.
 </div>
@@ -15,24 +15,24 @@
 				  md-rowspan-sm="1">
 			<md-card >
 				<img ng-click="kampen.goToState(kamp.id)" ng-src="{{kamp.sfeerfoto}}" class="md-card-image" alt="Sfeerfoto">
-					<md-card-title ng-click="kampen.goToState(kamp.id)">
+					<md-card-title ng-click="kampen.goToState(kamp.id)" class="redTextWhite">
 						<md-card-title-text>
 							<span class="md-headline">{{kamp.naam}}</span>
 						</md-card-title-text>
 					</md-card-title>	
 					<md-card-content ng-click="kampen.goToState(kamp.id)">
-						<p>Periode: {{kamp.startDatum | date:  'dd-MM-yyyy'}} tot {{kamp.eindDatum | date:  'dd-MM-yyyy'}}</p>
-						<p>Locatie: {{kamp.adres.gemeente}}</p>
-						<p>Prijs: {{kamp.prijs}} &#8364 </p>
-						<p>Leeftijd:{{kamp.minLeeftijd}}-{{kamp.maxLeeftijd}} jaar</p>
+						<p><i class="material-icons align-vert">date_range</i>  {{kamp.startDatum | date:  'dd-MM-yyyy'}} tot {{kamp.eindDatum | date:  'dd-MM-yyyy'}}</p>
+						<p><i class="material-icons align-vert">location_on</i>  {{kamp.adres.gemeente}}</p>
+						<p><i class="material-icons align-vert">credit_card</i>  &#8364 {{kamp.prijs}}  </p>
+						<p><i class="material-icons align-vert">person</i>  {{kamp.minLeeftijd}}-{{kamp.maxLeeftijd}} jaar</p>
 					</md-card-content>	
 					<md-card-actions layout="row" layout-align="end center">
-						<md-button ng-show="user.role == 'beheerder' && user.isAuth" ng-click="kampen.deleteKamp(kamp.id)">Verwijderen</md-button>
-						<md-button  ng-show="user.role == 'beheerder' && user.isAuth" ui-sref="editKamp({kampId: kamp.id})">Aanpassen</md-button>							
-						<md-button  ng-show="user.role == 'beheerder' && user.isAuth" ng-click="kampen.medewerkerToewijzen(kamp.id)">Medewerkers</md-button>
+						<md-button ng-show="user.role == 'beheerder' && user.isAuth" ng-click="kampen.deleteKamp(kamp.id)" class="md-icon-button"><i title="Verwijderen" class="material-icons align-vert">delete</i></md-button>
+						<md-button  ng-show="user.role == 'beheerder' && user.isAuth" ui-sref="editKamp({kampId: kamp.id})" class="md-icon-button "><i title="Aanpassen" class="material-icons align-vert">mode_edit</i></md-button>							
+						<md-button  ng-show="user.role == 'beheerder' && user.isAuth" ng-click="kampen.medewerkerToewijzen(kamp.id)" class="md-icon-button"><i title="Medewerker toevoegen" class="material-icons">person_add</i></md-button>
 					</md-card-actions>						
 				</md-card>
 			</md-grid-tile>
 		</md-grid-list>
-		<md-button ng-show="user.role == 'beheerder' && user.isAuth" class="md-raised md-primary" ui-sref="nieuwKamp">Nieuw kamp</md-button>
+		<md-button ng-show="user.role == 'beheerder' && user.isAuth" ui-sref="nieuwKamp" class="md-fab md-primary"><i title="Toevoegen" class="material-icons align-vert">add</i></md-button>
 </div>

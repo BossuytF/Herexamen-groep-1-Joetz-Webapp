@@ -6,28 +6,28 @@
 		<md-card class="" style="background-color: white;">
 			<md-card-title>
 				<md-card-title-text>
-					<h3  class="blackText" class="md-headline">{{detailkamp.kamp.naam}}</h3>
+					<h3  class="md-headline">{{detailkamp.kamp.naam}}</h3>
 				</md-card-title-text>
 			</md-card-title>	
 			<md-card-content>
 				<div class="row">
 					<div class="col-md-8">
-						<p class="blackText">{{detailkamp.kamp.omschrijving}}</p>
+						<p>{{detailkamp.kamp.omschrijving}}</p>
 
 					</div>
 					<md-divider></md-divider>
 					<div class="col-md-4">
-						<p class="blackText"> Van   {{detailkamp.kamp.startDatum | date:  'dd-MM-yyyy'}} tot {{detailkamp.kamp.eindDatum | date:  'dd-MM-yyyy'}}</p>
+						<p> <i class="material-icons align-vert" title="Datum">date_range</i>    {{detailkamp.kamp.startDatum | date:  'dd-MM-yyyy'}} tot {{detailkamp.kamp.eindDatum | date:  'dd-MM-yyyy'}}</p>
 						<md-divider ></md-divider>
-						<p class="blackText"> Locatie: {{detailkamp.kamp.locatie}}</p>
+						<p> <i class="material-icons align-vert" title="Locatie">location_on</i>  {{detailkamp.kamp.locatie}}</p>
 						<md-divider ></md-divider>
-						<p class="blackText">Leeftijden : {{detailkamp.kamp.minLeeftijd}} tot {{detailkamp.kamp.maxLeeftijd}} jaar</p>	
+						<p ><i class="material-icons align-vert" title="Leeftijd">person</i>  {{detailkamp.kamp.minLeeftijd}} tot {{detailkamp.kamp.maxLeeftijd}} jaar</p>	
 						<md-divider></md-divider>
-						<p class="blackText">Vervoersmethode: {{detailkamp.kamp.vervoer}} </p>
+						<p ><i class="material-icons align-vert" title="Vervoersmethode">directions_transit</i>  {{detailkamp.kamp.vervoer}} </p>
 						<md-divider ></md-divider>
-						<p class="blackText">Prijs: {{detailkamp.kamp.prijs}} &#8364</p>
+						<p ><i class="material-icons align-vert">credit_card</i>  &#8364  {{detailkamp.kamp.prijs}} </p>
 						<md-divider ></md-divider>
-						<p class="blackText">Contact: {{detailkamp.kamp.contact}} </p>
+						<p ><i class="material-icons align-vert" title="Contact">contact_mail</i>  {{detailkamp.kamp.contact}} </p>
 					</div>
 				</div>
 				<div class="row">
@@ -44,6 +44,26 @@
 					</div>
 					<div id="directions-panel" class="col-md-4" style="height: 300px; overflow: auto;background-color: white">
 					</div>
+				</div>
+				<div>
+				<h3>Aanwezig</h3>
+					<md-list class="fixedRows">
+						<md-list-item class="md-2-line contact-item" ng-repeat="aanwezige in detailkamp.aanwezigeLijst" >
+							<img ng-src="/images/no_avatar.png" class="md-avatar" alt="{{aanwezige.name}}" />
+							<div class="md-list-item-text compact">
+								<h3>{{aanwezige.firstname}} {{aanwezige.lastname}}</h3>
+							</div>
+						</md-list-item>
+					</md-list>
+					<h3>Medewerkers</h3>
+					<md-list class="fixedRows">
+						<md-list-item class="md-2-line contact-item" ng-repeat="medewerker in detailkamp.medewerkerLijst" >
+							<img ng-src="/images/no_avatar.png" class="md-avatar" alt="{{medewerker.name}}" />
+							<div class="md-list-item-text compact">
+								<h3>{{medewerker.firstname}} {{medewerker.lastname}}</h3>
+							</div>
+						</md-list-item>
+					</md-list>
 				</div>
 			</md-card-content>	
 			<md-card-actions layout="row" layout-align="end center">
