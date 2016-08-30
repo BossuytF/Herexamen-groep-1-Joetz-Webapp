@@ -57,11 +57,12 @@
 
 					</fieldset>
 
-					<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
 
 					<div class="col-md-10 row-button">
 						<div class="buttons-right">
+						<a ng-hide="profiel.edit" ng-click="profiel.annuleren()">Annuleren</a>  
 							<md-button class="md-raised md-primary" type="submit" ng-hide="profiel.edit" ng-disabled="profiel.formGegevens.$invalid || profiel.formGegevens.$pristine">Opslaan </md-button>					
+											<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
 						</div>
 					</div>
 				</form>
@@ -120,8 +121,10 @@
  -->
 					<div class="col-md-10 row-button">
 						<div class="buttons-right">
-						<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
+						<a ng-hide="profiel.edit" ng-click="profiel.annuleren()">Annuleren</a>  
+
 							<md-button class="md-raised md-primary" type="submit" ng-hide=profiel.edit ng-disabled="profiel.formAdres.$invalid || profiel.formAdres.$pristine">Opslaan </md-button>					
+												<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
 						</div>
 					</div>
 				</form>
@@ -150,11 +153,13 @@
 						</md-input-container>
 					</fieldset>
 
-					<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
 
 					<div class="col-md-10 row-button">
 						<div class="buttons-right">
+						<a ng-hide="profiel.edit" ng-click="profiel.annuleren()">Annuleren</a>  
 							<md-button class="md-raised md-primary" type="submit" ng-hide="profiel.edit" ng-disabled="profiel.formMutualiteit.$invalid || profiel.formMutualiteit.$pristine">Opslaan </md-button>					
+						 					<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
+
 						</div>
 					</div>
 

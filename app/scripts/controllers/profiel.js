@@ -214,6 +214,10 @@ angular.module('webappApp')
 			profiel.editData = function () {
 				profiel.edit = false;
 			}
+			
+			profiel.annuleren = function(){
+				profiel.edit = true;
+			}
 
 		}
 	]);

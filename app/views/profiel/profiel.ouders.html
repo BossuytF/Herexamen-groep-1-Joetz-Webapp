@@ -113,11 +113,13 @@
 
 
 					</fieldset>
-					<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
+					
 
 					<div class="col-md-10 row-button">
 						<div class="buttons-right">
+						<a ng-hide="profiel.edit" ng-click="profiel.annuleren()">Annuleren</a>  
 							<md-button class="md-raised md-primary" type="submit" ng-hide="profiel.edit" ng-disabled="profiel.contactpersoon1form.$invalid || profiel.contactpersoon1form.$pristine">Opslaan </md-button>					
+						<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
 						</div>
 					</div>
 				</form>
@@ -233,11 +235,12 @@
 						</md-input-container>
 					</fieldset>
 
-					<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
 
 					<div class="col-md-10 row-button">
 						<div class="buttons-right">
+							<a ng-hide="profiel.edit" ng-click="profiel.annuleren()">Annuleren</a>  
 							<md-button class="md-raised md-primary" type="submit" ng-hide="profiel.edit" ng-disabled="profiel.contactpersoon2form.$invalid || profiel.contactpersoon2form.$pristine">Opslaan </md-button>					
+											<md-button ng-hide="!profiel.edit" class="md-primary" ng-click="profiel.editData()" target="_blank">Gegevens aanpassen</md-button>
 						</div>
 					</div>
 				</form>

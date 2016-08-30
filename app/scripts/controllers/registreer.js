@@ -20,8 +20,11 @@ angular.module('webappApp')
 				username : '',
 				confirmPassword : ''
 			};
+			
+			registreer.registreerProgress = false;
 
 			registreer.registreer = function () {
+				registreer.registreerProgress = true;
 				UserService.create(registreer.user).then(function () {
 					AuthenticationService.login(registreer.user.email, registreer.user.password)
 					.then(function (response) {
@@ -30,10 +33,12 @@ angular.module('webappApp')
 							$mdToast.simple()
 							.textContent('Proficiat ' + registreer.user.voornaam + ' uw account werd succesvol aangemaakt en u werd automatisch ingelogd')
 							.capsule(true));
+						registreer.registreerProgress = false;
 						$state.go('home')
 					});
 				}, function () {
 					registreer.error = 'Er bestaat al een gebruiker met deze gegevens';
+					registreer.registreerProgress = false;
 				});
 			};
 

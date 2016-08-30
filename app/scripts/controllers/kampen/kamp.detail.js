@@ -39,7 +39,14 @@ angular.module('webappApp')
 						if (response.data.user == $rootScope.user.id) {
 							detailkamp.ingeschreven = true;
 						}
-						detailkamp.aanwezigeLijst.push(response.data.user);
+						//detailkamp.aanwezigeLijst.push(response.data.user);
+						UserService.getAll().then(function(users){
+							for (var user in users.data){
+								if (users.data[user].id == response.data.user){
+									detailkamp.aanwezigeLijst.push(users.data[user]);
+								}
+							}
+						})
 					})
 				}
 			}

@@ -55,7 +55,7 @@ angular.module('webappApp')
 				aantalNachten : '7',
 				vervoer : '',
 				prijs : '',
-				inbegrepenInPrijs : '',
+				//inbegrepenInPrijs : '',
 				maxLeeftijd : '',
 				minLeeftijd : '',
 				maxDeelnemers : '',
@@ -94,20 +94,21 @@ angular.module('webappApp')
 				nieuwKamp.kamp.eindDatum = new Date('jul 26, 2017');
 				nieuwKamp.kamp.aantalDagen = '6';
 				nieuwKamp.kamp.aantalNachten = '7';
-				nieuwKamp.kamp.vervoer = 'busVervoer';
-				nieuwKamp.kamp.prijs = '311';
-				nieuwKamp.kamp.inbegrepenInPrijs = 'Heen- en terugreis per autocar ,Verblijf in volpension, drank bij de maaltijden,  Dagelijks vieruurtje,  Begeleiding door ervaren, gebrevetteerde monitoren  , Volledig animatiepakket incl. spelmateriaal , Ongevallenverzekering';
-				nieuwKamp.kamp.maxLeeftijd = '15';
-				nieuwKamp.kamp.minLeeftijd = '11';
-				nieuwKamp.kamp.maxDeelnemers = '20';
+				nieuwKamp.kamp.vervoer = 'Busvervoer';
+				nieuwKamp.kamp.prijs = 311;
+				//nieuwKamp.kamp.inbegrepenInPrijs = 'Heen- en terugreis per autocar ,Verblijf in volpension, drank bij de maaltijden,  Dagelijks vieruurtje,  Begeleiding door ervaren, gebrevetteerde monitoren  , Volledig animatiepakket incl. spelmateriaal , Ongevallenverzekering';
+				nieuwKamp.kamp.maxLeeftijd = 15;
+				nieuwKamp.kamp.minLeeftijd = 11;
+				nieuwKamp.kamp.maxDeelnemers = 20;
 				nieuwKamp.kamp.contact = 'joetz.west@joetz.be';
 				nieuwKamp.kamp.sfeerfoto = 'https://lh3.googleusercontent.com/psGXb3UGasBYC7CYg3Aj30kr9QkBv2Fy1xZjXPL1nLpwIMSkeI8_YJqT4Jmuqx_3L48S6zYwbRaQQdkFlKXY_j2gN9XOK7xPN66Ks3SPeMesWOqGJ7Jqb3lutcaaKXz7bkN-TzauTV6OUucUQtKShYG3KYuGEylZKYmIQqLKFeh-pRsT7EIV335gaU7pDyhkdXNNUlRB2M-xDh7nRhI0tmtAKw0d_MNJWAFOkfJB0pkmU32PoyvUiDyOZmLIY7Rf77mDgWxP4Fa50BVFpPFCXeFsDyf0WWrpuUXmCunmWLQB_v5IoCNynJy5RUAdz-j8JPAL0XSeq3DSEu4_nJrU0pqEWym88GGX6HNQCRFUwXQ0r8t6NPOWfnr8p2hQ9IBR_kfer4lRomL22rcKHYFVCsdhAx5PD3vMYMMFBoO_OJIiip_B0By0ddMzxw5G9pKa1QoZk1JjHGP0q7JHO2y0ge3aqpvn71g9m1ywUSY5V6ss0Ln9t5G287KV9aZ-mw6XIIFQDavmaJy3EqrJQjS_kw_WG9xwdfn96_x54RZFVU7ezW5GUn1m37ky0jmrid_705daBR2_l4AAWogWVPZVPnzJV5VvymM=w1263-h947-no';
 				nieuwKamp.kamp.straat = 'Domain de la palogne';
-				nieuwKamp.kamp.huisnummer = '5';
+				nieuwKamp.kamp.huisnummer = 1;
 				nieuwKamp.kamp.bus = '';
 				nieuwKamp.kamp.gemeente = 'Vieuxville';
-				nieuwKamp.kamp.postcode = '9000'
+				nieuwKamp.kamp.postcode = 4190
 			};
+			nieuwKamp.invullen = invullen;
 
 			function submitKamp() {
 				if ($state.includes('nieuwKamp')) {

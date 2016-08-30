@@ -1,6 +1,6 @@
 <div class="col-md-3 col-md-offset-2" ng-show="!historiek.leeg" >
-	<md-content class=='transparentBack'>
-		<md-list class=='padMarNull'>
+	<md-content class='transparentBack'>
+		<md-list class='padMarNull'>
 			<md-list-item  class="md-3-line contact-list-item md-whiteframe-6dp" ng-click="historiek.selectKamp(kamp)" ng-repeat="kamp in historiek.KampenLijst" ><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
 				<img ng-src="{{kamp.sfeerfoto}}" class="md-avatar" />
 				<div class="md-list-item-text align-vert" layout="column">
@@ -14,7 +14,7 @@
 </div>
 
 <div class="col-md-5 md-whiteframe-6dp" id="background" ng-show="!historiek.leeg" >
-	<h2 class=='padMarNull'>{{historiek.detailkamp.naam}}</h2>
+	<h2 class='padMarNull'>{{historiek.detailkamp.naam}}</h2>
 	<img ng-src="{{historiek.detailkamp.sfeerfoto}}" class="img-rounded"  id="widePhoto"/>
 	<div class="row">
 		<div class="col-md-8">

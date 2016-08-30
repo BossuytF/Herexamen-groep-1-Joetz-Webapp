@@ -57,5 +57,14 @@ angular.module('webappApp')
 					})
 				}
 			}
+			
+			function invullen(){
+				nieuwActiviteit.activiteit.naam = "Shopdag"
+				nieuwActiviteit.activiteit.locatie = "De Meir Antwerpen"
+				nieuwActiviteit.activiteit.beginUur = new Date('aug 28, 2017')
+				nieuwActiviteit.activiteit.eindUur = new Date('aug 28, 2017')
+				nieuwActiviteit.activiteit.heleDag = true;
+			}
+			nieuwActiviteit.invullen = invullen;
 		}
 	]);
