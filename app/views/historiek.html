@@ -1,10 +1,10 @@
 <div class="col-md-3 col-md-offset-2" ng-show="!historiek.leeg" >
-	<md-content style='background-color: transparent;'>
-		<md-list style='padding-top:0px; margin-top:0px;'>
-			<md-list-item  class="md-3-line contact-list-item md-whiteframe-6dp" ng-click="historiek.selectKamp(kamp)" ng-repeat="kamp in historiek.KampenLijst" style='margin-top:0px;'><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
+	<md-content class=='transparentBack'>
+		<md-list class=='padMarNull'>
+			<md-list-item  class="md-3-line contact-list-item md-whiteframe-6dp" ng-click="historiek.selectKamp(kamp)" ng-repeat="kamp in historiek.KampenLijst" ><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
 				<img ng-src="{{kamp.sfeerfoto}}" class="md-avatar" />
 				<div class="md-list-item-text align-vert" layout="column">
-					<h3 style='text-align: left;'>{{kamp.naam}}</h3>
+					<h3 class="leftHeader">{{kamp.naam}}</h3>
 					<h4><i class="material-icons align-vert" title="Locatie">location_on</i>   {{kamp.adres.gemeente}}<h4>
 					<h4><i class="material-icons align-vert" title="Datum">date_range</i>  {{kamp.startDatum | date:  'dd-MM-yyyy'}} </h4>
 				</div>
@@ -13,9 +13,9 @@
 	</md-content>
 </div>
 
-<div class="col-md-5 md-whiteframe-6dp" id="background" ng-show="!historiek.leeg" style="border-radius:5px;">
-	<h2 style='text-align: center;'>{{historiek.detailkamp.naam}}</h2>
-	<img ng-src="{{historiek.detailkamp.sfeerfoto}}" class="img-rounded"  style="width:100%;"/>
+<div class="col-md-5 md-whiteframe-6dp" id="background" ng-show="!historiek.leeg" >
+	<h2 class=='padMarNull'>{{historiek.detailkamp.naam}}</h2>
+	<img ng-src="{{historiek.detailkamp.sfeerfoto}}" class="img-rounded"  id="widePhoto"/>
 	<div class="row">
 		<div class="col-md-8">
 			<p>{{historiek.detailkamp.omschrijving}}</p>
@@ -35,7 +35,7 @@
 			<p ><i class="material-icons align-vert" title="Contact">contact_mail</i> {{historiek.detailkamp.contact}} </p>
 		</div>
 	</div>
-	<div class="row" style="margin-bottom: 20px;">
+	<div class="row" id="historiekRow">
 		<div class= "col-md-6">
 			<map zoom="14" center="{{historiek.detailkamp.locatie}}">
 				<directions
@@ -47,7 +47,7 @@
 				</directions>
 			</map>
 		</div>
-		<div id="directions-panel" class="col-md-6" style="height: 300px; overflow: auto;background-color: white">
+		<div id="directions-panel" class="col-md-6" id="#directions-panel">
 		</div>
 	</div>
 </div>

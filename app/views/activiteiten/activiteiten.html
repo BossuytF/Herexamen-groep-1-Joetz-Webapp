@@ -17,7 +17,7 @@
 				  md-rowspan-md="2"
 				  md-colspan-md="3"
 				  md-colspan-lg="2">
-				<md-card style="height: 100%; width: 100%; overflow:auto;">
+				<md-card class = "overflow" id="wideHighPhoto">
 					<md-card-title ng-click="activiteiten.detailAct(activiteit.id)">
 						<md-card-title-text>
 							<span class="md-headline">{{activiteit.naam}}</span>
@@ -25,7 +25,6 @@
 							<p>{{activiteit.locatie }},  {{activiteit.beginUur | date: "dd-MM-yyyy"}}</p>
 						</md-card-title-text>
 						<md-card-title-media>
-							<div class="md-media-md card-media"><img ng-src="/images/plezier.jpg" class="md-avatar" alt="foto" /></div>
 						</md-card-title-media>
 					</md-card-title>
 					<md-card-actions layout="row" layout-align="end center">

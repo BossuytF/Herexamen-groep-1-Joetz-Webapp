@@ -18,7 +18,7 @@
 
 						<md-input-container class="md-block">
 							<label>Omschrijving</label>
-							<textarea ng-trim="false" rows="5" style= "overflow:auto;" required type="text" name="omschrijving" ng-model="nieuwKamp.kamp.omschrijving" id="inputOmschrijving" />
+							<textarea ng-trim="false" rows="5" class= "overflow" required type="text" name="omschrijving" ng-model="nieuwKamp.kamp.omschrijving" id="inputOmschrijving" />
 							<div ng-messages="form.omschrijving.$error" ng-show="form.omschrijving.$touched">
 								<div ng-messages-include="messages.html"></div>
 							</div>
@@ -125,7 +125,7 @@
 								<div ng-messages-include="messages.html"></div>
 							</div>
 						</md-autocomplete>
-						<img style="width:204px;height:auto;" ng-src = "{{nieuwKamp.selectedItem.url}}" ng-show="nieuwKamp.selectedItem" class="img-rounded"></img>
+						<img id="foto" ng-src = "{{nieuwKamp.selectedItem.url}}" ng-show="nieuwKamp.selectedItem" class="img-rounded"></img>
 
 						<!-- 						<md-input-container class="md-block" hidden="true">
 							<label>Sfeerfoto</label>

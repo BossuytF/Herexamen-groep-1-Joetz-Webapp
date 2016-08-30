@@ -42,9 +42,9 @@ select option:empty { display:none }
   padding-right: 15px;
 }
 
-.fotokamp{
-  height: 200px;
-  width: 700px;
+.foto{
+  width:204px;
+  height:auto;
 
 }
 /* Custom page header */
@@ -52,6 +52,7 @@ select option:empty { display:none }
   /* border-bottom: 1px solid #e5e5e5; */
   /* margin-bottom: 10px; */
 }
+
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
@@ -369,7 +370,50 @@ h3 {
 		background-color:white;
 		margin:10px;
   }
-  
-  .md-no-style{
-		border-radius:5px;!important;
+
+  #directions-panel{
+    height: 300px;
+   overflow: auto;
+   background-color: white;
   }
+
+  #card{
+    background-color: white;
+  }
+
+  .overflow{
+    overflow:auto;
+  }
+
+  #cardKampen{
+    max-height:100%;
+    overflow:auto;
+  }
+
+  .transparentBack{
+    background-color: transparent;
+  }
+
+   .padMarNull{
+    padding-top:0px;
+    margin-top:0px;
+  }
+  #widePhoto{
+    width:100%;
+  }
+   #wideHighPhoto{
+    width:100%;
+    height:100%;
+  }
+  #historiekRow{
+    margin-bottom: 20px;
+  }
+  .leftHeader{
+    text-align: left;
+  }
+  .txtCenter{
+    text-align: center;
+  }
+
+
+

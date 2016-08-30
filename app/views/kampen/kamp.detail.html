@@ -3,7 +3,7 @@
 	Om u in te kunnen schrijven voor een kamp moet u eerst alle info invullen van de deelnemer en de ouders.
 </div>
 	<p><br><a ui-sref='kampen'>Terug naar overzicht</a></p>
-		<md-card class="" style="background-color: white;">
+		<md-card class="" id="card">
 			<md-card-title>
 				<md-card-title-text>
 					<h3  class="md-headline">{{detailkamp.kamp.naam}}</h3>
@@ -13,6 +13,7 @@
 				<div class="row">
 					<div class="col-md-8">
 						<p>{{detailkamp.kamp.omschrijving}}</p>
+						<img ng-src="{{detailkamp.kamp.sfeerfoto}}" class="img-rounded"  id="widePhoto"/>
 
 					</div>
 					<md-divider></md-divider>
@@ -42,7 +43,7 @@
 							</directions>
 						</map>
 					</div>
-					<div id="directions-panel" class="col-md-4" style="height: 300px; overflow: auto;background-color: white">
+					<div id="directions-panel" class="col-md-4">
 					</div>
 				</div>
 				<div>
