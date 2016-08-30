@@ -1,38 +1,38 @@
-<div class="col-md-3 col-md-offset-2" ng-show="!historiek.leeg">
-	<md-content>
-		<md-list>
-			<md-list-item class="md-2-line" ng-click="historiek.selectKamp(kamp)" ng-repeat="kamp in historiek.KampenLijst"><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
+<div class="col-md-3 col-md-offset-2" ng-show="!historiek.leeg" >
+	<md-content style='background-color: transparent;'>
+		<md-list style='padding-top:0px; margin-top:0px;'>
+			<md-list-item  class="md-3-line contact-list-item md-whiteframe-6dp" ng-click="historiek.selectKamp(kamp)" ng-repeat="kamp in historiek.KampenLijst" style='margin-top:0px;'><!--ng-repeat="item in messages" Voor alle kampen uit de database te halen-->
 				<img ng-src="{{kamp.sfeerfoto}}" class="md-avatar" />
 				<div class="md-list-item-text align-vert" layout="column">
 					<h3 style='text-align: left;'>{{kamp.naam}}</h3>
-					<h4>{{kamp.adres.gemeente}}<h4>
-					<h4>{{kamp.startDatum | date:  'dd-MM-yyyy'}} </h4>
+					<h4><i class="material-icons align-vert" title="Locatie">location_on</i>   {{kamp.adres.gemeente}}<h4>
+					<h4><i class="material-icons align-vert" title="Datum">date_range</i>  {{kamp.startDatum | date:  'dd-MM-yyyy'}} </h4>
 				</div>
 			</md-list-item>
 		</md-list>
 	</md-content>
 </div>
 
-<div class="col-md-5" id="background" ng-show="!historiek.leeg">
+<div class="col-md-5 md-whiteframe-6dp" id="background" ng-show="!historiek.leeg" style="border-radius:5px;">
 	<h2 style='text-align: center;'>{{historiek.detailkamp.naam}}</h2>
-	<img ng-src="{{historiek.detailkamp.sfeerfoto}}" class=""  style="width:100%;"/>
+	<img ng-src="{{historiek.detailkamp.sfeerfoto}}" class="img-rounded"  style="width:100%;"/>
 	<div class="row">
 		<div class="col-md-8">
-			<p class="blackText">{{historiek.detailkamp.omschrijving}}</p>
+			<p>{{historiek.detailkamp.omschrijving}}</p>
 		</div>
 		<md-divider></md-divider>
 		<div class="col-md-4">
-			<p class="blackText"> Van   {{historiek.detailkamp.startDatum | date:  'dd-MM-yyyy'}} tot {{historiek.detailkamp.eindDatum | date:  'dd-MM-yyyy'}}</p>
+			<p ><i class="material-icons align-vert" title="Datum">date_range</i>  {{historiek.detailkamp.startDatum | date:  'dd-MM-yyyy'}} tot {{historiek.detailkamp.eindDatum | date:  'dd-MM-yyyy'}}</p>
 			<md-divider ></md-divider>
-			<p class="blackText"> Locatie: {{historiek.detailkamp.locatie}}</p>
+			<p > <i class="material-icons align-vert" title="Locatie">location_on</i>  {{historiek.detailkamp.locatie}}</p>
 			<md-divider ></md-divider>
-			<p class="blackText">Leeftijden : {{historiek.detailkamp.minLeeftijd}} tot {{historiek.detailkamp.maxLeeftijd}} jaar</p>	
+			<p><i class="material-icons align-vert" title="Leeftijd">person</i> {{historiek.detailkamp.minLeeftijd}} tot {{historiek.detailkamp.maxLeeftijd}} jaar</p>	
 			<md-divider></md-divider>
-			<p class="blackText">Vervoersmethode: {{historiek.detailkamp.vervoer}} </p>
+			<p ><i class="material-icons align-vert" title="Vervoersmethode">directions_transit</i>  {{historiek.detailkamp.vervoer}} </p>
 			<md-divider ></md-divider>
-			<p class="blackText">Prijs: {{historiek.detailkamp.prijs}} &#8364</p>
+			<p><i class="material-icons align-vert">credit_card</i>  &#8364 {{historiek.detailkamp.prijs}} </p>
 			<md-divider ></md-divider>
-			<p class="blackText">Contact: {{historiek.detailkamp.contact}} </p>
+			<p ><i class="material-icons align-vert" title="Contact">contact_mail</i> {{historiek.detailkamp.contact}} </p>
 		</div>
 	</div>
 	<div class="row" style="margin-bottom: 20px;">

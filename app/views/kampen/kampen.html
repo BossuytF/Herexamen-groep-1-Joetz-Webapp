@@ -12,10 +12,12 @@
                   md-colspan-sm="1"
                   md-colspan-xs="1"
 				  md-rowspan-sm="2"
-				  md-rowspan-sm="1">
-			<md-card >
+				  md-rowspan-sm="1"
+				  md-rowspan-xs="2"
+				  md-rowspan-sm="2">
+			<md-card style="max-height:100%;overflow:auto;">
 				<img ng-click="kampen.goToState(kamp.id)" ng-src="{{kamp.sfeerfoto}}" class="md-card-image" alt="Sfeerfoto">
-					<md-card-title ng-click="kampen.goToState(kamp.id)" class="redTextWhite">
+					<md-card-title ng-click="kampen.goToState(kamp.id)" class="redTextWhite" >
 						<md-card-title-text>
 							<span class="md-headline">{{kamp.naam}}</span>
 						</md-card-title-text>
